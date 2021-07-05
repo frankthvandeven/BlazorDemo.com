@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BlazorDemo.Client.Components
 {
-    public partial class StoreEditOrder : LayerComponentBase
+    public partial class StoreEditProduct : LayerComponentBase
     {
         [Parameter]
         public string Title { get; set; }
@@ -27,7 +27,7 @@ namespace BlazorDemo.Client.Components
 
             toolbar.Add("Save", SaveClicked, () => Model.IsModelModified, IconKind.FontAwesome, "far fa-save");
             toolbar.Add("Close", CloseClicked, () => true, IconKind.FontAwesome, "far fa-times");
-            toolbar.SourceCodeButton("BikeStores/EditOrder");
+            toolbar.SourceCodeButton("BikeStores/EditProduct");
 
         }
 

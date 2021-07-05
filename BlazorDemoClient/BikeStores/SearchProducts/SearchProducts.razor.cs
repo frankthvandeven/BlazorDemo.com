@@ -12,7 +12,7 @@ namespace BlazorDemo.Client.Components
 
         private SearchProductsModel Model = new SearchProductsModel();
 
-        ToolbarItemCollection toolbarButtons = new ToolbarItemCollection();
+        ToolbarItemCollection toolbar = new ToolbarItemCollection();
 
         private HyperData<SearchProductsRecord> data = new();
 
@@ -22,9 +22,10 @@ namespace BlazorDemo.Client.Components
         {
             this.Breadcrumb = "Products";
 
-            toolbarButtons.Add("Edit", EditClicked, () => Model.Recordset.CurrentRecord != null, IconKind.FontAwesome, "fas fa-pencil-alt");
-            toolbarButtons.Add("New", NewClicked, null, IconKind.FontAwesome, "fas fa-plus");
-            toolbarButtons.Add("Delete", null, () => Model.Recordset.CurrentRecord != null, IconKind.FontAwesome, "fas fa-trash");
+            toolbar.Add("Edit", EditClicked, () => Model.Recordset.CurrentRecord != null, IconKind.FontAwesome, "fas fa-pencil-alt");
+            toolbar.Add("New", NewClicked, null, IconKind.FontAwesome, "fas fa-plus");
+            toolbar.Add("Delete", null, () => Model.Recordset.CurrentRecord != null, IconKind.FontAwesome, "fas fa-trash");
+            toolbar.SourceCodeButton("BikeStores/SearchProducts");
 
             data.Items = this.Model.Recordset;
             data.SelectedItemExpression = () => Model.Recordset.CurrentRecord;

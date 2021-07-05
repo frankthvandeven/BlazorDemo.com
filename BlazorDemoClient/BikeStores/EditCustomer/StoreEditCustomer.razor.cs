@@ -39,6 +39,8 @@ namespace BlazorDemo.Client.Components
             toolbar.Add("Close", CloseClicked, () => true, IconKind.FontAwesome, "far fa-times");
             toolbar.ButtonKind = ButtonKind.Cancel;
 
+            toolbar.SourceCodeButton("BikeStores/EditCustomer");
+
             await Model.LoadCustomerTask();
 
             //if (runResult == false)

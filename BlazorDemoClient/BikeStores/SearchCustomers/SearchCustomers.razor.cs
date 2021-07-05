@@ -45,6 +45,8 @@ namespace BlazorDemo.Client.Components
                 toolbar.Add("Close", () => this.CloseCancel(), null, IconKind.FontAwesome, "far fa-times");
             }
 
+            toolbar.SourceCodeButton("BikeStores/SearchCustomers");
+
             Data.Items = Model.Recordset;
 
             //Grid.UsePagination = true;
