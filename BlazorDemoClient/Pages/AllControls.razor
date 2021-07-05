@@ -1,0 +1,549 @@
+﻿@page "/allcontrols"
+@using BlazorDemo.Client.Components
+@using BlazorDemo.Client.VenturaAutoCreate
+@inherits LayerComponentBase
+@inject NavigationManager NavigationManager
+@* https://github.com/jdtcn/BlazorDateRangePicker *@
+
+<style>
+    .border_div {
+        border-width: 4px;
+        border: 1px solid #ddd;
+        border-color: green;
+        width: max-content;
+        height: max-content;
+    }
+
+    .input_row {
+        display: flex;
+        margin-bottom: 10px;
+    }
+
+    .input_label {
+        flex: 0 0 150px;
+    }
+</style>
+
+
+@*<InfoBlock>
+
+    <ul>
+    <li><a href="pharmacy">Input validation and the Hypergrid.</a></li>
+    <li><a href="allcontrols">Overview of controls.</a></li>
+    <li><a href="dropdowntest">Test that nested dropdowns close correctly on background-click.</a></li>
+    <li><a href="toolbartest">The Toolbar component with overflow menu.</a></li>
+    <li><a href="tabtest">The TabComponent with TabPages with overflow menu.</a></li>
+    </ul>
+
+    </InfoBlock>*@
+
+<MainLayout Rerender="@this.Model" Title="All Kenova Controls" MenuItems="@MenuItems">
+    <MenuPage FocusID="intro">
+        <FillContent>
+            <p>
+                An overview of most of the controls (components) in Kenova.
+            </p>
+            <p>
+                The kenova.css style sheet reports version @CssVersion
+            </p>
+
+        </FillContent>
+    </MenuPage>
+    <MenuPage FocusID="headers">
+        <FillContent>
+            <Header1 Subtitle="The Header1 component has a Subtitle parameter.">The Header1 component</Header1>
+            <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est.</p>
+
+            <h1>The h1 tag</h1>
+            <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est.</p>
+
+            <h2>The h2 tag</h2>
+            <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est.</p>
+
+            <h3>The h3 tag</h3>
+            <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est.</p>
+
+            <h4>The h4 tag</h4>
+            <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est.</p>
+
+            <h5>The h5 tag</h5>
+            <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est.</p>
+
+            <h6>The h6 tag</h6>
+            <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est.</p>
+
+        </FillContent>
+    </MenuPage>
+    <MenuPage FocusID="icons">
+        <FillContent>
+            <h2>Icons</h2>
+            <p>
+                Kenova supports Font Awesome and SVG icons.
+            </p>
+            <header>Font Awesome</header>
+            <p>
+                <Icon Kind="IconKind.FontAwesome" Data="fas fa-icons" />
+                <br />
+                <b>@("<Icon Kind=\"IconKind.FontAwesome\" Data=\"fas fa-icons\" />")</b>
+            </p>
+
+            <header>SVG vector icon</header>
+            <p>
+                <Icon Kind="IconKind.Vector" Data="@SVG_TAB" />
+                <br />
+                <b>@("<Icon Kind=\"IconKind.Vector\" Data=\"<svg viewBox='0 -20 512 512'><path d='m465 81...20zm0 0'/></svg>\" />")</b>
+            </p>
+
+            <header>Double size</header>
+            <p>
+                <Icon Kind="IconKind.FontAwesome" Data="fas fa-icons" Size="IconSize.Double" />
+                <br />
+                <b>@("<Icon Kind=\"IconKind.FontAwesome\" Data=\"fas fa-icons\" Size=\"IconSize.Double\" />")</b>
+                <br />
+                <br />
+                <Icon Kind="IconKind.Vector" Data="@SVG_TAB" Size="IconSize.Double" />
+            </p>
+
+        </FillContent>
+    </MenuPage>
+    <MenuPage FocusID="validation">
+        <FillContent>
+            <ValidationDemo />
+        </FillContent>
+    </MenuPage>
+    <MenuPage FocusID="basic">
+        <FillContent>
+            <h2>ButtonBar</h2>
+            <ButtonBar>
+                <Button>One</Button>
+                <Button>Two</Button>
+                <Button>Three</Button>
+                <Button>Four</Button>
+            </ButtonBar>
+
+            <h2>ButtonBar (LightBackground)</h2>
+            <ButtonBar>
+                <Button LightBackground>One</Button>
+                <Button LightBackground>Two</Button>
+                <Button LightBackground>Three</Button>
+                <Button LightBackground>Four</Button>
+            </ButtonBar>
+
+            <h2>ButtonBar (disabled)</h2>
+            <ButtonBar>
+                <Button Enabled="false">One</Button>
+                <Button Enabled="false">Two</Button>
+                <Button Enabled="false">Three</Button>
+                <Button Enabled="false">Four</Button>
+            </ButtonBar>
+
+            <h2>ButtonBar (LightBackground and disabled)</h2>
+            <ButtonBar>
+                <Button LightBackground Enabled="false">One</Button>
+                <Button LightBackground Enabled="false">Two</Button>
+                <Button LightBackground Enabled="false">Three</Button>
+                <Button LightBackground Enabled="false">Four</Button>
+            </ButtonBar>
+
+            <h2>RadioGroup</h2>
+
+            <RadioGroup SelectedExpression="() => Model.CurrentOption">
+                <RadioButton FocusID="one">One</RadioButton>
+                <RadioButton FocusID="two">Two</RadioButton>
+                <RadioButton FocusID="three">Three</RadioButton>
+            </RadioGroup>
+
+            <h2>RadioGroup (disabled)</h2>
+
+            <RadioGroup SelectedExpression="() => Model.CurrentOption">
+                <RadioButton FocusID="one" Enabled="false">One</RadioButton>
+                <RadioButton FocusID="two" Enabled="false">Two</RadioButton>
+                <RadioButton FocusID="three" Enabled="false">Three</RadioButton>
+            </RadioGroup>
+
+            <h2>OptionGroup</h2>
+
+            <OptionGroup SelectedExpression="() => Model.CurrentOption">
+                <OptionButton FocusID="one">One</OptionButton>
+                <OptionButton FocusID="two">Two</OptionButton>
+                <OptionButton FocusID="three">Three</OptionButton>
+            </OptionGroup>
+
+            <h2>OptionGroup (disabled)</h2>
+
+            <OptionGroup SelectedExpression="() => Model.CurrentOption">
+                <OptionButton FocusID="one" Enabled="false">One</OptionButton>
+                <OptionButton FocusID="two" Enabled="false">Two</OptionButton>
+                <OptionButton FocusID="three" Enabled="false">Three</OptionButton>
+            </OptionGroup>
+
+
+            <h2>CheckBox (Vertical StackPanel)</h2>
+
+            <StackPanel>
+                <CheckBox CheckedExpression="() => Model.PumpActive">Aap</CheckBox>
+                <CheckBox CheckedExpression="() => Model.PumpActive">Noot</CheckBox>
+                <CheckBox CheckedExpression="() => Model.PumpActive" Indeterminate="true">Mies</CheckBox>
+            </StackPanel>
+
+            <h2>CheckBox (Horizontal StackPanel)</h2>
+
+            <StackPanel Horizontal>
+                <CheckBox CheckedExpression="() => Model.PumpActive">Aap</CheckBox>
+                <CheckBox CheckedExpression="() => Model.PumpActive">Noot</CheckBox>
+                <CheckBox CheckedExpression="() => Model.PumpActive" Indeterminate="true">Mies</CheckBox>
+            </StackPanel>
+
+
+            <h2>CheckBox (disabled)</h2>
+
+            <StackPanel>
+                <CheckBox CheckedExpression="() => Model.PumpActive" Enabled="false">Aap</CheckBox>
+                <CheckBox CheckedExpression="() => Model.PumpActive" Enabled="false">Noot</CheckBox>
+                <CheckBox CheckedExpression="() => Model.PumpActive" Indeterminate="true" Enabled="false">Mies</CheckBox>
+            </StackPanel>
+
+            <h2>OnOffBox</h2>
+
+            <StackPanel>
+                <OnOffBox Checked="true" />
+                <OnOffBox Checked="false" />
+            </StackPanel>
+
+            <h2>OnOffBox (disabled)</h2>
+
+            <StackPanel>
+                <OnOffBox Checked="true" Enabled="false" />
+                <OnOffBox Checked="false" Enabled="false" />
+            </StackPanel>
+
+            @*<div class="input_row">
+                <div class="input_label">InputInt64</div>
+                <InputInt64 />
+                </div>
+
+                <div class="input_row">
+                <div class="input_label">InputString</div>
+                <InputString />
+                </div>*@
+
+            <h2>InputString / InputDecimal etc..</h2>
+
+            <div class="input_row">
+                <div class="input_label">InputString</div>
+                <InputString @ref="input_string" ReadOnly="false" Formatting="InputStringFormatting.None" FieldExpression="() => Model.SelectedString" />
+            </div>
+
+            @*<div class="input_row">
+                <div class="input_label">InputString (readonly)</div>
+                <InputString ReadOnly="true" Formatting="InputStringFormatting.None" FieldExpression="SelectedString" />
+                </div>*@
+
+
+            <div class="input_row">
+                <div class="input_label">InputDate</div>
+                <InputDate FieldExpression="() => Model.SelectedDate" />
+            </div>
+
+            <div class="input_row">
+                <div class="input_label">InputDecimal</div>
+                <InputDecimal MinValue="10m" FieldExpression="() => Model.SelectedDecimal" />
+            </div>
+
+            <div class="input_row">
+                <div class="input_label">InputString (password)</div>
+                <InputString IsPassword="true" FieldExpression="() => Model.SelectedString" />
+            </div>
+
+
+            <p>The date entered: @Model.SelectedDate</p>
+
+            @*<button @onclick="(e => IncreaseDate() )">Add one day</button>*@
+
+            <br />
+            <br />
+            <br />
+            <br />
+
+            <div class="border_div">
+                <DateRangePicker SingleDatePicker="false" AutoApply="false" ShowOnlyOneCalendar="false" />
+            </div>
+        </FillContent>
+    </MenuPage>
+    <MenuPage FocusID="input">
+        <FillContent>
+            <header>InputString (enabled)</header>
+            <Rail>
+                <InputString FieldExpression="() => this.InputString" Caption="Caption:" Width="200" />
+                <InputString ShowClearButton="true" ShowDropdownButton="true" ShowSearchIcon="true"
+                             FieldExpression="() => this.InputString" Caption="Caption:" Width="200" />
+            </Rail>
+            <header>InputString (disabled)</header>
+            <Rail>
+                <InputString Enabled="false" FieldExpression="() => this.InputString" Caption="Caption:" Width="200" />
+                <InputString Enabled="false"
+                             ShowClearButton="true" ShowDropdownButton="true" ShowSearchIcon="true"
+                             FieldExpression="() => this.InputString" Caption="Caption:" Width="200" />
+            </Rail>
+            <header>InputString (noinputelement + enabled)</header>
+            <Rail>
+                <InputString NoInputElement="true" FieldExpression="() => this.InputString" Caption="Caption:" Width="200" />
+                <InputString NoInputElement="true" ShowClearButton="true" ShowDropdownButton="true" ShowSearchIcon="true"
+                             FieldExpression="() => this.InputString" Caption="Caption:" Width="200" />
+            </Rail>
+            <header>InputString (noinputelement + disabled)</header>
+            <Rail>
+                <InputString NoInputElement="true" Enabled="false" FieldExpression="() => this.InputString" Caption="Caption:" Width="200" />
+                <InputString NoInputElement="true" Enabled="false"
+                             ShowClearButton="true" ShowDropdownButton="true" ShowSearchIcon="true"
+                             FieldExpression="() => this.InputString" Caption="Caption:" Width="200" />
+            </Rail>
+
+            <br />
+            <br />
+
+            <header>InputDate (enabled)</header>
+            <Rail>
+                <InputDate FieldExpression="() => this.InputDate" Caption="Caption:" Width="200" />
+                <InputDate ShowClearButton="true" ShowDropdownButton="true" ShowSearchIcon="true"
+                           FieldExpression="() => this.InputDate" Caption="Caption:" Width="200" />
+            </Rail>
+            <header>InputDate (disabled)</header>
+            <Rail>
+                <InputDate Enabled="false" FieldExpression="() => this.InputDate" Caption="Caption:" Width="200" />
+                <InputDate Enabled="false"
+                           ShowClearButton="true" ShowDropdownButton="true" ShowSearchIcon="true"
+                           FieldExpression="() => this.InputDate" Caption="Caption:" Width="200" />
+            </Rail>
+            <header>InputDate (noinputelement + enabled)</header>
+            <Rail>
+                <InputDate NoInputElement="true" FieldExpression="() => this.InputDate" Caption="Caption:" Width="200" />
+                <InputDate NoInputElement="true" ShowClearButton="true" ShowDropdownButton="true" ShowSearchIcon="true"
+                           FieldExpression="() => this.InputDate" Caption="Caption:" Width="200" />
+            </Rail>
+            <header>InputDate (noinputelement + disabled)</header>
+            <Rail>
+                <InputDate NoInputElement="true" Enabled="false" FieldExpression="() => this.InputDate" Caption="Caption:" Width="200" />
+                <InputDate NoInputElement="true" Enabled="false"
+                           ShowClearButton="true" ShowDropdownButton="true" ShowSearchIcon="true"
+                           FieldExpression="() => this.InputDate" Caption="Caption:" Width="200" />
+            </Rail>
+
+            <header>InputDateNullable (enabled)</header>
+            <Rail>
+                <InputDateNullable FieldExpression="() => this.InputDateNullable" Caption="Caption:" Width="200" />
+                <InputDateNullable ShowClearButton="true" ShowDropdownButton="true" ShowSearchIcon="true"
+                                   FieldExpression="() => this.InputDateNullable" Caption="Caption:" Width="200" />
+            </Rail>
+            <header>InputDateNullable (noinputelement + enabled)</header>
+            <Rail>
+                <InputDateNullable NoInputElement="true" FieldExpression="() => this.InputDateNullable" Caption="Caption:" Width="200" />
+                <InputDateNullable NoInputElement="true" ShowClearButton="true" ShowDropdownButton="true" ShowSearchIcon="true"
+                                   FieldExpression="() => this.InputDateNullable" Caption="Caption:" Width="200" />
+            </Rail>
+
+        </FillContent>
+    </MenuPage>
+    <MenuPage FocusID="display">
+        <FillContent>
+            <p>
+                The DisplayString, DisplayDecimal etc. components are for displaying data, but the
+                visuals are as such that they can be placed between regular Input components.
+                A Display component is not a tab stop. It only gets focus when clicked with
+                the mouse.
+            </p>
+
+            <header>DisplayString / DisplayDecimal (enabled)</header>
+            <Rail>
+                <DisplayString FieldExpression="() => this.Model2.Name" Caption="Name" Width="180" />
+                <DisplayString FieldExpression="() => this.Model2.Name" Caption="Name" Width="180" />
+                <DisplayDecimal Caption="Amount" FieldExpression="() => Model2.Amount" Suffix="€" Width="120" />
+            </Rail>
+
+            <header>DisplayString / DisplayDecimal (disabled)</header>
+            <Rail>
+                <DisplayString Enabled="false" FieldExpression="() => this.Model2.Name" Caption="Name" Width="180" />
+                <DisplayString Enabled="false" FieldExpression="() => this.Model2.Name" Caption="Name" Width="180" />
+                <DisplayDecimal Enabled="false" Caption="Amount" FieldExpression="() => Model2.Amount" Suffix="€" Width="120" />
+            </Rail>
+
+
+            <header>DisplayString / DisplayDecimal (without clipboard button)</header>
+            <Rail>
+                <DisplayString ShowClipboardButton="false" FieldExpression="() => this.Model2.Name" Caption="Name" Width="180" />
+                <DisplayString ShowClipboardButton="false" FieldExpression="() => this.Model2.Name" Caption="Name" Width="180" />
+                <DisplayDecimal ShowClipboardButton="false" Width="120" Caption="Amount" FieldExpression="() => Model2.Amount" Suffix="€" />
+            </Rail>
+
+        </FillContent>
+    </MenuPage>
+    <MenuPage FocusID="inputmultiline">
+        <FillContent>
+            <p></p>
+
+            <header>InputMultiline (enabled)</header>
+            <Rail>
+                <InputMultiline Enabled="true" Width="250" TextMaxHeight="150" Caption="Description" FieldExpression="() => Model2.Description" />
+            </Rail>
+
+            <header>InputMultiline (disabled)</header>
+            <Rail>
+                <InputMultiline Enabled="false" Width="250" TextMaxHeight="150" Caption="Description" FieldExpression="() => Model2.Description" />
+            </Rail>
+
+            <header>DisplayMultiline (enabled)</header>
+            <Rail>
+                <DisplayMultiline Enabled="true" Width="250" TextMaxHeight="150" Caption="Description" FieldExpression="() => Model2.Description" />
+            </Rail>
+
+            <header>DisplayMultiline (disabled)</header>
+            <Rail>
+                <DisplayMultiline Enabled="false" Width="250" TextMaxHeight="150" Caption="Description" FieldExpression="() => Model2.Description" />
+            </Rail>
+
+
+        </FillContent>
+    </MenuPage>
+    <MenuPage FocusID="overlays">
+        <ButtonBar>
+            <Button ButtonClicked="OpenFirstOverlay">Open the first overlay</Button>
+        </ButtonBar>
+    </MenuPage>
+    <MenuPage FocusID="tabs">
+        <FillContent>
+            <TabComponent TabItems="@tabItems">
+                <TabPage FocusID="1">
+                    <p>This is tab page #1.</p>
+                    <p>
+                        “Before you criticize someone, you should walk a mile in their shoes. That way when you criticize them, you are a mile away from them and you have their shoes.”
+                    </p>
+                </TabPage>
+                <TabPage FocusID="2">
+                    <p>This is tab page #2.</p>
+                    <p>
+                        Bob: “Looks like you’ve been missing a lot of work lately.”
+                        Peter: “I wouldn’t say I’ve been missing it, Bob.”
+                    </p>
+                </TabPage>
+                <TabPage FocusID="3">
+                    <p>This is tab page #3.</p>
+                    <p>
+                        “Before you marry a person, you should first make them use a computer with slow Internet to see who they really are.”
+                    </p>
+                </TabPage>
+                <TabPage FocusID="4">
+                    <p>This is tab page #4.</p>
+                    <p>
+                        “I haven’t spoken to my wife in years. I didn’t want to interrupt her.”
+                    </p>
+                </TabPage>
+                <TabPage FocusID="5">
+                    <p>This is tab page #5.</p>
+                    <p>
+                        “Someone asked me, if I were stranded on a desert island what book would I bring: ‘How to Build a Boat.’”
+                    </p>
+                </TabPage>
+                <TabPage FocusID="6">
+                    <p>This is tab page #6.</p>
+                    <p>“You know you’ve reached middle age when you’re cautioned to slow down by your doctor, instead of by the police.”</p>
+                </TabPage>
+                <TabPage FocusID="7">
+                    <p>This is tab page #6.</p>
+                    <p>
+                        “If I’m not back in five minutes, just wait longer.”
+                    </p>
+                </TabPage>
+                <TabPage FocusID="8">
+                    <p>This is tab page #8.</p>
+                    <p>
+                        “As you get older, three things happen. The first is your memory goes, and I can’t remember the other two.”
+                    </p>
+                </TabPage>
+                <TabPage FocusID="9">
+                    <p>This is tab page #9.</p>
+                    <p>
+                        “Here’s some advice: At a job interview, tell them you’re willing to give 110 percent. Unless the job is a statistician.”
+                    </p>
+                </TabPage>
+                <TabPage FocusID="10">
+                    <p>This is tab page #10.</p>
+                    <p>
+                        “I never forget a face—but in your case, I’ll be glad to make an exception.”
+                    </p>
+                </TabPage>
+                <TabPage FocusID="11">
+                    <p>This is tab page #11.</p>
+                    <p>
+                        “Why do they call it rush hour when nothing moves?”
+                    </p>
+                </TabPage>
+                <TabPage FocusID="12">
+                    <p>This is tab page #12.</p>
+                    <p>
+                        “Gentlemen, you can’t fight in here. This is the war room.”
+                    </p>
+                </TabPage>
+            </TabComponent>
+        </FillContent>
+    </MenuPage>
+    <MenuPage FocusID="toolbar">
+        <FillContent>
+            <Toolbar Buttons="@toolbarButtons" />
+        </FillContent>
+    </MenuPage>
+    <MenuPage FocusID="dropdownlist">
+        <FillContent>
+            <DropdownList Width="200" Caption="Persons:" ItemType="Person" Items="@Persons"
+                          SelectedItemExpression="() => this.SelectedPerson"
+                          ColumnExpression="c => c.Name" DisplayExpression="i => i.Name" />
+
+            <br />
+            <br />
+
+
+
+        </FillContent>
+    </MenuPage>
+    <MenuPage FocusID="dropdownlistbasic">
+        <FillContent>
+            <DropdownListBasic Width="200" Caption="State:" FieldExpression="() => this.SelectedState"
+                               Items="@UnitedStates.ItemCollection" FieldChanged="DropdownListBasic_FieldChanged" />
+            <br />
+            <br />
+            <p>
+                The value of this.SelectedState is @(this.SelectedState != null ? this.SelectedState : "null")
+            </p>
+            <ButtonBar>
+                <Button ButtonClicked="SetStateToNY_Clicked">Set the state to NY</Button>
+            </ButtonBar>
+
+
+        </FillContent>
+    </MenuPage>
+
+    <MenuPage FocusID="dropdownmultichecklist">
+        <FillContent>
+            <header>MultiCheck uses a generic List</header>
+            <br />
+
+            <DropdownMultiCheckList Width="200" Caption="Persons:" ItemType="Person" Items="@Persons"
+                                    CheckedItems="@CheckedPersons"
+                                    ColumnExpression="c => c.Name" DisplayExpression="i => i.Name" />
+
+            <br />
+            <header>MultiCheck uses the Person.IsSelected field</header>
+            <br />
+
+            <DropdownMultiCheckList Width="200" Caption="Persons:" ItemType="Person" Items="@Persons"
+                                    IsChecked="c => c.IsSelected" SetChecked="c => c.IsSelected = true" SetUnchecked="c => c.IsSelected = false"
+                                    ColumnExpression="c => c.Name" DisplayExpression="i => i.Name" />
+
+
+        </FillContent>
+    </MenuPage>
+
+</MainLayout>
+
+
+
+

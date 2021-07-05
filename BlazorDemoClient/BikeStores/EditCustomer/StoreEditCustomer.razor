@@ -1,0 +1,36 @@
+﻿@namespace BlazorDemo.Client.Components
+@inherits LayerComponentBase
+
+<MainLayout Rerender="@this.Model" Title="@Title" SubTitle="Demonstration of Kenova">
+    <TopContent>
+        <Toolbar Buttons="@toolbar" />
+    </TopContent>
+    <FillContent>
+        @if (Model.CreateNew == false)
+        {
+            <Rail>
+                <InputInt32 Width="200" Caption="Customer Id" FieldExpression="() => Model.customer_id" Enabled="false" />
+            </Rail>
+        }
+        <Rail>
+            <InputString AutoFocus FocusID="FirstName" Width="250" Caption="First name" FieldExpression="() => Model.first_name" />
+            <InputString Width="250" Caption="Last name" FieldExpression="() => Model.last_name" />
+        </Rail>
+        <Rail>
+            <InputString Width="250" Caption="Phone" FieldExpression="() => Model.phone" />
+            <InputString Width="250" Caption="Email" FieldExpression="() => Model.email" />
+        </Rail>
+        <Rail>
+            <InputString Width="250" Caption="Street" FieldExpression="() => Model.street" />
+            <InputString Width="250" Caption="City" FieldExpression="() => Model.city" />
+        </Rail>
+        <Rail>
+            <DropdownList Width="250" Caption="State" ItemType="State" Items="@UnitedStates.GenericList"
+                          SelectedItemExpression="() => Model.SelectedState"
+                          ColumnExpression="c => c.Name" DisplayExpression="i => i.Name" />
+
+            <InputString Width="250" Caption="Zip code" FieldExpression="() => Model.zip_code" />
+        </Rail>
+    </FillContent>
+</MainLayout>
+

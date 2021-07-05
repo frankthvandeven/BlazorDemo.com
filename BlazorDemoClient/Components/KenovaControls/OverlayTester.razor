@@ -1,0 +1,31 @@
+﻿@namespace BlazorDemo.Client.Components
+@inherits LayerComponentBase
+@implements IDisposable
+
+<div style="padding:20px">
+
+    @if (Number > 0)
+    {
+    <h2>Overlay@(Number)</h2>
+    }
+
+    <OptionGroup SelectedExpression="() => this.Mode">
+        <OptionButton FocusID="Modal">Modal</OptionButton>
+        <OptionButton FocusID="ModalFullsize">ModalFullsize</OptionButton>
+        <OptionButton FocusID="ModelessRight">ModelessRight</OptionButton>
+        <OptionButton FocusID="Dropdown">Dropdown</OptionButton>
+        <OptionButton FocusID="DropdownBalloon">DropdownBalloon</OptionButton>
+    </OptionGroup>
+
+    <ButtonBar>
+        <Button @ref="@BtnOpen" ButtonClicked="OpenOverlay">Open overlay</Button>
+    </ButtonBar>
+
+    <p style="max-width: 480px;">
+        Any layer kind can be overlayed on the previous layer, but not all combinations
+        work visually. For example, a ModelessRight on top of a Modal (window) looks
+        wrong aesthetically.
+    </p>
+
+</div>
+

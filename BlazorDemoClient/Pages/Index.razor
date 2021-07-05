@@ -1,0 +1,73 @@
+﻿@page "/"
+@using BlazorDemo.Client.VenturaAutoCreate
+@inherits LayerComponentBase
+@inject NavigationManager NavigationManager
+
+<MainLayout DisplayHeader="false">
+    <FillContent>
+
+        <header>
+            Welcome to Kenova
+        </header>
+
+        Netherlands, 5 July 2021
+
+        <p>
+            This is the presentation site for the Kenova project. Kenova is a complete system for the
+            rapid development of Line of Business software for Microsoft Blazor WebAssembly.
+        </p>
+        <p>
+            Blazor with WebAssembly allows us to run C# on any web browser.
+        </p>
+        <ul>
+            <li>
+                See <a href="https://site.sysdev.nl" target="_blank">sysdev.nl</a> for more information and my contact details.
+            </li>
+            <li>
+                Kenova is optimized for runtime performance and developer productivity.
+                The API is Kenova's best feature.
+            </li>
+            <li>
+                Functionality is almost complete.
+            </li>
+        </ul>
+
+        <p>
+            Frank Th. van de Ven
+        </p>
+
+        <FeatureTiles MenuItems="@MenuItems" TileClicked="TileClicked" />
+
+        <br />
+
+        <InfoBlock Kind="InfoKind.Information">
+            <header>Upcoming features</header>
+            <ul>
+                <li>Keyboard control for all components. This is 90% done;</li>
+                <li>Automatically setting keyboard focus to elements is not complete yet;</li>
+                <li>Restoring keyboard focus when closing an overlay layer;</li>
+                <li>Responsive layout for mobile devices and tablets;</li>
+                <li>Notifications dialog;</li>
+                <li>Treeview component;</li>
+                <li>Correct margins between components and viewport border;</li>
+                <li>The "Bike Stores Demo" pages are not complete yet;</li>
+                <li>Displaying C# and Razor page source code for the pages in this demo website;</li>
+                <li>NuGet packages for the Kenova client and server bits;</li>
+                <li>Visual Studio project templates for Kenova projects;</li>
+                <li>Product documentation;</li>
+            </ul>
+        </InfoBlock>
+
+        <InfoBlock Kind="InfoKind.Warning">
+            <header>Known issues</header>
+            <ul>
+                <li>None.</li>
+            </ul>
+
+        </InfoBlock>
+
+
+    </FillContent>
+</MainLayout>
+
+

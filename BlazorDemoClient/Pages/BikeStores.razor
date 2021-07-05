@@ -1,0 +1,18 @@
+﻿@page "/bikestores"
+@inherits LayerComponentBase
+@inject NavigationManager NavigationManager
+
+<MainLayout DisplayHeader="false">
+    <FillContent>
+
+        <header>
+            Bike Stores Demo
+        </header>
+
+        <p>
+            This demo is based on the <a href="https://www.sqlservertutorial.net/sql-server-sample-database/" target="_blank">Bike Stores database for SQL Server</a>.
+        </p>
+
+        <FeatureTiles MenuItems="@MenuItems" TileClicked="TileClicked" />
+    </FillContent>
+</MainLayout>

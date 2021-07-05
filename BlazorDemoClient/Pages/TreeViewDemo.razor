@@ -1,0 +1,35 @@
+﻿@page "/treeview"
+@inherits LayerComponentBase
+@using BlazorDemo.Client.Components
+@using BlazorDemo.Client.VenturaAutoCreate
+@inject NavigationManager NavigationManager
+
+<MainLayout Title="TreeView Demo">
+    <FillContent>
+        <p>
+            The TreeView component is under construction.
+        </p>
+        <p>
+            It going to be very fast.
+        </p>
+        <p>
+            Displaying @this.Model.Recordset.RecordCount customers from the BikeStores database.
+        </p>
+<pre>
+await Recordset.ExecSqlAsync(null, null);
+
+foreach (var cust in Recordset)
+{
+    Data.AddDataItem($"Customers\\{cust.state}\\{cust.city}", cust.last_name + " " + cust.first_name, cust);
+}
+</pre>
+        <p></p>
+
+        <TreeView Data="@this.Model.Data" />
+
+    </FillContent>
+</MainLayout>
+
+
+
+

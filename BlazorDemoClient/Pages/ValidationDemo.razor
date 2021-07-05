@@ -1,0 +1,25 @@
+﻿@using BlazorDemo.Client.Components
+@using BlazorDemo.Client.VenturaAutoCreate
+
+<header>InputString (Caption: Above, Remark: Below)</header>
+
+<Rail>
+    <InputString AutoFocus Width="250" Caption="Name" FieldExpression="() => Model.Name" />
+</Rail>
+<header>InputString (Caption: Left, Remark: Right)</header>
+
+<Rail>
+    <InputString Caption="Name" CaptionLeft RemarkRight FieldExpression="() => Model.Name2" InputBoxWidth="250" CaptionWidth="120"  />
+</Rail>
+
+<header>InputString (Caption: Left, Remark: Below)</header>
+
+<Rail>
+    <InputString Caption="Name" CaptionLeft FieldExpression="() => Model.Name3" InputBoxWidth="250" CaptionWidth="120" />
+</Rail>
+
+<header>InputString (Caption: Above, Remark: Right)</header>
+
+<Rail>
+    <InputString Caption="Name" RemarkRight FieldExpression="() => Model.Name4" InputBoxWidth="250" RemarkWidth="250" />
+</Rail>

@@ -1,0 +1,35 @@
+﻿@page "/orders"
+@inherits LayerComponentBase
+@namespace BlazorDemo.Client.Components
+
+<MainLayout Title="@this.Title">
+    <TopContent>
+        <Toolbar Buttons="@toolbarButtons" />
+
+        <Rail>
+            <InputStringNullable Caption="Name" FieldExpression="() => Model.SearchText" Width="200" />
+            <InputInt32Nullable Caption="Order number" FieldExpression="() => Model.SearchOrderID" Width="100" />
+        </Rail>
+
+        <ButtonBar>
+            <Button ButtonClicked="SearchClicked">Search</Button>
+            <Button ButtonClicked="ClearClicked">Clear</Button>
+        </ButtonBar>
+
+
+    </TopContent>
+    <FillContent>
+
+        <HyperGrid HeightMode="HeightMode.Container"
+                   ItemType="SearchOrdersRecord"
+                   Data="@this.Data"
+                   RowDoubleClicked="EditClicked" />
+
+    </FillContent>
+    @*<BottomContent>
+            <ButtonBar>
+                <Button ButtonClicked="BtnRemove">Remove menu</Button>
+                <Button ButtonClicked="BtnDisable">Disable menu</Button>
+            </ButtonBar>
+        </BottomContent>*@
+</MainLayout>

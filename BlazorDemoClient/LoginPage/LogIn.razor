@@ -1,0 +1,33 @@
+﻿@namespace Kenova.WebAssembly.Client.Pages
+@page "/auth/login"
+@attribute [AllowAnonymous]
+@inherits LayerComponentBase
+@layout PortalMinimalLayout
+@inject HttpClient Http
+@inject KenovaAuthenticationStateProvider AuthStateProvider
+@inject NavigationManager NavigationManager
+
+    @* For an explanation of the "autocomplete" attribute see: https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete*@
+
+    <CenterLayout AppName="Kenova Demo">
+        <Header1 Subtitle="to continue to Kenova Demo">Sign in</Header1>
+        <p>
+            The username is 'demo' and the password is 'demo'
+        </p>
+        <Rail>
+            <InputString Caption="User name or email address:" FieldExpression="() => Model.Username" AutoComplete="username email" />
+        </Rail>
+        <Rail>
+            <InputString Caption="Password:" FieldExpression="() => Model.Password" IsPassword="true" AutoComplete="current-password" />
+        </Rail>
+
+        <Rail Align="RailAlign.Right">
+            <ButtonBar>
+                <Button ButtonClicked="LoginClicked">Sign in</Button>
+            </ButtonBar>
+        </Rail>
+
+    </CenterLayout>
+
+
+

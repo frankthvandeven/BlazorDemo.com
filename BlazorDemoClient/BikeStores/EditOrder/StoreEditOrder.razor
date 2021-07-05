@@ -1,0 +1,25 @@
+﻿@namespace BlazorDemo.Client.Components
+@inherits LayerComponentBase
+
+<MainLayout Title="@Title" SubTitle="Demonstration of Kenova">
+    <TopContent>
+        <Toolbar Buttons="@toolbarButtons" />
+    </TopContent>
+    <FillContent>
+        @if (Model.Mode == StoreEditOrderModel.ModelMode.Edit)
+        {
+            <Rail>
+                <InputInt32 Width="200" Caption="Order Id" FieldExpression="() => Model.order_id" Enabled="false" />
+            </Rail>
+        }
+        <Rail>
+            <InputDate Width="250" Caption="Order date" FieldExpression="() => Model.order_date" />
+        </Rail>
+        <Rail>
+            <InputInt32Nullable Width="300" InputBoxWidth="100" Caption="Customer" FieldExpression="() => Model.customer_id"
+                                ShowZoomButton="true" ZoomButtonClicked="CustomerZoomClicked" />
+        </Rail>
+
+    </FillContent>
+</MainLayout>
+

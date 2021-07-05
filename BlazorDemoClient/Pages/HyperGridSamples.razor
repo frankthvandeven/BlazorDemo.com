@@ -1,0 +1,57 @@
+﻿@page "/hypergridsamples"
+@using BlazorDemo.Client.Components
+@using BlazorDemo.Client.VenturaAutoCreate
+@inherits LayerComponentBase
+@inject NavigationManager NavigationManager
+
+<style>
+    .border_div {
+        border-width: 4px;
+        border: 1px solid #ddd;
+        border-color: green;
+        width: max-content;
+        height: max-content;
+    }
+
+    .input_row {
+        display: flex;
+        margin-bottom: 10px;
+    }
+
+    .input_label {
+        flex: 0 0 150px;
+    }
+</style>
+
+@*<InfoBlock>
+
+        <ul>
+            <li><a href="pharmacy">Input validation and the Hypergrid.</a></li>
+            <li><a href="allcontrols">Overview of controls.</a></li>
+            <li><a href="dropdowntest">Test that nested dropdowns close correctly on background-click.</a></li>
+            <li><a href="toolbartest">The Toolbar component with overflow menu.</a></li>
+            <li><a href="tabtest">The TabComponent with TabPages with overflow menu.</a></li>
+        </ul>
+
+    </InfoBlock>*@
+
+
+<MainLayout Rerender="@this.Model" Title="HyperGrid Samples" MenuItems="@MenuItems">
+    <MenuPage FocusID="intro">
+        <FillContent>
+            <p>
+                Capabilities of the HyperGrid component. The component is a powerful datagrid and used almost
+                everywhere where a list is displayed in Kenova.
+            </p>
+        </FillContent>
+    </MenuPage>
+    <MenuPage FocusID="multicheck">
+        <FillContent>
+            <GridMultiCheck />
+        </FillContent>
+    </MenuPage>
+</MainLayout>
+
+
+
+

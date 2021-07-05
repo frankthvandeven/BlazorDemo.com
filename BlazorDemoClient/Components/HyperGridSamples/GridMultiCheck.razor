@@ -1,0 +1,18 @@
+﻿@namespace BlazorDemo.Client.Components
+
+
+    <header>CheckedItems list</header>
+
+    <HyperGrid HeightMode="HeightMode.Content"
+               ItemType="Person"
+               Data="@GridList" />
+
+    <div style="height:40px" />
+
+    <header>A boolean Field on the item itself</header>
+
+
+    <HyperGrid HeightMode="HeightMode.Content"
+               ItemType="Person"
+               Data="@GridField" />
+

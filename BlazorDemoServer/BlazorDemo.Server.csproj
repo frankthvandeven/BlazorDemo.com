@@ -1,0 +1,29 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+	<PropertyGroup>
+		<TargetFramework>net5.0</TargetFramework>
+		<UserSecretsId>71c353b4-2903-41c5-a668-cdc5aac49cc6</UserSecretsId>
+		<RootNamespace>BlazorDemo.Server</RootNamespace>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+  </PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="5.0.7" />
+		<!--<PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="5.0.2" />-->
+		<PackageReference Include="System.Data.SqlClient" Version="4.8.2" />
+		<PackageReference Include="Swashbuckle.AspNetCore" Version="6.1.4" />
+		<PackageReference Include="VenturaSQL.AspNetCore.Server" Version="4.0.144" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\..\..\Kenova\Projects\Kenova.WebAssembly.Server\Kenova.WebAssembly.Server.csproj" />
+		<ProjectReference Include="..\BlazorDemoClient\BlazorDemo.Client.csproj" />
+		<ProjectReference Include="..\BlazorDemoShared\BlazorDemo.Shared.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Folder Include="App_Data\" />
+	</ItemGroup>
+
+
+</Project>

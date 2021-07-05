@@ -1,0 +1,42 @@
+﻿@page "/customers"
+@namespace BlazorDemo.Client.Components
+@inherits LayerComponentBase
+<MainLayout Title="@this.Title">
+        <TopContent>
+            <Toolbar Buttons="@toolbar" />
+
+            <Rail>
+                <InputStringNullable AutoFocus Caption="Name" FieldExpression="() => Model.SearchName" Width="180" />
+                <InputInt32Nullable Caption="Customer" FieldExpression="() => Model.SearchCustomerId" Width="80" />
+            </Rail>
+
+            <Rerender PropertyExpression="() => this.Data.SelectedItem">
+                @if (Model.Recordset.CurrentRecord != null)
+                {
+                    <p>
+                        Selected customer: @Model.Recordset.CurrentRecord.first_name
+                    </p>
+                }
+            </Rerender>
+
+            <ButtonBar>
+                <Button Default ButtonClicked="SearchClicked">Search</Button>
+                <Button ButtonClicked="ClearClicked">Clear</Button>
+            </ButtonBar>
+
+        </TopContent>
+        <FillContent>
+
+            <HyperGrid @ref="_hypergrid"
+                       HeightMode="HeightMode.Container"
+                       ItemType="SearchCustomersRecord" Data="@this.Data"
+                       RowDoubleClicked="RowDoubleClicked" />
+
+        </FillContent>
+        @*<BottomContent>
+                <ButtonBar>
+                    <Button ButtonClicked="BtnRemove">Remove menu</Button>
+                    <Button ButtonClicked="BtnDisable">Disable menu</Button>
+                </ButtonBar>
+            </BottomContent>*@
+</MainLayout>

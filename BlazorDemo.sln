@@ -1,0 +1,79 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30028.174
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorDemo.Server", "BlazorDemoServer\BlazorDemo.Server.csproj", "{8EF27590-3AEA-431F-A32A-926F7078E9E8}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorDemo.Client", "BlazorDemoClient\BlazorDemo.Client.csproj", "{B5C106EE-A4C8-4757-8BCF-ACCD57B35425}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorDemo.Shared", "BlazorDemoShared\BlazorDemo.Shared.csproj", "{CF177CF2-F33F-4D59-ACFE-C3F4C45679CA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Kenova", "Kenova", "{1C28852B-351D-4FA4-9F76-55C78EC231E0}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kenova.WebAssembly.Client", "..\..\Kenova\Projects\Kenova.WebAssembly.Client\Kenova.WebAssembly.Client.csproj", "{CDAFC493-FC4A-4E1B-9736-76CDBDDA47BA}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kenova.WebAssembly.Server", "..\..\Kenova\Projects\Kenova.WebAssembly.Server\Kenova.WebAssembly.Server.csproj", "{2DB4DE81-749F-44E3-A1DF-F208A700233D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_Solution Items", "_Solution Items", "{A7FEE671-03B8-4202-9D53-03760BA1FB33}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug .Net Native|Any CPU = Debug .Net Native|Any CPU
+		Debug|Any CPU = Debug|Any CPU
+		Debug-native|Any CPU = Debug-native|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8EF27590-3AEA-431F-A32A-926F7078E9E8}.Debug .Net Native|Any CPU.ActiveCfg = Debug|Any CPU
+		{8EF27590-3AEA-431F-A32A-926F7078E9E8}.Debug .Net Native|Any CPU.Build.0 = Debug|Any CPU
+		{8EF27590-3AEA-431F-A32A-926F7078E9E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8EF27590-3AEA-431F-A32A-926F7078E9E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8EF27590-3AEA-431F-A32A-926F7078E9E8}.Debug-native|Any CPU.ActiveCfg = Debug|Any CPU
+		{8EF27590-3AEA-431F-A32A-926F7078E9E8}.Debug-native|Any CPU.Build.0 = Debug|Any CPU
+		{8EF27590-3AEA-431F-A32A-926F7078E9E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8EF27590-3AEA-431F-A32A-926F7078E9E8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B5C106EE-A4C8-4757-8BCF-ACCD57B35425}.Debug .Net Native|Any CPU.ActiveCfg = Debug|Any CPU
+		{B5C106EE-A4C8-4757-8BCF-ACCD57B35425}.Debug .Net Native|Any CPU.Build.0 = Debug|Any CPU
+		{B5C106EE-A4C8-4757-8BCF-ACCD57B35425}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B5C106EE-A4C8-4757-8BCF-ACCD57B35425}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B5C106EE-A4C8-4757-8BCF-ACCD57B35425}.Debug-native|Any CPU.ActiveCfg = Debug|Any CPU
+		{B5C106EE-A4C8-4757-8BCF-ACCD57B35425}.Debug-native|Any CPU.Build.0 = Debug|Any CPU
+		{B5C106EE-A4C8-4757-8BCF-ACCD57B35425}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B5C106EE-A4C8-4757-8BCF-ACCD57B35425}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CF177CF2-F33F-4D59-ACFE-C3F4C45679CA}.Debug .Net Native|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF177CF2-F33F-4D59-ACFE-C3F4C45679CA}.Debug .Net Native|Any CPU.Build.0 = Debug|Any CPU
+		{CF177CF2-F33F-4D59-ACFE-C3F4C45679CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF177CF2-F33F-4D59-ACFE-C3F4C45679CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF177CF2-F33F-4D59-ACFE-C3F4C45679CA}.Debug-native|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF177CF2-F33F-4D59-ACFE-C3F4C45679CA}.Debug-native|Any CPU.Build.0 = Debug|Any CPU
+		{CF177CF2-F33F-4D59-ACFE-C3F4C45679CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF177CF2-F33F-4D59-ACFE-C3F4C45679CA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CDAFC493-FC4A-4E1B-9736-76CDBDDA47BA}.Debug .Net Native|Any CPU.ActiveCfg = Debug|Any CPU
+		{CDAFC493-FC4A-4E1B-9736-76CDBDDA47BA}.Debug .Net Native|Any CPU.Build.0 = Debug|Any CPU
+		{CDAFC493-FC4A-4E1B-9736-76CDBDDA47BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CDAFC493-FC4A-4E1B-9736-76CDBDDA47BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CDAFC493-FC4A-4E1B-9736-76CDBDDA47BA}.Debug-native|Any CPU.ActiveCfg = Debug|Any CPU
+		{CDAFC493-FC4A-4E1B-9736-76CDBDDA47BA}.Debug-native|Any CPU.Build.0 = Debug|Any CPU
+		{CDAFC493-FC4A-4E1B-9736-76CDBDDA47BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CDAFC493-FC4A-4E1B-9736-76CDBDDA47BA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2DB4DE81-749F-44E3-A1DF-F208A700233D}.Debug .Net Native|Any CPU.ActiveCfg = Debug|Any CPU
+		{2DB4DE81-749F-44E3-A1DF-F208A700233D}.Debug .Net Native|Any CPU.Build.0 = Debug|Any CPU
+		{2DB4DE81-749F-44E3-A1DF-F208A700233D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2DB4DE81-749F-44E3-A1DF-F208A700233D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2DB4DE81-749F-44E3-A1DF-F208A700233D}.Debug-native|Any CPU.ActiveCfg = Debug|Any CPU
+		{2DB4DE81-749F-44E3-A1DF-F208A700233D}.Debug-native|Any CPU.Build.0 = Debug|Any CPU
+		{2DB4DE81-749F-44E3-A1DF-F208A700233D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2DB4DE81-749F-44E3-A1DF-F208A700233D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{CDAFC493-FC4A-4E1B-9736-76CDBDDA47BA} = {1C28852B-351D-4FA4-9F76-55C78EC231E0}
+		{2DB4DE81-749F-44E3-A1DF-F208A700233D} = {1C28852B-351D-4FA4-9F76-55C78EC231E0}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C459A5D6-CF49-4BF8-ABB2-15235866320E}
+	EndGlobalSection
+EndGlobal
