@@ -1,9 +1,6 @@
-﻿using BlazorDemo.Client.VenturaRecordsets;
-using Microsoft.AspNetCore.Components;
+﻿using Microsoft.AspNetCore.Components;
 using System;
 using System.Collections.Generic;
-using System.Globalization;
-using System.Threading.Tasks;
 using Kenova.WebAssembly.Client.Components;
 using Kenova.WebAssembly.Client.Util;
 using BlazorDemo.Client.Components;
@@ -72,21 +69,21 @@ namespace BlazorDemo.Client.Pages
             tabItems.Add("11", "Eleventh tab");
             tabItems.Add("12", "Twelfth tab");
 
-            toolbarButtons.Add("1.Add", null, null, IconKind.Vector);
+            toolbarButtons.Add("Add", null, null, IconKind.Vector);
             toolbarButtons.Icon.IconData = "<svg viewBox=\"0 0 448 512\"><path d=\"M400 64c8.8 0 16 7.2 16 16v352c0 8.8-7.2 16-16 16H48c-8.8 0-16-7.2-16-16V80c0-8.8 7.2-16 16-16h352m0-32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zm-60 206h-98v-98c0-6.6-5.4-12-12-12h-12c-6.6 0-12 5.4-12 12v98h-98c-6.6 0-12 5.4-12 12v12c0 6.6 5.4 12 12 12h98v98c0 6.6 5.4 12 12 12h12c6.6 0 12-5.4 12-12v-98h98c6.6 0 12-5.4 12-12v-12c0-6.6-5.4-12-12-12z\"/></svg>";
-            toolbarButtons.Add("2.Volume", null, null, IconKind.FontAwesome, "fal fa-phone-volume");
-            toolbarButtons.Add("3.Manage view", null, null, IconKind.FontAwesome, "fal fa-cog");
-            toolbarButtons.Add("4.Refresh", null, null, IconKind.FontAwesome, "fal fa-redo");
-            toolbarButtons.Add("5.Export to CSV", null, null, IconKind.FontAwesome, "fal fa-arrow-to-bottom");
-            toolbarButtons.Add("6.Power off", null, () => this.IsEnabled, IconKind.FontAwesome, "fal fa-power-off");
-            toolbarButtons.Add("7.Battery", null, null, IconKind.FontAwesome, "fal fa-battery-full");
-            toolbarButtons.Add("8.Patient", null, null, IconKind.FontAwesome, "far fa-head-side-medical");
-            toolbarButtons.Add("9.Select", null, null, IconKind.FontAwesome, "far fa-bullseye-pointer");
-            toolbarButtons.Add("10.Edit", null, null, IconKind.FontAwesome, "fas fa-pencil-alt");
-            toolbarButtons.Add("11.New", null, null, IconKind.FontAwesome, "fas fa-plus");
-            toolbarButtons.Add("12.Delete", null, null, IconKind.FontAwesome, "fas fa-trash");
-            toolbarButtons.Add("13.Close", null, null, IconKind.FontAwesome, "far fa-times");
-            toolbarButtons.Add("14.Finish", null, null, IconKind.FontAwesome, "fas fa-flag-checkered");
+            toolbarButtons.Add("Volume", null, null, IconKind.FontAwesome, "fal fa-phone-volume");
+            toolbarButtons.Add("Manage view", null, null, IconKind.FontAwesome, "fal fa-cog");
+            toolbarButtons.Add("Refresh", null, null, IconKind.FontAwesome, "fal fa-redo");
+            toolbarButtons.Add("Export to CSV", null, null, IconKind.FontAwesome, "fal fa-arrow-to-bottom");
+            toolbarButtons.Add("Power off", null, () => this.IsEnabled, IconKind.FontAwesome, "fal fa-power-off");
+            toolbarButtons.Add("Battery", null, null, IconKind.FontAwesome, "fal fa-battery-full");
+            toolbarButtons.Add("Patient", null, null, IconKind.FontAwesome, "far fa-head-side-medical");
+            toolbarButtons.Add("Select", null, null, IconKind.FontAwesome, "far fa-bullseye-pointer");
+            toolbarButtons.Add("Edit", null, null, IconKind.FontAwesome, "fas fa-pencil-alt");
+            toolbarButtons.Add("New", null, null, IconKind.FontAwesome, "fas fa-plus");
+            toolbarButtons.Add("Delete", null, null, IconKind.FontAwesome, "fas fa-trash");
+            toolbarButtons.Add("Close", null, null, IconKind.FontAwesome, "far fa-times");
+            toolbarButtons.Add("Finish", null, null, IconKind.FontAwesome, "fas fa-flag-checkered");
 
             // Set the second person in the list as the selected person.
             this.SelectedPerson = Persons[1];

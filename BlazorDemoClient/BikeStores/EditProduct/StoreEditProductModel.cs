@@ -5,134 +5,131 @@ using System.Threading.Tasks;
 
 namespace BlazorDemo.Client.Components
 {
-	[ViewModel]
-	public partial class StoreEditProductModel
-	{
-		public enum ModelMode { Edit, New }
+    [ViewModel]
+    public partial class StoreEditProductModel : ModelTypedBase<StoreEditProductModel>
+    {
+        public PriKey_production_products_Recordset Recordset = new();
 
-		public ModelMode Mode;
+        public bool CreateNew = false;
 
-		private int __order_id;
-		private int? __customer_id;
-		private byte __order_status;
-		private DateTime __order_date;
-		private DateTime __required_date;
-		private DateTime? __shipped_date;
-		private int __store_id;
-		private int __staff_id;
+        private int __product_id;
+        private string __product_name;
+        private int __brand_id;
+        private int __category_id;
+        private short __model_year;
+        private decimal __list_price;
 
-		public StoreEditProductModel()
-		{
-			Register(m => m.order_id);
-			Register(m => m.customer_id);
-			Register(m => m.order_status);
-			Register(m => m.order_date);
-			Register(m => m.required_date);
-			Register(m => m.shipped_date);
-			Register(m => m.store_id);
-			Register(m => m.staff_id);
-		}
-
+        public StoreEditProductModel()
+        {
+            Register(m => m.product_name);
+            Register(m => m.brand_id);
+            Register(m => m.category_id);
+            Register(m => m.model_year);
+            Register(m => m.list_price);
+        }
 
         protected override async Task ValidateEventAsync()
         {
-			if (e.IsMember(m => m.customer_id))
-			{
-				await Validators.ValidateCustomerID(e, this.customer_id);
-			}
-			else if (e.IsMember(m => m.order_id))
-			{
-				e.RemarkText = "Validator of order id";
-				e.IsValid = false;
-			}
-			else if (e.IsMember(m => m.customer_id))
-			{
-				Console.WriteLine($"The value of customer_id was changed to {this.customer_id}");
-			}
-			else if (e.IsMember(m => m.order_status))
-			{
-				Console.WriteLine($"The value of order_status was changed to {this.order_status}");
-			}
-			else if (e.IsMember(m => m.order_date))
-			{
-				Console.WriteLine($"The value of order_date was changed to {this.order_date}");
-			}
-			else if (e.IsMember(m => m.required_date))
-			{
-				Console.WriteLine($"The value of required_date was changed to {this.required_date}");
-			}
-			else if (e.IsMember(m => m.shipped_date))
-			{
-				Console.WriteLine($"The value of shipped_date was changed to {this.shipped_date}");
-			}
-			else if (e.IsMember(m => m.store_id))
-			{
-				Console.WriteLine($"The value of store_id was changed to {this.store_id}");
-			}
-			else if (e.IsMember(m => m.staff_id))
-			{
-				Console.WriteLine($"The value of staff_id was changed to {this.staff_id}");
-			}
 
-		}
+            if (e.IsMember(m => m.product_name))
+            {
+                await Task.CompletedTask;
+                e.RemarkText = $"The value of product_name was changed to {this.product_name}";
+                e.IsValid = true;
+                return;
+            }
 
-		public PriKey_sales_orders_Record LastRecord;
+            if (e.IsMember(m => m.brand_id))
+            {
+                await Task.CompletedTask;
+                e.RemarkText = $"The value of brand_id was changed to {this.brand_id}";
+                e.IsValid = true;
+                return;
+            }
 
-		public async Task LoadExecTask()
-		{
-			LastRecord = null;
+            if (e.IsMember(m => m.category_id))
+            {
+                await Task.CompletedTask;
+                e.RemarkText = $"The value of category_id was changed to {this.category_id}";
+                e.IsValid = true;
+                return;
+            }
 
-			var rs = new PriKey_sales_orders_Recordset();
+            if (e.IsMember(m => m.model_year))
+            {
+                await Task.CompletedTask;
+                e.RemarkText = $"The value of model_year was changed to {this.model_year}";
+                e.IsValid = true;
+                return;
+            }
 
-			await rs.ExecSqlAsync(this.order_id);
+            if (e.IsMember(m => m.list_price))
+            {
+                await Task.CompletedTask;
+                e.RemarkText = $"The value of list_price was changed to {this.list_price}";
+                e.IsValid = true;
+                return;
+            }
 
-			if (rs.RecordCount == 0)
-				throw new Exception($"Order {this.order_id} not found in database.");
+        }
 
-			//this.order_id = rs.order_id;
-			this.customer_id = rs.customer_id;
-			this.order_status = rs.order_status;
-			this.order_date = rs.order_date;
-			this.required_date = rs.required_date;
-			this.shipped_date = rs.shipped_date;
-			this.store_id = rs.store_id;
-			this.staff_id = rs.staff_id;
+        public async Task LoadTask()
+        {
+            if (this.CreateNew)
+            {
+                this.product_id = 0;
+                this.product_name = "";
+                this.brand_id = 0;
+                this.category_id = 0;
+                this.model_year = 0;
+                this.list_price = 0.0m;
+            }
+            else
+            {
+                // edit
+                await Recordset.ExecSqlAsync(this.product_id);
 
-			LastRecord = rs.CurrentRecord;
-		}
+                if (Recordset.RecordCount == 0)
+                    throw new Exception($"Product {this.product_id} not found in database.");
 
-		public async Task SaveExecTask()
-		{
-			LastRecord = null;
+                this.product_id = Recordset.product_id;
+                this.product_name = Recordset.product_name;
+                this.brand_id = Recordset.brand_id;
+                this.category_id = Recordset.category_id;
+                this.model_year = Recordset.model_year;
+                this.list_price = Recordset.list_price;
 
-			var rs = new PriKey_sales_orders_Recordset();
+            }
+        }
 
-			if (this.Mode == ModelMode.Edit)
-			{
-				await rs.ExecSqlAsync(this.order_id);
+        public async Task SaveTask()
+        {
+            bool valid = await this.ValidateAllAsync();
 
-				if (rs.RecordCount == 0)
-					throw new Exception($"Order {this.order_id} not found in database.");
-			}
-			else
-			{
-				rs.Append();
-			}
+            if (!valid)
+                throw new Exception("Correct input.");
 
-			//rs.order_id = this.order_id; // IsKey, IsIdentity, IsAutoIncrement, IsReadOnly
+            if (this.CreateNew)
+            {
+                Recordset.Append();
+                // skipped primary key column Recordset.product_id as it is AutoIncrement
+            }
+            else
+            {   
+                await Recordset.ExecSqlAsync(this.product_id);
 
-			rs.customer_id = this.customer_id;
-			rs.order_status = this.order_status;
-			rs.order_date = this.order_date;
-			rs.required_date = this.required_date;
-			rs.shipped_date = this.shipped_date;
-			rs.store_id = this.store_id;
-			rs.staff_id = this.staff_id;
+                if (Recordset.RecordCount == 0)
+                    throw new Exception($"Product {this.product_id} not found in database.");
+            }
 
-			await rs.SaveChangesAsync();
+            Recordset.product_name = this.product_name;
+            Recordset.brand_id = this.brand_id;
+            Recordset.category_id = this.category_id;
+            Recordset.model_year = this.model_year;
+            Recordset.list_price = this.list_price;
 
-			LastRecord = rs.CurrentRecord;
-		}
+            await Recordset.SaveChangesAsync();
+        }
 
-	}
+    }
 }

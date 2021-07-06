@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 namespace BlazorDemo.Client.Components
 {
 	[ViewModel]
-	public partial class StoreEditOrderModel
+	public partial class StoreEditOrderModel : ModelTypedBase<StoreEditOrderModel>
 	{
-		public enum ModelMode { Edit, New }
+		public PriKey_sales_orders_Recordset Recordset = new();
 
-		public ModelMode Mode;
+		public bool CreateNew = false;
 
 		private int __order_id;
 		private int? __customer_id;
@@ -23,7 +23,6 @@ namespace BlazorDemo.Client.Components
 
 		public StoreEditOrderModel()
 		{
-			Register(m => m.order_id);
 			Register(m => m.customer_id);
 			Register(m => m.order_status);
 			Register(m => m.order_date);
@@ -33,105 +32,127 @@ namespace BlazorDemo.Client.Components
 			Register(m => m.staff_id);
 		}
 
+		protected override async Task ValidateEventAsync()
+		{
 
-        protected override async Task ValidateEventAsync()
-        {
 			if (e.IsMember(m => m.customer_id))
 			{
 				await Validators.ValidateCustomerID(e, this.customer_id);
+				return;
 			}
-			else if (e.IsMember(m => m.order_id))
+
+			if (e.IsMember(m => m.order_status))
 			{
-				e.RemarkText = "Validator of order id";
-				e.IsValid = false;
+				await Task.CompletedTask;
+				e.RemarkText = $"The value of order_status was changed to {this.order_status}";
+				e.IsValid = true;
+				return;
 			}
-			else if (e.IsMember(m => m.customer_id))
+
+			if (e.IsMember(m => m.order_date))
 			{
-				Console.WriteLine($"The value of customer_id was changed to {this.customer_id}");
+				await Task.CompletedTask;
+				e.RemarkText = $"The value of order_date was changed to {this.order_date}";
+				e.IsValid = true;
+				return;
 			}
-			else if (e.IsMember(m => m.order_status))
+
+			if (e.IsMember(m => m.required_date))
 			{
-				Console.WriteLine($"The value of order_status was changed to {this.order_status}");
+				await Task.CompletedTask;
+				e.RemarkText = $"The value of required_date was changed to {this.required_date}";
+				e.IsValid = true;
+				return;
 			}
-			else if (e.IsMember(m => m.order_date))
+
+			if (e.IsMember(m => m.shipped_date))
 			{
-				Console.WriteLine($"The value of order_date was changed to {this.order_date}");
+				await Task.CompletedTask;
+				e.RemarkText = $"The value of shipped_date was changed to {this.shipped_date}";
+				e.IsValid = true;
+				return;
 			}
-			else if (e.IsMember(m => m.required_date))
+
+			if (e.IsMember(m => m.store_id))
 			{
-				Console.WriteLine($"The value of required_date was changed to {this.required_date}");
+				await Task.CompletedTask;
+				e.RemarkText = $"The value of store_id was changed to {this.store_id}";
+				e.IsValid = true;
+				return;
 			}
-			else if (e.IsMember(m => m.shipped_date))
+
+			if (e.IsMember(m => m.staff_id))
 			{
-				Console.WriteLine($"The value of shipped_date was changed to {this.shipped_date}");
-			}
-			else if (e.IsMember(m => m.store_id))
-			{
-				Console.WriteLine($"The value of store_id was changed to {this.store_id}");
-			}
-			else if (e.IsMember(m => m.staff_id))
-			{
-				Console.WriteLine($"The value of staff_id was changed to {this.staff_id}");
+				await Task.CompletedTask;
+				e.RemarkText = $"The value of staff_id was changed to {this.staff_id}";
+				e.IsValid = true;
+				return;
 			}
 
 		}
 
-		public PriKey_sales_orders_Record LastRecord;
-
-		public async Task LoadExecTask()
+		public async Task LoadTask()
 		{
-			LastRecord = null;
-
-			var rs = new PriKey_sales_orders_Recordset();
-
-			await rs.ExecSqlAsync(this.order_id);
-
-			if (rs.RecordCount == 0)
-				throw new Exception($"Order {this.order_id} not found in database.");
-
-			//this.order_id = rs.order_id;
-			this.customer_id = rs.customer_id;
-			this.order_status = rs.order_status;
-			this.order_date = rs.order_date;
-			this.required_date = rs.required_date;
-			this.shipped_date = rs.shipped_date;
-			this.store_id = rs.store_id;
-			this.staff_id = rs.staff_id;
-
-			LastRecord = rs.CurrentRecord;
-		}
-
-		public async Task SaveExecTask()
-		{
-			LastRecord = null;
-
-			var rs = new PriKey_sales_orders_Recordset();
-
-			if (this.Mode == ModelMode.Edit)
+			if (this.CreateNew)
 			{
-				await rs.ExecSqlAsync(this.order_id);
-
-				if (rs.RecordCount == 0)
-					throw new Exception($"Order {this.order_id} not found in database.");
+				this.order_id = 0;
+				this.customer_id = null;
+				this.order_status = 0;
+				this.order_date = new DateTime(1900, 1, 1);
+				this.required_date = new DateTime(1900, 1, 1);
+				this.shipped_date = null;
+				this.store_id = 0;
+				this.staff_id = 0;
 			}
 			else
 			{
-				rs.Append();
+				// edit
+				await Recordset.ExecSqlAsync(this.order_id);
+
+				if (Recordset.RecordCount == 0)
+					throw new Exception($"Order {this.order_id} not found in database.");
+
+				this.order_id = Recordset.order_id;
+				this.customer_id = Recordset.customer_id;
+				this.order_status = Recordset.order_status;
+				this.order_date = Recordset.order_date;
+				this.required_date = Recordset.required_date;
+				this.shipped_date = Recordset.shipped_date;
+				this.store_id = Recordset.store_id;
+				this.staff_id = Recordset.staff_id;
+
+			}
+		}
+
+		public async Task SaveTask()
+		{
+			bool valid = await this.ValidateAllAsync();
+
+			if (!valid)
+				throw new Exception("Correct input.");
+
+			if (this.CreateNew)
+			{
+				Recordset.Append();
+				// skipped primary key column Recordset.order_id as it is AutoIncrement
+			}
+			else
+			{
+				await Recordset.ExecSqlAsync(this.order_id);
+
+				if (Recordset.RecordCount == 0)
+					throw new Exception($"Order {this.order_id} not found in database.");
 			}
 
-			//rs.order_id = this.order_id; // IsKey, IsIdentity, IsAutoIncrement, IsReadOnly
+			Recordset.customer_id = this.customer_id;
+			Recordset.order_status = this.order_status;
+			Recordset.order_date = this.order_date;
+			Recordset.required_date = this.required_date;
+			Recordset.shipped_date = this.shipped_date;
+			Recordset.store_id = this.store_id;
+			Recordset.staff_id = this.staff_id;
 
-			rs.customer_id = this.customer_id;
-			rs.order_status = this.order_status;
-			rs.order_date = this.order_date;
-			rs.required_date = this.required_date;
-			rs.shipped_date = this.shipped_date;
-			rs.store_id = this.store_id;
-			rs.staff_id = this.staff_id;
-
-			await rs.SaveChangesAsync();
-
-			LastRecord = rs.CurrentRecord;
+			await Recordset.SaveChangesAsync();
 		}
 
 	}

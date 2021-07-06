@@ -9,39 +9,27 @@ namespace BlazorDemo.Client.Components
     public partial class StoreEditProduct : LayerComponentBase
     {
         [Parameter]
-        public string Title { get; set; }
+        public StoreEditProductModel Model { get; set; }
 
-        [Parameter]
-        public StoreEditOrderModel Model { get; set; }
-
-        ToolbarItemCollection toolbar = new ToolbarItemCollection();
-
+        private string Title;
+        private ToolbarItemCollection toolbar = new ToolbarItemCollection();
 
         protected override void OnLayerInitialized()
         {
             if (Model == null)
                 throw new ArgumentNullException("model");
 
-            this.Breadcrumb = $"Edit order {Model.order_id}";
-            this.Title = $"Edit order {Model.order_id}";
+            this.Breadcrumb = $"Edit product {Model.product_id}";
+            this.Title = $"Edit product {Model.product_id}";
 
             toolbar.Add("Save", SaveClicked, () => Model.IsModelModified, IconKind.FontAwesome, "far fa-save");
             toolbar.Add("Close", CloseClicked, () => true, IconKind.FontAwesome, "far fa-times");
             toolbar.SourceCodeButton("BikeStores/EditProduct");
-
-        }
-
-        protected override async Task OnAfterRenderAsync(bool firstRender)
-        {
-            if (firstRender)
-            {
-                await Model.ValidateAllAsync();
-            }
         }
 
         private async void SaveClicked()
         {
-            bool result = await LongRunningTask.SimpleRun("Saving", Model.SaveExecTask);
+            bool result = await LongRunningTask.SimpleRun("Saving", Model.SaveTask);
 
             if (result == true)
                 this.CloseOk();
@@ -56,8 +44,8 @@ namespace BlazorDemo.Client.Components
         {
             var SearchModel = new SearchCustomersModel
             {
-                Mode = SearchCustomersModel.ModelMode.Lookup,
-                SearchCustomerId = this.Model.customer_id
+                LookupMode = true,
+                SearchCustomerId = this.Model.product_id
             };
 
             var ld = new LayerDefinition<SearchCustomers>

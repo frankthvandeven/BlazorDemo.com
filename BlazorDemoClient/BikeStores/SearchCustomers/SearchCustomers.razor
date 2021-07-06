@@ -1,6 +1,7 @@
 ﻿@page "/customers"
 @namespace BlazorDemo.Client.Components
 @inherits LayerComponentBase
+
 <MainLayout Title="@this.Title">
         <TopContent>
             <Toolbar Buttons="@toolbar" />
@@ -25,18 +26,13 @@
             </ButtonBar>
 
         </TopContent>
+
         <FillContent>
 
             <HyperGrid @ref="_hypergrid"
-                       HeightMode="HeightMode.Container"
                        ItemType="SearchCustomersRecord" Data="@this.Data"
                        RowDoubleClicked="RowDoubleClicked" />
 
         </FillContent>
-        @*<BottomContent>
-                <ButtonBar>
-                    <Button ButtonClicked="BtnRemove">Remove menu</Button>
-                    <Button ButtonClicked="BtnDisable">Disable menu</Button>
-                </ButtonBar>
-            </BottomContent>*@
+
 </MainLayout>

@@ -8,7 +8,7 @@ namespace BlazorDemo.Client.Components
     [ViewModel]
     public partial class StoreEditCustomerModel : ModelTypedBase<StoreEditCustomerModel>
     {
-        public PriKey_sales_customers_Recordset Rs = new PriKey_sales_customers_Recordset();
+        public PriKey_sales_customers_Recordset Recordset = new PriKey_sales_customers_Recordset();
         public bool CreateNew = false;
 
         private int __customer_id;
@@ -21,98 +21,115 @@ namespace BlazorDemo.Client.Components
         private State __SelectedState = null;
         private string __zip_code;
 
-        public string state
-        {
-            get { return this.SelectedState != null ? this.SelectedState.Abbreviation : ""; }
-        }
-
         public StoreEditCustomerModel()
         {
-            Register(m => m.customer_id);
             Register(m => m.first_name);
             Register(m => m.last_name);
-            Register(m => m.phone);
-            Register(m => m.email);
-            Register(m => m.street);
-            Register(m => m.city);
-            //Register(m => m.state);
-            Register(m => m.zip_code);
+            Register(m => m.SelectedState);
         }
 
         protected override async Task ValidateEventAsync()
         {
+            await Task.CompletedTask; // A bit strange but acceptable
+
             if (e.IsMember(m => m.first_name))
             {
-                await Task.CompletedTask;
-                //Console.WriteLine($"The value of first_name was changed to {this.first_name}");
+                if (string.IsNullOrEmpty(this.first_name) == false)
+                {
+                    e.IsValid = true;
+                }
+
+                e.RemarkText = $"Enter a first name.";
+                return;
             }
-            else if (e.IsMember(m => m.last_name))
+
+            if (e.IsMember(m => m.last_name))
             {
-                //Console.WriteLine($"The value of last_name was changed to {this.last_name}");
+                if (string.IsNullOrEmpty(this.first_name) == false)
+                {
+                    e.IsValid = true;
+                }
+
+                e.RemarkText = $"Enter a last name.";
+                return;
+            }
+
+            if (e.IsMember(m => m.SelectedState))
+            {
+                if (this.SelectedState != null)
+                {
+                    e.IsValid = true;
+                    return;
+                }
+
+                e.RemarkText = $"No state selected.";
+                return;
             }
 
         }
 
-        public async Task LoadCustomerTask()
+        public async Task LoadTask()
         {
             if (this.CreateNew)
             {
-                //this.customer_id = 0;
                 this.first_name = "";
                 this.last_name = "";
                 this.phone = "";
                 this.email = "";
                 this.street = "";
                 this.city = "";
-                //this.state = null;
+                this.SelectedState = UnitedStates.GenericList[0];
                 this.zip_code = "";
             }
             else
             {
-                await Rs.ExecSqlAsync(this.customer_id);
+                await Recordset.ExecSqlAsync(this.customer_id);
 
-                if (Rs.RecordCount == 0)
+                if (Recordset.RecordCount == 0)
                     throw new Exception($"Customer ID {this.customer_id} not found in database");
 
-                this.first_name = Rs.first_name;
-                this.last_name = Rs.last_name;
-                this.phone = Rs.phone;
-                this.email = Rs.email;
-                this.street = Rs.street;
-                this.city = Rs.city;
-                //this.state = rs.state;
-                this.zip_code = Rs.zip_code;
+                this.first_name = Recordset.first_name;
+                this.last_name = Recordset.last_name;
+                this.phone = Recordset.phone;
+                this.email = Recordset.email;
+                this.street = Recordset.street;
+                this.city = Recordset.city;
+                this.SelectedState = UnitedStates.GenericList.Find(i => i.Abbreviation == Recordset.state);
+                this.zip_code = Recordset.zip_code;
 
-                this.SelectedState = UnitedStates.GenericList.Find(i => i.Abbreviation == Rs.state);
             }
 
         }
 
-        public async Task SaveCustomerTask()
+        public async Task SaveTask()
         {
+            bool valid = await this.ValidateAllAsync();
+
+            if (!valid)
+                throw new Exception("Correct input.");
+
             if (this.CreateNew)
             {
-                Rs.Append();
+                Recordset.Append();
             }
             else
             {
-                await Rs.ExecSqlAsync(this.customer_id);
+                await Recordset.ExecSqlAsync(this.customer_id);
 
-                if (Rs.RecordCount == 0)
+                if (Recordset.RecordCount == 0)
                     throw new Exception($"Customer ID {this.customer_id} not found");
             }
 
-            //rs.customer_id = this.customer_id;
-            Rs.first_name = this.first_name;
-            Rs.last_name = this.last_name;
-            Rs.phone = this.phone;
-            Rs.email = this.email;
-            Rs.street = this.street;
-            Rs.city = this.city;
-            Rs.state = this.state;
-            Rs.zip_code = this.zip_code;
+            Recordset.first_name = this.first_name;
+            Recordset.last_name = this.last_name;
+            Recordset.phone = this.phone;
+            Recordset.email = this.email;
+            Recordset.street = this.street;
+            Recordset.city = this.city;
+            Recordset.state = this.SelectedState.Abbreviation;
+            Recordset.zip_code = this.zip_code;
 
-            await Rs.SaveChangesAsync();
+            await Recordset.SaveChangesAsync();
 
         }
 

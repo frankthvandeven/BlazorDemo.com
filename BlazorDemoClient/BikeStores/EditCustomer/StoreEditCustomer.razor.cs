@@ -9,12 +9,10 @@ namespace BlazorDemo.Client.Components
     public partial class StoreEditCustomer : LayerComponentBase
     {
         [Parameter]
-        public string Title { get; set; }
-
-        [Parameter]
         public StoreEditCustomerModel Model { get; set; }
 
-        ToolbarItemCollection toolbar = new();
+        private string Title;
+        private ToolbarItemCollection toolbar = new();
 
         protected override async Task OnLayerInitializedAsync()
         {
@@ -41,19 +39,13 @@ namespace BlazorDemo.Client.Components
 
             toolbar.SourceCodeButton("BikeStores/EditCustomer");
 
-            await Model.LoadCustomerTask();
-
-            //if (runResult == false)
-            //{
-            //    this.CloseLayer();
-            //}
+            await Model.LoadTask();
 
         }
 
-
         private async void SaveClicked()
         {
-            bool result = await LongRunningTask.SimpleRun("Saving", Model.SaveCustomerTask);
+            bool result = await LongRunningTask.SimpleRun("Saving", Model.SaveTask);
 
             if (result == true)
                 this.CloseOk();
@@ -62,10 +54,6 @@ namespace BlazorDemo.Client.Components
         private void CloseClicked()
         {
             this.CloseCancel();
-        }
-
-        protected override void OnDispose()
-        {
         }
 
     }

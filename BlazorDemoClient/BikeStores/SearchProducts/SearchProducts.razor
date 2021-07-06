@@ -3,6 +3,7 @@
 @namespace BlazorDemo.Client.Components
 
 <MainLayout Title="@this.Title">
+
     <TopContent>
         <Toolbar Buttons="@toolbar" />
 
@@ -19,16 +20,10 @@
     </TopContent>
     <FillContent>
 
-        <HyperGrid HeightMode="HeightMode.Container"
-                   ItemType="SearchProductsRecord"
+        <HyperGrid ItemType="SearchProductsRecord"
                    Data="@this.data"
                    RowDoubleClicked="EditClicked" />
 
     </FillContent>
-    @*<BottomContent>
-        <ButtonBar>
-        <Button ButtonClicked="BtnRemove">Remove menu</Button>
-        <Button ButtonClicked="BtnDisable">Disable menu</Button>
-        </ButtonBar>
-        </BottomContent>*@
+
 </MainLayout>

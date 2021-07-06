@@ -9,7 +9,7 @@ namespace BlazorDemo.Client.Components
 {
     public partial class SearchCustomers : LayerComponentBase
     {
-        private string Title = "Customers";
+        private string Title;
 
         [Parameter]
         public SearchCustomersModel Model { get; set; } = new SearchCustomersModel();
@@ -23,11 +23,12 @@ namespace BlazorDemo.Client.Components
         protected override void OnLayerInitialized()
         {
             this.Breadcrumb = "Customers";
+            this.Title = "Customers";
 
             if (Model == null)
                 throw new InvalidOperationException("Parameter Model can not be null");
 
-            if (Model.Mode == SearchCustomersModel.ModelMode.Lookup)
+            if (Model.LookupMode)
             {
                 this.Title = "Select customer";
 
@@ -36,11 +37,10 @@ namespace BlazorDemo.Client.Components
             }
 
             toolbar.Add("Edit", EditClicked, () => Model.Recordset.CurrentRecord != null, IconKind.FontAwesome, "fas fa-pencil-alt");
-
             toolbar.Add("New", NewClicked, null, IconKind.FontAwesome, "fas fa-plus");
             toolbar.Add("Delete", null, () => Model.Recordset.CurrentRecord != null, IconKind.FontAwesome, "fas fa-trash");
 
-            if (Model.Mode == SearchCustomersModel.ModelMode.Lookup)
+            if (Model.LookupMode)
             {
                 toolbar.Add("Close", () => this.CloseCancel(), null, IconKind.FontAwesome, "far fa-times");
             }
@@ -48,10 +48,6 @@ namespace BlazorDemo.Client.Components
             toolbar.SourceCodeButton("BikeStores/SearchCustomers");
 
             Data.Items = Model.Recordset;
-
-            //Grid.UsePagination = true;
-            //Grid.PageSize = 15;
-
             Data.Mode = DisplayMode.Virtualization;
             Data.SelectedItemExpression = () => Model.Recordset.CurrentRecord;
             
@@ -72,7 +68,7 @@ namespace BlazorDemo.Client.Components
 
         private void RowDoubleClicked()
         {
-            if (this.Model.Mode == SearchCustomersModel.ModelMode.Lookup)
+            if (Model.LookupMode)
             {
                 SelectClicked();
                 return;
@@ -142,7 +138,7 @@ namespace BlazorDemo.Client.Components
 
             var record = Model.Recordset.NewRecord(); // Automatically sets the CurrentRecord
 
-            PropertyCopier.Copy(EditModel.Rs, record);
+            PropertyCopier.Copy(EditModel.Recordset, record);
 
             //record.customer_id = EditModel.Rs.customer_id;
             //record.first_name = EditModel.Rs.first_name;
@@ -164,16 +160,11 @@ namespace BlazorDemo.Client.Components
 
         private void ClearClicked()
         {
-            Console.WriteLine($"Recordcount before clear {this.Model.Recordset.RecordCount}");
-
             this.Model.SearchName = null;
             this.Model.SearchCustomerId = null;
             this.Model.Recordset.Clear();
             this.Model.ResetModelModified();
-
-            Console.WriteLine($"Recordcount after clear {this.Model.Recordset.RecordCount}");
         }
-
 
     }
 }

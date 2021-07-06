@@ -8,14 +8,12 @@ namespace BlazorDemo.Client.Components
 {
     public partial class StoreEditOrder : LayerComponentBase
     {
-        [Parameter]
-        public string Title { get; set; }
 
         [Parameter]
         public StoreEditOrderModel Model { get; set; }
 
-        ToolbarItemCollection toolbar = new ToolbarItemCollection();
-
+        private string Title;
+        private ToolbarItemCollection toolbar = new ToolbarItemCollection();
 
         protected override void OnLayerInitialized()
         {
@@ -31,17 +29,9 @@ namespace BlazorDemo.Client.Components
 
         }
 
-        protected override async Task OnAfterRenderAsync(bool firstRender)
-        {
-            if (firstRender)
-            {
-                await Model.ValidateAllAsync();
-            }
-        }
-
         private async void SaveClicked()
         {
-            bool result = await LongRunningTask.SimpleRun("Saving", Model.SaveExecTask);
+            bool result = await LongRunningTask.SimpleRun("Saving", Model.SaveTask);
 
             if (result == true)
                 this.CloseOk();
@@ -56,8 +46,7 @@ namespace BlazorDemo.Client.Components
         {
             var SearchModel = new SearchCustomersModel
             {
-                Mode = SearchCustomersModel.ModelMode.Lookup,
-                SearchCustomerId = this.Model.customer_id
+                LookupMode = true
             };
 
             var ld = new LayerDefinition<SearchCustomers>

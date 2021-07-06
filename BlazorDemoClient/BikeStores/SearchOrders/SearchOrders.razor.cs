@@ -9,7 +9,7 @@ namespace BlazorDemo.Client.Components
 {
     public partial class SearchOrders : LayerComponentBase
     {
-        private string Title = "Orders";
+        private string Title;
 
         private SearchOrdersModel Model = new SearchOrdersModel();
 
@@ -17,11 +17,10 @@ namespace BlazorDemo.Client.Components
 
         private HyperData<SearchOrdersRecord> Data = new();
 
-        //private Incr_sales_customers_Record SelectedRecord;
-
-        protected override void OnLayerInitialized()
+        protected override async Task OnLayerInitializedAsync()
         {
             this.Breadcrumb = "Orders";
+            this.Title = "Orders";
 
             if (Model == null)
                 throw new InvalidOperationException("Parameter Model can not be null");
@@ -29,46 +28,28 @@ namespace BlazorDemo.Client.Components
             toolbar.Add("Edit", EditClicked, () => Model.Recordset.CurrentRecord != null, IconKind.FontAwesome, "fas fa-pencil-alt");
             toolbar.Add("New", NewClicked, null, IconKind.FontAwesome, "fas fa-plus");
             toolbar.Add("Delete", null, () => Model.Recordset.CurrentRecord != null, IconKind.FontAwesome, "fas fa-trash");
-
             toolbar.SourceCodeButton("BikeStores/SearchOrders");
 
             Data.Items = this.Model.Recordset;
             Data.SelectedItemExpression = () => Model.Recordset.CurrentRecord;
             Data.Mode = DisplayMode.Virtualization;
-            //data.PageSize = 15;
-            Data.UseHeader = true;
-            Data.CheckedItemsChanged = CheckedItemsChanged;
 
             Data.Columns.Add(c => c.order_date, "Date", 120, false);
-            //data.Columns.
-
             Data.Columns.Add(c => c.order_id, "Order number", 100, false);
             Data.Columns.Add(c => c.customer_id, "Customer", 100, false);
             Data.Columns.Add(c => c.first_name, "First name", 200);
             Data.Columns.Add(c => c.last_name, "Last name", 200);
 
+            await Model.SearchExecTask();
         }
-
-        protected override async Task OnAfterRenderAsync(bool firstRender)
-        {
-            if (firstRender)
-            {
-                await LongRunningTask.SimpleRun("Loading", Model.SearchExecTask);
-            }
-
-
-        }
-
-
 
         private async void EditClicked()
         {
             var EditModel = new StoreEditOrderModel();
 
-            EditModel.Mode = StoreEditOrderModel.ModelMode.Edit;
             EditModel.order_id = Model.Recordset.CurrentRecord.order_id;
 
-            bool runResult = await LongRunningTask.SimpleRun("Loading", EditModel.LoadExecTask);
+            bool runResult = await LongRunningTask.SimpleRun("Loading", EditModel.LoadTask);
 
             if (runResult == false)
                 return;
@@ -142,11 +123,6 @@ namespace BlazorDemo.Client.Components
             Model.SearchOrderID = null;
             Model.SearchText = null;
             Model.Recordset.Clear();
-        }
-
-
-        private void CheckedItemsChanged()
-        {
         }
 
 

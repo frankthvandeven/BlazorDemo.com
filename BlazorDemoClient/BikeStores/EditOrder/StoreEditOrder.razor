@@ -6,12 +6,14 @@
         <Toolbar Buttons="@toolbar" />
     </TopContent>
     <FillContent>
-        @if (Model.Mode == StoreEditOrderModel.ModelMode.Edit)
+
+        @if (Model.CreateNew == false)
         {
             <Rail>
                 <InputInt32 Width="200" Caption="Order Id" FieldExpression="() => Model.order_id" Enabled="false" />
             </Rail>
         }
+
         <Rail>
             <InputDate Width="250" Caption="Order date" FieldExpression="() => Model.order_date" />
         </Rail>
