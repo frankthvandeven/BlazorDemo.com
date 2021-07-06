@@ -21,52 +21,68 @@ namespace BlazorDemo.Client.Components
 
         public StoreEditProductModel()
         {
-            Register(m => m.product_name);
+            Register(m => m.product_name, ValidateProductNameAsync);
             Register(m => m.brand_id);
             Register(m => m.category_id);
-            Register(m => m.model_year);
-            Register(m => m.list_price);
         }
 
-        protected override async Task ValidateEventAsync()
+        private async Task ValidateProductNameAsync(ValidateEventArgs e)
         {
+            await Task.CompletedTask; // This is an acceptable solution
 
-            if (e.IsMember(m => m.product_name))
+            if( string.IsNullOrEmpty(this.product_name))
             {
-                await Task.CompletedTask;
-                e.RemarkText = $"The value of product_name was changed to {this.product_name}";
-                e.IsValid = true;
+                e.RemarkText = "Enter a product name.";
                 return;
             }
 
+            e.IsValid = true;
+        }
+
+        protected override async Task ValidateEventAsync(ValidateEventArgs<StoreEditProductModel> e)
+        {
             if (e.IsMember(m => m.brand_id))
             {
-                await Task.CompletedTask;
-                e.RemarkText = $"The value of brand_id was changed to {this.brand_id}";
+                if (brand_id is not > 0)
+                {
+                    e.RemarkText = "Brand is required.";
+                    return;
+                }
+
+                PriKey_production_brands_Recordset rs = new();
+
+                await rs.ExecSqlAsync(brand_id);
+
+                if (rs.RecordCount == 0)
+                {
+                    e.RemarkText = $"Brand code {brand_id} is unknown.";
+                    return;
+                }
+
+                e.RemarkText = rs.brand_name;
                 e.IsValid = true;
                 return;
             }
 
             if (e.IsMember(m => m.category_id))
             {
-                await Task.CompletedTask;
-                e.RemarkText = $"The value of category_id was changed to {this.category_id}";
-                e.IsValid = true;
-                return;
-            }
+                if (category_id is not > 0)
+                {
+                    e.RemarkText = "Category is required.";
+                    return;
+                }
 
-            if (e.IsMember(m => m.model_year))
-            {
-                await Task.CompletedTask;
-                e.RemarkText = $"The value of model_year was changed to {this.model_year}";
-                e.IsValid = true;
-                return;
-            }
+                PriKey_production_categories_Recordset rs = new();
 
-            if (e.IsMember(m => m.list_price))
-            {
-                await Task.CompletedTask;
-                e.RemarkText = $"The value of list_price was changed to {this.list_price}";
+                await rs.ExecSqlAsync(category_id);
+
+                if (rs.RecordCount == 0)
+                {
+                    e.RemarkText = $"Category code {category_id} is unknown.";
+                    return;
+                }
+
+                e.RemarkText = rs.category_name;
                 e.IsValid = true;
                 return;
             }
@@ -79,9 +95,9 @@ namespace BlazorDemo.Client.Components
             {
                 this.product_id = 0;
                 this.product_name = "";
-                this.brand_id = 0;
-                this.category_id = 0;
-                this.model_year = 0;
+                this.brand_id = 1;
+                this.category_id = 1;
+                this.model_year = Convert.ToInt16(DateTime.Now.Year);
                 this.list_price = 0.0m;
             }
             else

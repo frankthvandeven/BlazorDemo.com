@@ -14,7 +14,7 @@ namespace BlazorDemo.Client.Components
         private string Title;
         private ToolbarItemCollection toolbar = new ToolbarItemCollection();
 
-        protected override void OnLayerInitialized()
+        protected override async Task OnLayerInitializedAsync()
         {
             if (Model == null)
                 throw new ArgumentNullException("model");
@@ -23,8 +23,13 @@ namespace BlazorDemo.Client.Components
             this.Title = $"Edit product {Model.product_id}";
 
             toolbar.Add("Save", SaveClicked, () => Model.IsModelModified, IconKind.FontAwesome, "far fa-save");
+            toolbar.ButtonKind = ButtonKind.Default;
+
             toolbar.Add("Close", CloseClicked, () => true, IconKind.FontAwesome, "far fa-times");
+
             toolbar.SourceCodeButton("BikeStores/EditProduct");
+
+            await Model.LoadTask();
         }
 
         private async void SaveClicked()
@@ -38,29 +43,6 @@ namespace BlazorDemo.Client.Components
         private void CloseClicked()
         {
             this.CloseCancel();
-        }
-
-        private async Task CustomerZoomClicked()
-        {
-            var SearchModel = new SearchCustomersModel
-            {
-                LookupMode = true,
-                SearchCustomerId = this.Model.product_id
-            };
-
-            var ld = new LayerDefinition<SearchCustomers>
-            {
-                Kind = LayerKind.Modal,
-                [i => i.Model] = SearchModel
-            };
-
-            var result = await ld.OpenAsync();
-
-            if (result.Cancelled)
-                return;
-
-            this.Model.customer_id = SearchModel.Recordset.CurrentRecord.customer_id;
-
         }
 
     }

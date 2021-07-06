@@ -10,17 +10,28 @@
         @if (Model.CreateNew == false)
         {
             <Rail>
-                <InputInt32 Width="200" Caption="Order Id" FieldExpression="() => Model.order_id" Enabled="false" />
+                <InputInt32 CaptionLeft RemarkRight CaptionWidth="130" InputBoxWidth="60" Caption="Product Id" FieldExpression="() => Model.product_id" Enabled="false" />
             </Rail>
         }
 
         <Rail>
-            <InputDate Width="250" Caption="Order date" FieldExpression="() => Model.order_date" />
+            <InputString AutoFocus CaptionLeft RemarkRight CaptionWidth="130" InputBoxWidth="350" Caption="Name" FieldExpression="() => Model.product_name" />
         </Rail>
 
         <Rail>
-            <InputInt32Nullable Width="300" InputBoxWidth="100" Caption="Customer" FieldExpression="() => Model.customer_id"
-                                ShowZoomButton="true" ZoomButtonClicked="CustomerZoomClicked" />
+            <InputInt32 CaptionLeft RemarkRight CaptionWidth="130" InputBoxWidth="60" Caption="Brand" FieldExpression="() => Model.brand_id" />
+        </Rail>
+
+        <Rail>
+            <InputInt32 CaptionLeft RemarkRight CaptionWidth="130" InputBoxWidth="60" Caption="Category" FieldExpression="() => Model.category_id" />
+        </Rail>
+
+        <Rail>
+            <InputInt16 MinValue="1980" MaxValue="2100" CaptionLeft RemarkRight CaptionWidth="130" InputBoxWidth="60" Caption="Model year" FieldExpression="() => Model.model_year" />
+        </Rail>
+
+        <Rail>
+            <InputDecimal MinValue="0.0m" CaptionLeft RemarkRight CaptionWidth="130" InputBoxWidth="100" Caption="List price" FieldExpression="() => Model.list_price" />
         </Rail>
 
     </FillContent>

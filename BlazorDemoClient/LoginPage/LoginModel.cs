@@ -20,7 +20,7 @@ namespace Kenova.WebAssembly.Client.Pages
             Register(m => m.Password);
         }
 
-        protected override async Task ValidateEventAsync()
+        protected override async Task ValidateEventAsync(ValidateEventArgs<LoginModel> e)
         {
             if (e.IsMember(m => m.Username))
             {

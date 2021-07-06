@@ -11,15 +11,6 @@
                 <InputInt32Nullable Caption="Customer" FieldExpression="() => Model.SearchCustomerId" Width="80" />
             </Rail>
 
-            <Rerender PropertyExpression="() => this.Data.SelectedItem">
-                @if (Model.Recordset.CurrentRecord != null)
-                {
-                    <p>
-                        Selected customer: @Model.Recordset.CurrentRecord.first_name
-                    </p>
-                }
-            </Rerender>
-
             <ButtonBar>
                 <Button Default ButtonClicked="SearchClicked">Search</Button>
                 <Button ButtonClicked="ClearClicked">Clear</Button>

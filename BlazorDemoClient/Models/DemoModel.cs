@@ -37,7 +37,7 @@ namespace BlazorDemo.Client
             Register(m => m.PumpActive);
         }
 
-        protected override async Task ValidateEventAsync()
+        protected override async Task ValidateEventAsync(ValidateEventArgs<DemoModel> e)
         {
             if (e.IsMember(m => m.CurrentOption))
             {

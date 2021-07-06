@@ -22,6 +22,10 @@
                                 ShowZoomButton="true" ZoomButtonClicked="CustomerZoomClicked" />
         </Rail>
 
+        <Rail>
+            <DropdownListBasic Width="200" Caption="Order status" FieldExpression="() => Model.order_status" Items="@Model.Statusses" />
+        </Rail>
+
     </FillContent>
 </MainLayout>
 

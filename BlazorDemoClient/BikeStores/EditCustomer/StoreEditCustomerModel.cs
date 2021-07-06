@@ -28,7 +28,7 @@ namespace BlazorDemo.Client.Components
             Register(m => m.SelectedState);
         }
 
-        protected override async Task ValidateEventAsync()
+        protected override async Task ValidateEventAsync(ValidateEventArgs<StoreEditCustomerModel> e)
         {
             await Task.CompletedTask; // A bit strange but acceptable
 
