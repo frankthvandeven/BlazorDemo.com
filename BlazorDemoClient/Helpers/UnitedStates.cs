@@ -7,7 +7,7 @@ namespace BlazorDemo.Client
     public static class UnitedStates
     {
         private static List<State> _list = null;
-        private static ListItemCollection _collection = null;
+        private static ListItemCollection<string> _collection = null;
 
         static UnitedStates()
         {
@@ -64,7 +64,7 @@ namespace BlazorDemo.Client
             _list.Add(new State() { Abbreviation = "WI", Name = "Wisconsin" });
             _list.Add(new State() { Abbreviation = "WY", Name = "Wyoming" });
 
-            _collection = new ListItemCollection();
+            _collection = new();
 
             foreach (var state in _list)
                 _collection.Add(state.Abbreviation, state.Name);
@@ -82,7 +82,7 @@ namespace BlazorDemo.Client
         /// <summary>
         /// Return a ListItemCollection of all U.S. states
         /// </summary>
-        public static ListItemCollection ItemCollection
+        public static ListItemCollection<string> ItemCollection
         {
             get { return _collection; }
         }

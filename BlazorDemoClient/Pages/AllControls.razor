@@ -506,7 +506,7 @@
     </MenuPage>
     <MenuPage FocusID="dropdownlistbasic">
         <FillContent>
-            <DropdownListBasic Width="200" Caption="State:" FieldExpression="() => this.SelectedState"
+            <DropdownListBasic Width="200" Caption="State:" FieldExpression="() => this.SelectedState" ValueType="string"
                                Items="@UnitedStates.ItemCollection" FieldChanged="DropdownListBasic_FieldChanged" />
             <br />
             <br />

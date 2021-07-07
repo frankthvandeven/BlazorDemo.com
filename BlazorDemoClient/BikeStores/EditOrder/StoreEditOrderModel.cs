@@ -23,11 +23,10 @@ namespace BlazorDemo.Client.Components
 
 
 
-        public ListItemCollection Statusses;
+        public ListItemCollection<byte> Statusses = new();
 
         public StoreEditOrderModel()
         {
-            Statusses = new ListItemCollection();
 
             Statusses.Add(1, "Pending");
             Statusses.Add(2, "Processing");

@@ -20,9 +20,11 @@ namespace BlazorDemo.Client.Pages
 
 
             //MenuItems.Add("overview", "Overview", null, IconKind.FontAwesome, "far fa-globe");
-            MenuItems.Add("Customers", "/customers", null, IconKind.FontAwesome, "fas fa-user-friends");
-            MenuItems.Add("Orders", "/orders", null, IconKind.FontAwesome, "fas fa-money-check-edit-alt");
-            MenuItems.Add("Products", "/products", null, IconKind.FontAwesome, "fas fa-box");
+            MenuItems.Add("Customers", "/customers", null, IconKind.FontAwesome, "fal fa-user-friends");
+            MenuItems.AutoFocus = true;
+
+            MenuItems.Add("Orders", "/orders", null, IconKind.FontAwesome, "fal fa-money-check-edit-alt");
+            MenuItems.Add("Products", "/products", null, IconKind.FontAwesome, "fal fa-box");
 
         }
 

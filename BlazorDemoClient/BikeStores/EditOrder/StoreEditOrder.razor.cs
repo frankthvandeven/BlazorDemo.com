@@ -24,6 +24,8 @@ namespace BlazorDemo.Client.Components
             this.Title = $"Edit order {Model.order_id}";
 
             toolbar.Add("Save", SaveClicked, () => Model.IsModelModified, IconKind.FontAwesome, "far fa-save");
+            toolbar.ButtonKind = ButtonKind.Default;
+
             toolbar.Add("Close", CloseClicked, () => true, IconKind.FontAwesome, "far fa-times");
             toolbar.SourceCodeButton("BikeStores/EditOrder");
 

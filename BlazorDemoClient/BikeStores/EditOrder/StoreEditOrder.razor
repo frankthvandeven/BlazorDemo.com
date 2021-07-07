@@ -10,20 +10,30 @@
         @if (Model.CreateNew == false)
         {
             <Rail>
-                <InputInt32 Width="200" Caption="Order Id" FieldExpression="() => Model.order_id" Enabled="false" />
+                <InputInt32 CaptionLeft CaptionWidth="120" InputBoxWidth="140" Caption="Order Id" FieldExpression="() => Model.order_id" Enabled="false" />
             </Rail>
         }
 
         <Rail>
-            <InputDate Width="250" Caption="Order date" FieldExpression="() => Model.order_date" />
+            <InputDate AutoFocus CaptionLeft CaptionWidth="120" InputBoxWidth="160" Caption="Order date" FieldExpression="() => Model.order_date" />
         </Rail>
+
         <Rail>
-            <InputInt32Nullable Width="300" InputBoxWidth="100" Caption="Customer" FieldExpression="() => Model.customer_id"
+            <InputInt32Nullable CaptionLeft CaptionWidth="120" InputBoxWidth="300" Caption="Customer" FieldExpression="() => Model.customer_id"
                                 ShowZoomButton="true" ZoomButtonClicked="CustomerZoomClicked" />
         </Rail>
 
         <Rail>
-            <DropdownListBasic Width="200" Caption="Order status" FieldExpression="() => Model.order_status" Items="@Model.Statusses" />
+            <InputInt32 CaptionLeft CaptionWidth="120" InputBoxWidth="100" Caption="Store ID" FieldExpression="() => Model.store_id" />
+        </Rail>
+
+        <Rail>
+            <InputInt32 CaptionLeft CaptionWidth="120" InputBoxWidth="100" Caption="Staff ID" FieldExpression="() => Model.staff_id" />
+        </Rail>
+
+        <Rail>
+            <DropdownListBasic Width="200" Caption="Order status" FieldExpression="() => Model.order_status"
+                               ValueType="byte" Items="@Model.Statusses" />
         </Rail>
 
     </FillContent>

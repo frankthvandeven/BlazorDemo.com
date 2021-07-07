@@ -122,7 +122,7 @@ namespace BlazorDemo.Client.Pages
 
         }
 
-        private void DropdownListBasic_FieldChanged(object item)
+        private void DropdownListBasic_FieldChanged()
         {
             // Doing nothing is enough. Just defining an EventCallback is enough for a re-render to start.
         }
