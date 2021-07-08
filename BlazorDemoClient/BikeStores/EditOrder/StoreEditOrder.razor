@@ -19,20 +19,25 @@
         </Rail>
 
         <Rail>
-            <InputInt32Nullable CaptionLeft CaptionWidth="120" InputBoxWidth="300" Caption="Customer" FieldExpression="() => Model.customer_id"
+            <InputInt32Nullable CaptionWidth="120" InputBoxWidth="100" Caption="Customer" FieldExpression="() => Model.customer_id"
+                                CaptionLeft RemarkRight
                                 ShowZoomButton="true" ZoomButtonClicked="CustomerZoomClicked" />
         </Rail>
 
         <Rail>
-            <InputInt32 CaptionLeft CaptionWidth="120" InputBoxWidth="100" Caption="Store ID" FieldExpression="() => Model.store_id" />
+            <InputInt32 CaptionWidth="120" InputBoxWidth="100" Caption="Store ID" FieldExpression="() => Model.store_id"
+                        CaptionLeft RemarkRight />
         </Rail>
 
         <Rail>
-            <InputInt32 CaptionLeft CaptionWidth="120" InputBoxWidth="100" Caption="Staff ID" FieldExpression="() => Model.staff_id" />
+            <InputInt32 CaptionWidth="120" InputBoxWidth="100" Caption="Staff ID" FieldExpression="() => Model.staff_id"
+                        CaptionLeft RemarkRight />
+
         </Rail>
 
         <Rail>
-            <DropdownListBasic Width="200" Caption="Order status" FieldExpression="() => Model.order_status"
+            <DropdownListBasic CaptionWidth="120" InputBoxWidth="140" Caption="Order status" FieldExpression="() => Model.order_status"
+                               CaptionLeft RemarkRight
                                ValueType="byte" Items="@Model.Statusses" />
         </Rail>
 

@@ -1,6 +1,4 @@
-﻿using BlazorDemo.Client.Components;
-using Kenova.WebAssembly.Client;
-using Kenova.WebAssembly.Client.Components;
+﻿using Kenova.WebAssembly.Client.Components;
 using Microsoft.AspNetCore.Components;
 
 namespace BlazorDemo.Client.Pages
@@ -8,8 +6,6 @@ namespace BlazorDemo.Client.Pages
 
     public partial class BikeStores : LayerComponentBase
     {
-        private readonly BikeStoresModel Model = new BikeStoresModel();
-
         private MenuItemCollection MenuItems = new MenuItemCollection();
 
         private string Title = "Bike Stores Demo";
@@ -18,8 +14,6 @@ namespace BlazorDemo.Client.Pages
         {
             Breadcrumb = Title;
 
-
-            //MenuItems.Add("overview", "Overview", null, IconKind.FontAwesome, "far fa-globe");
             MenuItems.Add("Customers", "/customers", null, IconKind.FontAwesome, "fal fa-user-friends");
             MenuItems.AutoFocus = true;
 
@@ -27,29 +21,6 @@ namespace BlazorDemo.Client.Pages
             MenuItems.Add("Products", "/products", null, IconKind.FontAwesome, "fal fa-box");
 
         }
-
-        private void TileClicked(MenuItem item)
-        {
-            //var ld = new LayerDefinition(LayerKind.ModalFullsize);
-
-            //if (item.FocusID == "customers")
-            //{
-            //    ld.Breadcrumb = "Customers";
-            //    LayerManager.Open<SearchCustomers>(ld);
-            //}
-            //else if (item.FocusID == "orders")
-            //{
-            //    ld.Breadcrumb = "Orders";
-            //    LayerManager.Open<SearchOrders>(ld);
-            //}
-
-        }
-    }
-
-    public class BikeStoresModel : ModelTypedBase<BikeStoresModel>
-    {
-
-
 
     }
 

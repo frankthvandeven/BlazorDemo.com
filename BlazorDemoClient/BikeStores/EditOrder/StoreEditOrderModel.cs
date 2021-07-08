@@ -34,8 +34,8 @@ namespace BlazorDemo.Client.Components
             Statusses.Add(4, "Completed");
 
             Register(m => m.customer_id);
-            Register(m => m.order_status);
-            Register(m => m.order_date);
+            //Register(m => m.order_status);
+            //Register(m => m.order_date);
             Register(m => m.required_date);
             Register(m => m.shipped_date);
             Register(m => m.store_id);
