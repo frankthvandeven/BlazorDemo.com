@@ -1,27 +1,27 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.BlazorWebAssembly">
 
-	<PropertyGroup>
-		<TargetFramework>net5.0</TargetFramework>
-		<BlazorWebAssemblyLoadAllGlobalizationData>true</BlazorWebAssemblyLoadAllGlobalizationData>
-		<!--<BlazorWebAssemblyI18NAssemblies>west</BlazorWebAssemblyI18NAssemblies>-->
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <BlazorWebAssemblyLoadAllGlobalizationData>true</BlazorWebAssemblyLoadAllGlobalizationData>
+    <!--<BlazorWebAssemblyI18NAssemblies>west</BlazorWebAssemblyI18NAssemblies>-->
     <!--<EmitCompilerGeneratedFiles>true</EmitCompilerGeneratedFiles>-->
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
   </PropertyGroup>
 
-	<ItemGroup>
-		<PackageReference Include="Kenova.SourceGenerators" Version="16.0.4503" />
-		<PackageReference Include="Microsoft.AspNetCore.Components.Authorization" Version="5.0.7" />
-		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="5.0.7" />
-		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="5.0.7" PrivateAssets="all" />
-		<PackageReference Include="Microsoft.Extensions.Http" Version="5.0.0" />
-		<PackageReference Include="System.Net.Http.Json" Version="5.0.0" />
-		<PackageReference Include="VenturaSQL.NETStandard" Version="4.0.144" />
-    <!--<PackageReference Include="Microsoft.Extensions.Localization" Version="5.0.6" />-->  
+  <ItemGroup>
+    <PackageReference Include="Kenova.SourceGenerators" Version="16.0.4503" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.Authorization" Version="5.0.7" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="5.0.7" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="5.0.7" PrivateAssets="all" />
+    <PackageReference Include="Microsoft.Extensions.Http" Version="5.0.0" />
+    <PackageReference Include="System.Net.Http.Json" Version="5.0.0" />
+    <PackageReference Include="VenturaSQL.NETStandard" Version="4.0.144" />
+    <!--<PackageReference Include="Microsoft.Extensions.Localization" Version="5.0.7" />-->
   </ItemGroup>
 
-	<ItemGroup>
-		<ProjectReference Include="..\..\..\Kenova\Projects\Kenova.WebAssembly.Client\Kenova.WebAssembly.Client.csproj" />
-		<ProjectReference Include="..\BlazorDemoShared\BlazorDemo.Shared.csproj" />
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Kenova\Projects\Kenova.WebAssembly.Client\Kenova.WebAssembly.Client.csproj" />
+    <ProjectReference Include="..\BlazorDemoShared\BlazorDemo.Shared.csproj" />
     <!--<ProjectReference Include="..\Kenova.SourceGenerators\Kenova.SourceGenerators.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />-->
   </ItemGroup>
 
@@ -31,14 +31,14 @@
   <!--<PropertyGroup>
     <IncludeBuildOutput>false</IncludeBuildOutput>
   </PropertyGroup>-->
-  
-	<ItemGroup>
-		<Content Update="wwwroot\screenshots\presentation1.png">
-			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-		</Content>
-		<Content Update="wwwroot\screenshots\presentation2.png">
-			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-		</Content>
-	</ItemGroup>
+
+  <ItemGroup>
+    <Content Update="wwwroot\screenshots\presentation1.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Update="wwwroot\screenshots\presentation2.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
 
 </Project>

@@ -7,6 +7,7 @@ using VenturaSQL;
 using Kenova.WebAssembly.Client.Components;
 using Kenova.WebAssembly.Client;
 using BlazorDemo.Shared;
+using System.Globalization;
 
 namespace BlazorDemo.Client
 {
@@ -26,6 +27,10 @@ namespace BlazorDemo.Client
             builder.Services.AddAuthorizationCore();
 
             builder.Services.AddKenovaClient();
+
+            //builder.Services.AddLocalization(options => options.ResourcesPath = "_content/Kenova.WebAssembly.Client/Resources");
+            //CultureInfo.DefaultThreadCurrentUICulture = new CultureInfo("nl-NL");
+            //CultureInfo.DefaultThreadCurrentCulture = new CultureInfo("nl-NL");
 
             var host = builder.Build();
 
@@ -51,10 +56,8 @@ namespace BlazorDemo.Client
 
         private static void SetupKenovaPortal()
         {
-            //KenovaClientConfig.RefreshToken = refre
-
-            KenovaClientConfig.Settings.CurrentLanguage = "en";
-            KenovaClientConfig.Settings.CurrentCulture = "en-US";
+            //KenovaClientConfig.Settings.CurrentLanguage = "en";
+            //KenovaClientConfig.Settings.CurrentCulture = "en-US";
 
             KenovaClientConfig.Settings.LoadSettings();
 
