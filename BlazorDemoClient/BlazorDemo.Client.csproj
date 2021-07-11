@@ -3,8 +3,6 @@
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
     <BlazorWebAssemblyLoadAllGlobalizationData>true</BlazorWebAssemblyLoadAllGlobalizationData>
-    <!--<BlazorWebAssemblyI18NAssemblies>west</BlazorWebAssemblyI18NAssemblies>-->
-    <!--<EmitCompilerGeneratedFiles>true</EmitCompilerGeneratedFiles>-->
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
   </PropertyGroup>
 

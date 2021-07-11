@@ -28,9 +28,7 @@ namespace BlazorDemo.Client
 
             builder.Services.AddKenovaClient();
 
-            //builder.Services.AddLocalization(options => options.ResourcesPath = "_content/Kenova.WebAssembly.Client/Resources");
-            //CultureInfo.DefaultThreadCurrentUICulture = new CultureInfo("nl-NL");
-            //CultureInfo.DefaultThreadCurrentCulture = new CultureInfo("nl-NL");
+            //builder.Services.AddLocalization(options => options.ResourcesPath = "Resources");
 
             var host = builder.Build();
 
@@ -56,11 +54,6 @@ namespace BlazorDemo.Client
 
         private static void SetupKenovaPortal()
         {
-            //KenovaClientConfig.Settings.CurrentLanguage = "en";
-            //KenovaClientConfig.Settings.CurrentCulture = "en-US";
-
-            KenovaClientConfig.Settings.LoadSettings();
-
             var settings = KenovaClientConfig.Settings;
 
             settings.SupportedLanguagesList.Add("en", "English");
@@ -70,11 +63,15 @@ namespace BlazorDemo.Client
             KenovaClientConfig.RefreshTokenMethodAsync = refreshTokenAsync;
 #endif
 
+
             // List of date formats etc: https://www.basicdatepicker.com/samples/cultureinfo.aspx
             // Common culture names: en-US, nl-NL (date separator -), nl-BE (date separator /), ms-MY
             // Invalid: en-NL
 
             #region A long list of cultures
+
+            settings.SupportedCulturesList.Add("en-US", "English (United States)");
+            settings.SupportedCulturesList.Add("en-GB", "English (United Kingdom)");
 
             settings.SupportedCulturesList.Add("en-001", "English (World)");
             settings.SupportedCulturesList.Add("en-029", "English (Caribbean)");
@@ -106,7 +103,6 @@ namespace BlazorDemo.Client
             settings.SupportedCulturesList.Add("en-FJ", "English (Fiji)");
             settings.SupportedCulturesList.Add("en-FK", "English (Falkland Islands)");
             settings.SupportedCulturesList.Add("en-FM", "English (Micronesia)");
-            settings.SupportedCulturesList.Add("en-GB", "English (United Kingdom)");
             settings.SupportedCulturesList.Add("en-GD", "English (Grenada)");
             settings.SupportedCulturesList.Add("en-GG", "English (Guernsey)");
             settings.SupportedCulturesList.Add("en-GH", "English (Ghana)");
@@ -172,7 +168,6 @@ namespace BlazorDemo.Client
             settings.SupportedCulturesList.Add("en-TZ", "English (Tanzania)");
             settings.SupportedCulturesList.Add("en-UG", "English (Uganda)");
             settings.SupportedCulturesList.Add("en-UM", "English (U.S. Outlying Islands)");
-            settings.SupportedCulturesList.Add("en-US", "English (United States)");
             settings.SupportedCulturesList.Add("en-VC", "English (Saint Vincent and the Grenadines)");
             settings.SupportedCulturesList.Add("en-VG", "English (British Virgin Islands)");
             settings.SupportedCulturesList.Add("en-VI", "English (U.S. Virgin Islands)");
@@ -181,16 +176,19 @@ namespace BlazorDemo.Client
             settings.SupportedCulturesList.Add("en-ZA", "English (South Africa)");
             settings.SupportedCulturesList.Add("en-ZM", "English (Zambia)");
             settings.SupportedCulturesList.Add("en-ZW", "English (Zimbabwe)");
-            settings.SupportedCulturesList.Add("nl-AW", "Nederlands (Aruba)");
+
+            settings.SupportedCulturesList.Add("nl-NL", "Nederlands (Nederland)");
             settings.SupportedCulturesList.Add("nl-BE", "Nederlands (België)");
+            settings.SupportedCulturesList.Add("nl-AW", "Nederlands (Aruba)");
             settings.SupportedCulturesList.Add("nl-BQ", "Nederlands (Bonaire, Sint Eustatius en Saba)");
             settings.SupportedCulturesList.Add("nl-CW", "Nederlands (Curaçao)");
-            settings.SupportedCulturesList.Add("nl-NL", "Nederlands (Nederland)");
             settings.SupportedCulturesList.Add("nl-SX", "Nederlands (Sint Maarten)");
             settings.SupportedCulturesList.Add("nl-SR", "Nederlands (Suriname)");
 
             #endregion
 
+        
+            settings.LoadSettings();
 
             #region A list of menu items
 
@@ -198,7 +196,7 @@ namespace BlazorDemo.Client
             //settings.PortalMenuItems.IconData = "<svg viewBox=\"0 0 448 512\"><path d=\"M400 64c8.8 0 16 7.2 16 16v352c0 8.8-7.2 16-16 16H48c-8.8 0-16-7.2-16-16V80c0-8.8 7.2-16 16-16h352m0-32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zm-60 206h-98v-98c0-6.6-5.4-12-12-12h-12c-6.6 0-12 5.4-12 12v98h-98c-6.6 0-12 5.4-12 12v12c0 6.6 5.4 12 12 12h98v98c0 6.6 5.4 12 12 12h12c6.6 0 12-5.4 12-12v-98h98c6.6 0 12-5.4 12-12v-12c0-6.6-5.4-12-12-12z\"/></svg>";
             //settings.PortalMenuItems.Add("Add", false, IconKind.Vector);
             //settings.PortalMenuItems.IconData = "<svg viewBox=\"0 0 448 512\"><path d=\"M400 64c8.8 0 16 7.2 16 16v352c0 8.8-7.2 16-16 16H48c-8.8 0-16-7.2-16-16V80c0-8.8 7.2-16 16-16h352m0-32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zm-60 206h-98v-98c0-6.6-5.4-12-12-12h-12c-6.6 0-12 5.4-12 12v98h-98c-6.6 0-12 5.4-12 12v12c0 6.6 5.4 12 12 12h98v98c0 6.6 5.4 12 12 12h12c6.6 0 12-5.4 12-12v-98h98c6.6 0 12-5.4 12-12v-12c0-6.6-5.4-12-12-12z\"/></svg>";
-            
+
             settings.PortalMenuItems.Add(KenovaClientConfig.Localizer["portal_home_caption"], "/", null, IconKind.FontAwesome, "fal fa-home");
 
             settings.PortalMenuItems.Add("All Kenova Controls", "/allcontrols", null, IconKind.FontAwesome, "fal fa-list-alt");
@@ -230,6 +228,8 @@ namespace BlazorDemo.Client
             //settings.PortalMenuItems.Icon.HtmlColor = "forestgreen";
 
             #endregion
+
+
 
         }
 
