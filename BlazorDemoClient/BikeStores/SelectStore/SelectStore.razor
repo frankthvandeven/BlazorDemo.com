@@ -1,0 +1,22 @@
+﻿@inherits LayerComponentBase
+@namespace BlazorDemo.Client.Components
+
+<MainLayout Title="@this.Title">
+
+    <TopContent>
+        <Toolbar Buttons="@toolbar" />
+
+        <ButtonBar>
+            <Button ButtonClicked="SelectClicked">Select</Button>
+        </ButtonBar>
+
+    </TopContent>
+    <FillContent>
+
+        <HyperGrid ItemType="GetAll_sales_stores_Record"
+                   Data="@this.data"
+                   RowDoubleClicked="SelectClicked" />
+
+    </FillContent>
+
+</MainLayout>

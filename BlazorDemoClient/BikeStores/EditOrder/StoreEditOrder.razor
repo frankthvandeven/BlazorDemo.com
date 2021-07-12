@@ -25,12 +25,16 @@
         </Rail>
 
         <Rail>
-            <InputInt32 CaptionWidth="120" InputBoxWidth="100" Caption="Store ID" FieldExpression="() => Model.store_id"
+            <InputInt32 CaptionWidth="120" InputBoxWidth="100"
+                        ShowZoomButton ZoomButtonClicked="StoreZoomClicked"
+                        Caption="Store ID" FieldExpression="() => Model.store_id"
                         CaptionLeft RemarkRight />
         </Rail>
 
         <Rail>
-            <InputInt32 CaptionWidth="120" InputBoxWidth="100" Caption="Staff ID" FieldExpression="() => Model.staff_id"
+            <InputInt32 CaptionWidth="120" InputBoxWidth="100" 
+                        ShowZoomButton ZoomButtonClicked="StaffZoomClicked"
+                        Caption="Staff ID" FieldExpression="() => Model.staff_id"
                         CaptionLeft RemarkRight />
 
         </Rail>
