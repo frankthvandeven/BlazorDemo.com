@@ -15,7 +15,7 @@
             The username is 'demo' and the password is 'demo'
         </p>
         <Rail>
-            <InputString Caption="User name or email address:" FieldExpression="() => Model.Username" AutoComplete="username email" />
+            <InputString AutoFocus Caption="User name or email address:" FieldExpression="() => Model.Username" AutoComplete="username email" />
         </Rail>
         <Rail>
             <InputString Caption="Password:" FieldExpression="() => Model.Password" IsPassword="true" AutoComplete="current-password" />
@@ -23,7 +23,7 @@
 
         <Rail Align="RailAlign.Right">
             <ButtonBar>
-                <Button ButtonClicked="LoginClicked">Sign in</Button>
+                <Button Default ButtonClicked="LoginClicked">Sign in</Button>
             </ButtonBar>
         </Rail>
 
