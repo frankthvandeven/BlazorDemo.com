@@ -32,7 +32,7 @@ namespace BlazorDemo.Client.Components
 
             Data.Items = this.Model.Recordset;
             Data.SelectedItemExpression = () => Model.Recordset.CurrentRecord;
-            Data.Mode = DisplayMode.Pagination;
+            Data.Mode = DisplayMode.Virtualization;
 
             Data.Columns.Add(c => c.order_date, "Date", 120, false);
             Data.Columns.Add(c => c.order_id, "Order number", 100, false);

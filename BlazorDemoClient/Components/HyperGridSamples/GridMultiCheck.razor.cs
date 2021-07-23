@@ -15,7 +15,7 @@ namespace BlazorDemo.Client.Components
         {
             // The first HyperGrid
             GridList.Items = Persons;
-            GridList.SelectedItemExpression = () => this.SelectedPerson;
+            //GridList.SelectedItemExpression = () => this.SelectedPerson;
             GridList.UseMultiCheck = MultiCheck.List;
             GridList.UseHeader = true;
             GridList.UseFilter = true;
@@ -30,7 +30,7 @@ namespace BlazorDemo.Client.Components
 
             // The second HyperGrid
             GridField.Items = Persons;
-            GridField.SelectedItemExpression = () => this.SelectedPerson;
+            //GridField.SelectedItemExpression = () => this.SelectedPerson;
 
             GridField.IsChecked = c => c.IsSelected;
             GridField.SetChecked = c => c.IsSelected = true;

@@ -3,20 +3,20 @@
 @inherits LayerComponentBase
 
 <MainLayout Title="@this.Title">
-        <TopContent>
-            <Toolbar Buttons="@toolbar" />
+    <TopContent>
+        <Toolbar Buttons="@toolbar" />
 
-            <Rail>
-                <InputStringNullable AutoFocus Caption="Name" FieldExpression="() => Model.SearchName" Width="180" />
-                <InputInt32Nullable Caption="Customer" FieldExpression="() => Model.SearchCustomerId" Width="80" />
-            </Rail>
+        <Rail>
+            <InputStringNullable AutoFocus Caption="Name" FieldExpression="() => Model.SearchName" Width="180" />
+            <InputInt32Nullable Caption="Customer" FieldExpression="() => Model.SearchCustomerId" Width="80" />
+        </Rail>
 
-            <ButtonBar>
-                <Button Default ButtonClicked="SearchClicked">Search</Button>
-                <Button ButtonClicked="ClearClicked">Clear</Button>
-            </ButtonBar>
+        <ButtonBar>
+            <Button Default ButtonClicked="SearchClicked">Search</Button>
+            <Button ButtonClicked="ClearClicked">Clear</Button>
+        </ButtonBar>
 
-        </TopContent>
+    </TopContent>
 
         <FillContent>
 
