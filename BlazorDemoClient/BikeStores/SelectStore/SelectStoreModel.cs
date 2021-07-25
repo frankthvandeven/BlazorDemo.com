@@ -10,7 +10,7 @@ namespace BlazorDemo.Client.Components
         public GetAll_sales_stores_Recordset Recordset = new();
 
         private int __store_id;
-        
+
         public async Task SearchExec()
         {
             Recordset.RowLimit = 2000;

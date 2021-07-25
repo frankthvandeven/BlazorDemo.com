@@ -1,7 +1,5 @@
 ﻿using Kenova.WebAssembly.Client.Components;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace BlazorDemo.Client

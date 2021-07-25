@@ -50,7 +50,7 @@ namespace BlazorDemo.Client.Components
             Data.Items = Model.Recordset;
             Data.Mode = DisplayMode.Virtualization;
             Data.SelectedItemExpression = () => Model.Recordset.CurrentRecord;
-            
+
             Data.Columns.Add(c => c.customer_id, "Customer#", 100, false);
             Data.Columns.Add(c => c.first_name, "First name", 150);
             Data.Columns.Add(c => c.last_name, "Last name", 250);

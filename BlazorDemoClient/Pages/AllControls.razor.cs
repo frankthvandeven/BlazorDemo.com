@@ -1,9 +1,9 @@
-﻿using Microsoft.AspNetCore.Components;
-using System;
-using System.Collections.Generic;
+﻿using BlazorDemo.Client.Components;
 using Kenova.WebAssembly.Client.Components;
 using Kenova.WebAssembly.Client.Util;
-using BlazorDemo.Client.Components;
+using Microsoft.AspNetCore.Components;
+using System;
+using System.Collections.Generic;
 
 namespace BlazorDemo.Client.Pages
 {
@@ -39,22 +39,22 @@ namespace BlazorDemo.Client.Pages
         {
             Breadcrumb = "All Kenova Controls";
 
-            MenuItems.Add("Introduction", "intro",  null, IconKind.FontAwesome, "fal fa-medal");
-            MenuItems.Add("Headers", "headers",  null, IconKind.FontAwesome, "fas fa-heading");
-            MenuItems.Add("Icons", "icons",  null, IconKind.FontAwesome, "fal fa-icons");
-            MenuItems.Add("Models and Validation", "validation",  null, IconKind.FontAwesome, "fas fa-box-check");
-            MenuItems.Add("Basic controls", "basic",  null, IconKind.FontAwesome, "fas fa-gamepad-alt");
-            MenuItems.Add("Input controls", "input",  null, IconKind.FontAwesome, "fas fa-keyboard");
+            MenuItems.Add("Introduction", "intro", null, IconKind.FontAwesome, "fal fa-medal");
+            MenuItems.Add("Headers", "headers", null, IconKind.FontAwesome, "fas fa-heading");
+            MenuItems.Add("Icons", "icons", null, IconKind.FontAwesome, "fal fa-icons");
+            MenuItems.Add("Models and Validation", "validation", null, IconKind.FontAwesome, "fas fa-box-check");
+            MenuItems.Add("Basic controls", "basic", null, IconKind.FontAwesome, "fas fa-gamepad-alt");
+            MenuItems.Add("Input controls", "input", null, IconKind.FontAwesome, "fas fa-keyboard");
             MenuItems.Add("Display controls", "display", null, IconKind.FontAwesome, "far fa-eye");
             MenuItems.Add("InputMultiline", "inputmultiline", null, IconKind.FontAwesome, "far fa-line-height");
-            MenuItems.Add("Overlays", "overlays",  null, IconKind.FontAwesome, "fal fa-layer-group");
-            MenuItems.Add("Tab pages", "tabs",  null, IconKind.Vector);
+            MenuItems.Add("Overlays", "overlays", null, IconKind.FontAwesome, "fal fa-layer-group");
+            MenuItems.Add("Tab pages", "tabs", null, IconKind.Vector);
             MenuItems.Icon.IconData = SVG_TAB;
-            MenuItems.Add("Toolbar", "toolbar",  null, IconKind.FontAwesome, "fas fa-tools");
+            MenuItems.Add("Toolbar", "toolbar", null, IconKind.FontAwesome, "fas fa-tools");
 
-            MenuItems.Add("DropdownList", "dropdownlist",  null, IconKind.FontAwesome, "fas fa-tools");
-            MenuItems.Add("DropdownListBasic", "dropdownlistbasic",  null, IconKind.FontAwesome, "fas fa-tools");
-            MenuItems.Add("DropdownMultiCheckList", "dropdownmultichecklist",  null, IconKind.FontAwesome, "fas fa-tools");
+            MenuItems.Add("DropdownList", "dropdownlist", null, IconKind.FontAwesome, "fas fa-tools");
+            MenuItems.Add("DropdownListBasic", "dropdownlistbasic", null, IconKind.FontAwesome, "fas fa-tools");
+            MenuItems.Add("DropdownMultiCheckList", "dropdownmultichecklist", null, IconKind.FontAwesome, "fas fa-tools");
 
             tabItems.Add("1", "First tab");
             tabItems.Add("2", "Second tab");

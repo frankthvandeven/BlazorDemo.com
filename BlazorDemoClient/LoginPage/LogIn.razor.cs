@@ -1,9 +1,7 @@
 ﻿using BlazorDemo.Shared;
 using Kenova.WebAssembly.Client.Components;
-using Kenova.WebAssembly.Client.Util;
 using Microsoft.AspNetCore.Components;
 using System;
-using System.Threading.Tasks;
 
 namespace Kenova.WebAssembly.Client.Pages
 {

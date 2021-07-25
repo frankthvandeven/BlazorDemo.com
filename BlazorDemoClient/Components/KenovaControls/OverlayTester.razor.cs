@@ -1,12 +1,6 @@
-﻿using BlazorDemo.Client.VenturaAutoCreate;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
-using Kenova.WebAssembly.Client;
-using Kenova.WebAssembly.Client.Components;
+﻿using Kenova.WebAssembly.Client.Components;
 using Microsoft.AspNetCore.Components;
+using System;
 
 namespace BlazorDemo.Client.Components
 {
@@ -96,7 +90,7 @@ namespace BlazorDemo.Client.Components
                     OwnerID = BtnOpen.ContainerID,
                     [i => i.Number] = Number + 1
                 };
-                    
+
                 ld.Open();
             }
 

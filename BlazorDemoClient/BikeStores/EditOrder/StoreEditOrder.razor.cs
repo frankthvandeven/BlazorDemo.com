@@ -72,7 +72,7 @@ namespace BlazorDemo.Client.Components
 
         private async Task StaffZoomClicked()
         {
-            if( _ld_staff.IsOpen )
+            if (_ld_staff.IsOpen)
             {
                 _ld_staff.CloseCancel();
                 return;

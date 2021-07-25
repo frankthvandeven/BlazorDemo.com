@@ -1,6 +1,6 @@
-﻿using Microsoft.AspNetCore.Components;
+﻿using Kenova.WebAssembly.Client.Components;
+using Microsoft.AspNetCore.Components;
 using System.Collections.Generic;
-using Kenova.WebAssembly.Client.Components;
 
 namespace BlazorDemo.Client.Components
 {

@@ -525,13 +525,18 @@
         <FillContent>
             <header>MultiCheck uses a generic List</header>
             <br />
+            <p>UseHeader="true"" and UseFilter="true"</p>
+            <br />
 
             <DropdownMultiCheckList Width="200" Caption="Persons:" ItemType="Person" Items="@Persons"
                                     CheckedItems="@CheckedPersons"
-                                    ColumnExpression="c => c.Name" DisplayExpression="i => i.Name" />
+                                    ColumnExpression="c => c.Name" DisplayExpression="i => i.Name"
+                                    UseFilter="true" UseHeader="true" />
 
             <br />
             <header>MultiCheck uses the Person.IsSelected field</header>
+            <br />
+            <p>UseHeader="false"" and UseFilter="false"</p>
             <br />
 
             <DropdownMultiCheckList Width="200" Caption="Persons:" ItemType="Person" Items="@Persons"

@@ -30,7 +30,7 @@ namespace BlazorDemo.Client.Components
         {
             await Task.CompletedTask; // This is an acceptable solution
 
-            if( string.IsNullOrEmpty(this.product_name))
+            if (string.IsNullOrEmpty(this.product_name))
             {
                 e.RemarkText = "Enter a product name.";
                 return;
@@ -131,7 +131,7 @@ namespace BlazorDemo.Client.Components
                 // skipped primary key column Recordset.product_id as it is AutoIncrement
             }
             else
-            {   
+            {
                 await Recordset.ExecSqlAsync(this.product_id);
 
                 if (Recordset.RecordCount == 0)

@@ -1,13 +1,12 @@
+using BlazorDemo.Shared;
+using Kenova.WebAssembly.Client;
+using Kenova.WebAssembly.Client.Components;
+using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Net.Http;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
-using Microsoft.Extensions.DependencyInjection;
 using VenturaSQL;
-using Kenova.WebAssembly.Client.Components;
-using Kenova.WebAssembly.Client;
-using BlazorDemo.Shared;
-using System.Globalization;
 
 namespace BlazorDemo.Client
 {
@@ -187,7 +186,7 @@ namespace BlazorDemo.Client
 
             #endregion
 
-        
+
             settings.LoadSettings();
 
             #region A list of menu items

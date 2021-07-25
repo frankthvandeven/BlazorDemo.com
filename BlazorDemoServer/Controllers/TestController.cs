@@ -1,12 +1,8 @@
-﻿using Blazor1.Shared;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using BlazorDemo.Server.VenturaRecordsets;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using BlazorDemo.Server.VenturaAutoCreate;
-using BlazorDemo.Server.VenturaRecordsets;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Blazor1.Server.Controllers
 {

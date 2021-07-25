@@ -1,5 +1,5 @@
-﻿using Microsoft.AspNetCore.Components;
-using Kenova.WebAssembly.Client.Components;
+﻿using Kenova.WebAssembly.Client.Components;
+using Microsoft.AspNetCore.Components;
 using System.Collections.Generic;
 
 namespace BlazorDemo.Client.Pages
@@ -15,7 +15,7 @@ namespace BlazorDemo.Client.Pages
 
             MenuItems.Add("Introduction", "intro", null, IconKind.FontAwesome, "fal fa-medal");
 
-            MenuItems.Add("MultiCheck","multicheck",  null, IconKind.FontAwesome, "fas fa-check-square");
+            MenuItems.Add("MultiCheck", "multicheck", null, IconKind.FontAwesome, "fas fa-check-square");
 
 
             foreach (var item in MenuItems)

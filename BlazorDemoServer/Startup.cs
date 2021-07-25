@@ -1,17 +1,17 @@
+using BlazorDemo.Client;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using VenturaSQL;
-using System.Data.SqlClient;
-using BlazorDemo.Client;
-using Microsoft.OpenApi.Models;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.OpenApi.Models;
+using System.Data.SqlClient;
 using System.Text;
+using VenturaSQL;
 using VenturaSQL.AspNetCore.Server.RequestHandling;
-using Microsoft.AspNetCore.HttpOverrides;
 
 namespace Blazor1.Server
 {
@@ -19,7 +19,7 @@ namespace Blazor1.Server
     {
         public Startup(IConfiguration configuration)
         {
-             Configuration = configuration;
+            Configuration = configuration;
         }
 
         public IConfiguration Configuration { get; }
@@ -33,7 +33,7 @@ namespace Blazor1.Server
             {
                 options.InputFormatters.Insert(0, new FrameStreamInputFormatter());
 
-            }); 
+            });
 
             services.AddRazorPages(); /* = support for .cshtml pages */
 

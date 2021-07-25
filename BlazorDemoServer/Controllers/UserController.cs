@@ -33,7 +33,7 @@ namespace BlazorDemo.Server.Controllers
             }
 
             if (!string.Equals(credentials.UserName, "demo", StringComparison.OrdinalIgnoreCase) ||
-                !string.Equals(credentials.Password, "demo", StringComparison.OrdinalIgnoreCase) )
+                !string.Equals(credentials.Password, "demo", StringComparison.OrdinalIgnoreCase))
             {
                 loginResult.Message = $"User/password combination unknown for user {credentials.UserName}.";
                 return loginResult;

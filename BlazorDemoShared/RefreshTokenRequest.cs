@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace BlazorDemo.Shared
+﻿namespace BlazorDemo.Shared
 {
     public class RefreshTokenRequest
     {

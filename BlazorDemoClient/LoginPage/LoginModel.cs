@@ -1,7 +1,6 @@
-﻿using System;
-using System.Threading.Tasks;
-using BlazorDemo.Shared;
+﻿using BlazorDemo.Shared;
 using Kenova.WebAssembly.Client.Components;
+using System.Threading.Tasks;
 
 namespace Kenova.WebAssembly.Client.Pages
 {
@@ -42,7 +41,7 @@ namespace Kenova.WebAssembly.Client.Pages
             LoginResult result = await KenovaHttp.PostJsonAsync<LoginResult>("api/user/login", credentials);
 
             var loginFailed = result.Token == null;
-            
+
             if (!loginFailed)
             {
                 // Success! Store token in underlying auth state service
