@@ -82,26 +82,26 @@
             </p>
             <header>Font Awesome</header>
             <p>
-                <Icon Kind="IconKind.FontAwesome" Data="fas fa-icons" />
+                <DirectIcon Kind="IconKind.FontAwesome" Data="fas fa-icons" />
                 <br />
-                <b>@("<Icon Kind=\"IconKind.FontAwesome\" Data=\"fas fa-icons\" />")</b>
+                <b>@("<DirectIcon Kind=\"IconKind.FontAwesome\" Data=\"fas fa-icons\" />")</b>
             </p>
 
             <header>SVG vector icon</header>
             <p>
-                <Icon Kind="IconKind.Vector" Data="@SVG_TAB" />
+                <DirectIcon Kind="IconKind.Vector" Data="@SVG_TAB" />
                 <br />
-                <b>@("<Icon Kind=\"IconKind.Vector\" Data=\"<svg viewBox='0 -20 512 512'><path d='m465 81...20zm0 0'/></svg>\" />")</b>
+                <b>@("<DirectIcon Kind=\"IconKind.Vector\" Data=\"<svg viewBox='0 -20 512 512'><path d='m465 81...20zm0 0'/></svg>\" />")</b>
             </p>
 
             <header>Double size</header>
             <p>
-                <Icon Kind="IconKind.FontAwesome" Data="fas fa-icons" Size="IconSize.Double" />
+                <DirectIcon Kind="IconKind.FontAwesome" Data="fas fa-icons" Size="IconSize.Double" />
                 <br />
-                <b>@("<Icon Kind=\"IconKind.FontAwesome\" Data=\"fas fa-icons\" Size=\"IconSize.Double\" />")</b>
+                <b>@("<DirectIcon Kind=\"IconKind.FontAwesome\" Data=\"fas fa-icons\" Size=\"IconSize.Double\" />")</b>
                 <br />
                 <br />
-                <Icon Kind="IconKind.Vector" Data="@SVG_TAB" Size="IconSize.Double" />
+                <DirectIcon Kind="IconKind.Vector" Data="@SVG_TAB" Size="IconSize.Double" />
             </p>
 
         </FillContent>
@@ -148,33 +148,33 @@
             <h2>RadioGroup</h2>
 
             <RadioGroup SelectedExpression="() => Model.CurrentOption">
-                <RadioButton FocusID="one">One</RadioButton>
-                <RadioButton FocusID="two">Two</RadioButton>
-                <RadioButton FocusID="three">Three</RadioButton>
+                <RadioButton Identifier="one">One</RadioButton>
+                <RadioButton Identifier="two">Two</RadioButton>
+                <RadioButton Identifier="three">Three</RadioButton>
             </RadioGroup>
 
             <h2>RadioGroup (disabled)</h2>
 
             <RadioGroup SelectedExpression="() => Model.CurrentOption">
-                <RadioButton FocusID="one" Enabled="false">One</RadioButton>
-                <RadioButton FocusID="two" Enabled="false">Two</RadioButton>
-                <RadioButton FocusID="three" Enabled="false">Three</RadioButton>
+                <RadioButton Identifier="one" Enabled="false">One</RadioButton>
+                <RadioButton Identifier="two" Enabled="false">Two</RadioButton>
+                <RadioButton Identifier="three" Enabled="false">Three</RadioButton>
             </RadioGroup>
 
             <h2>OptionGroup</h2>
 
             <OptionGroup SelectedExpression="() => Model.CurrentOption">
-                <OptionButton FocusID="one">One</OptionButton>
-                <OptionButton FocusID="two">Two</OptionButton>
-                <OptionButton FocusID="three">Three</OptionButton>
+                <OptionButton Identifier="one">One</OptionButton>
+                <OptionButton Identifier="two">Two</OptionButton>
+                <OptionButton Identifier="three">Three</OptionButton>
             </OptionGroup>
 
             <h2>OptionGroup (disabled)</h2>
 
             <OptionGroup SelectedExpression="() => Model.CurrentOption">
-                <OptionButton FocusID="one" Enabled="false">One</OptionButton>
-                <OptionButton FocusID="two" Enabled="false">Two</OptionButton>
-                <OptionButton FocusID="three" Enabled="false">Three</OptionButton>
+                <OptionButton Identifier="one" Enabled="false">One</OptionButton>
+                <OptionButton Identifier="two" Enabled="false">Two</OptionButton>
+                <OptionButton Identifier="three" Enabled="false">Three</OptionButton>
             </OptionGroup>
 
 
@@ -201,20 +201,6 @@
                 <CheckBox CheckedExpression="() => Model.PumpActive" Enabled="false">Aap</CheckBox>
                 <CheckBox CheckedExpression="() => Model.PumpActive" Enabled="false">Noot</CheckBox>
                 <CheckBox CheckedExpression="() => Model.PumpActive" Indeterminate="true" Enabled="false">Mies</CheckBox>
-            </StackPanel>
-
-            <h2>OnOffBox</h2>
-
-            <StackPanel>
-                <OnOffBox Checked="true" />
-                <OnOffBox Checked="false" />
-            </StackPanel>
-
-            <h2>OnOffBox (disabled)</h2>
-
-            <StackPanel>
-                <OnOffBox Checked="true" Enabled="false" />
-                <OnOffBox Checked="false" Enabled="false" />
             </StackPanel>
 
             @*<div class="input_row">

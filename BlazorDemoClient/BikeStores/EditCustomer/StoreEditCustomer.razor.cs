@@ -37,7 +37,6 @@ namespace BlazorDemo.Client.Components
 
             toolbar.Add("Close", CloseClicked, () => true, IconKind.FontAwesome, "far fa-times");
             toolbar.ButtonKind = ButtonKind.Cancel;
-            toolbar.AutoFocus = true;
 
             toolbar.SourceCodeButton("BikeStores/EditCustomer");
 
