@@ -38,7 +38,7 @@
     </InfoBlock>*@
 
 <MainLayout Rerender="@this.Model" Title="All Kenova Controls" MenuItems="@MenuItems">
-    <MenuPage FocusID="intro">
+    <MenuPage Identifier="intro">
         <FillContent>
             <p>
                 An overview of most of the controls (components) in Kenova.
@@ -49,7 +49,7 @@
 
         </FillContent>
     </MenuPage>
-    <MenuPage FocusID="headers">
+    <MenuPage Identifier="headers">
         <FillContent>
             <Header1 Subtitle="The Header1 component has a Subtitle parameter.">The Header1 component</Header1>
             <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est.</p>
@@ -74,7 +74,7 @@
 
         </FillContent>
     </MenuPage>
-    <MenuPage FocusID="icons">
+    <MenuPage Identifier="icons">
         <FillContent>
             <h2>Icons</h2>
             <p>
@@ -106,12 +106,12 @@
 
         </FillContent>
     </MenuPage>
-    <MenuPage FocusID="validation">
+    <MenuPage Identifier="validation">
         <FillContent>
             <ValidationDemo />
         </FillContent>
     </MenuPage>
-    <MenuPage FocusID="basic">
+    <MenuPage Identifier="basic">
         <FillContent>
             <h2>ButtonBar</h2>
             <ButtonBar>
@@ -256,7 +256,7 @@
             </div>
         </FillContent>
     </MenuPage>
-    <MenuPage FocusID="input">
+    <MenuPage Identifier="input">
         <FillContent>
             <header>InputString (enabled)</header>
             <Rail>
@@ -330,7 +330,7 @@
 
         </FillContent>
     </MenuPage>
-    <MenuPage FocusID="display">
+    <MenuPage Identifier="display">
         <FillContent>
             <p>
                 The DisplayString, DisplayDecimal etc. components are for displaying data, but the
@@ -363,7 +363,7 @@
 
         </FillContent>
     </MenuPage>
-    <MenuPage FocusID="inputmultiline">
+    <MenuPage Identifier="inputmultiline">
         <FillContent>
             <p></p>
 
@@ -390,80 +390,80 @@
 
         </FillContent>
     </MenuPage>
-    <MenuPage FocusID="overlays">
+    <MenuPage Identifier="overlays">
         <ButtonBar>
             <Button ButtonClicked="OpenFirstOverlay">Open the first overlay</Button>
         </ButtonBar>
     </MenuPage>
-    <MenuPage FocusID="tabs">
+    <MenuPage Identifier="tabs">
         <FillContent>
             <TabComponent TabItems="@tabItems">
-                <TabPage FocusID="1">
+                <TabPage Identifier="1">
                     <p>This is tab page #1.</p>
                     <p>
                         “Before you criticize someone, you should walk a mile in their shoes. That way when you criticize them, you are a mile away from them and you have their shoes.”
                     </p>
                 </TabPage>
-                <TabPage FocusID="2">
+                <TabPage Identifier="2">
                     <p>This is tab page #2.</p>
                     <p>
                         Bob: “Looks like you’ve been missing a lot of work lately.”
                         Peter: “I wouldn’t say I’ve been missing it, Bob.”
                     </p>
                 </TabPage>
-                <TabPage FocusID="3">
+                <TabPage Identifier="3">
                     <p>This is tab page #3.</p>
                     <p>
                         “Before you marry a person, you should first make them use a computer with slow Internet to see who they really are.”
                     </p>
                 </TabPage>
-                <TabPage FocusID="4">
+                <TabPage Identifier="4">
                     <p>This is tab page #4.</p>
                     <p>
                         “I haven’t spoken to my wife in years. I didn’t want to interrupt her.”
                     </p>
                 </TabPage>
-                <TabPage FocusID="5">
+                <TabPage Identifier="5">
                     <p>This is tab page #5.</p>
                     <p>
                         “Someone asked me, if I were stranded on a desert island what book would I bring: ‘How to Build a Boat.’”
                     </p>
                 </TabPage>
-                <TabPage FocusID="6">
+                <TabPage Identifier="6">
                     <p>This is tab page #6.</p>
                     <p>“You know you’ve reached middle age when you’re cautioned to slow down by your doctor, instead of by the police.”</p>
                 </TabPage>
-                <TabPage FocusID="7">
+                <TabPage Identifier="7">
                     <p>This is tab page #6.</p>
                     <p>
                         “If I’m not back in five minutes, just wait longer.”
                     </p>
                 </TabPage>
-                <TabPage FocusID="8">
+                <TabPage Identifier="8">
                     <p>This is tab page #8.</p>
                     <p>
                         “As you get older, three things happen. The first is your memory goes, and I can’t remember the other two.”
                     </p>
                 </TabPage>
-                <TabPage FocusID="9">
+                <TabPage Identifier="9">
                     <p>This is tab page #9.</p>
                     <p>
                         “Here’s some advice: At a job interview, tell them you’re willing to give 110 percent. Unless the job is a statistician.”
                     </p>
                 </TabPage>
-                <TabPage FocusID="10">
+                <TabPage Identifier="10">
                     <p>This is tab page #10.</p>
                     <p>
                         “I never forget a face—but in your case, I’ll be glad to make an exception.”
                     </p>
                 </TabPage>
-                <TabPage FocusID="11">
+                <TabPage Identifier="11">
                     <p>This is tab page #11.</p>
                     <p>
                         “Why do they call it rush hour when nothing moves?”
                     </p>
                 </TabPage>
-                <TabPage FocusID="12">
+                <TabPage Identifier="12">
                     <p>This is tab page #12.</p>
                     <p>
                         “Gentlemen, you can’t fight in here. This is the war room.”
@@ -472,12 +472,12 @@
             </TabComponent>
         </FillContent>
     </MenuPage>
-    <MenuPage FocusID="toolbar">
+    <MenuPage Identifier="toolbar">
         <FillContent>
             <Toolbar Buttons="@toolbarButtons" />
         </FillContent>
     </MenuPage>
-    <MenuPage FocusID="dropdownlist">
+    <MenuPage Identifier="dropdownlist">
         <FillContent>
             <DropdownList Width="200" Caption="Persons:" ItemType="Person" Items="@Persons"
                           SelectedItemExpression="() => this.SelectedPerson"
@@ -490,7 +490,7 @@
 
         </FillContent>
     </MenuPage>
-    <MenuPage FocusID="dropdownlistbasic">
+    <MenuPage Identifier="dropdownlistbasic">
         <FillContent>
             <DropdownListBasic Width="200" Caption="State:" FieldExpression="() => this.SelectedState" ValueType="string"
                                Items="@UnitedStates.ItemCollection" FieldChanged="DropdownListBasic_FieldChanged" />
@@ -507,7 +507,7 @@
         </FillContent>
     </MenuPage>
 
-    <MenuPage FocusID="dropdownmultichecklist">
+    <MenuPage Identifier="dropdownmultichecklist">
         <FillContent>
             <header>MultiCheck uses a generic List</header>
             <br />
