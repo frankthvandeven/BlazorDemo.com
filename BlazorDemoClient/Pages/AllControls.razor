@@ -37,7 +37,11 @@
 
     </InfoBlock>*@
 
-<MainLayout Rerender="@this.Model" Title="All Kenova Controls" MenuItems="@MenuItems">
+<MainLayout RerenderModel="@this.Model"
+            Title="All Kenova Controls"
+            MenuItems="@MenuItems"
+            SelectedIdentifierExpression="() => Model2.SelectedMenuItem">
+
     <MenuPage Identifier="intro">
         <FillContent>
             <p>
@@ -46,6 +50,11 @@
             <p>
                 The kenova.css style sheet reports version @CssVersion
             </p>
+            <br />
+            <ButtonBar>
+                <Button AutoFocus ButtonClicked="SelectBasicControls">Select Basic Controls</Button>
+            </ButtonBar>
+
 
         </FillContent>
     </MenuPage>
@@ -397,7 +406,10 @@
     </MenuPage>
     <MenuPage Identifier="tabs">
         <FillContent>
-            <TabComponent TabItems="@tabItems">
+            <ButtonBar>
+                <Button ButtonClicked="BtnSelectTab2">Select tab 2</Button>
+            </ButtonBar>
+            <TabComponent SelectedTabExpression="() => Model2.SelectedTab" TabItems="@tabItems">
                 <TabPage Identifier="1">
                     <p>This is tab page #1.</p>
                     <p>

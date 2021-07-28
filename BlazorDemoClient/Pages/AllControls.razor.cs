@@ -132,6 +132,16 @@ namespace BlazorDemo.Client.Pages
             this.SelectedState = "NY";
         }
 
+        private void BtnSelectTab2()
+        {
+            this.Model2.SelectedTab = "2";
+        }
+
+        private void SelectBasicControls()
+        {
+            this.Model2.SelectedMenuItem = "basic";
+        }
+
     }
 }
 
