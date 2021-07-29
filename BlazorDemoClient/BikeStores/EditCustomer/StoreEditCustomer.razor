@@ -1,7 +1,7 @@
 ﻿@namespace BlazorDemo.Client.Components
 @inherits LayerComponentBase
 
-<MainLayout RerenderModel="@this.Model" Title="@Title" SubTitle="Demonstration of Kenova">
+<MainLayout RerenderTrigger="@this.Model" Title="@Title" SubTitle="Demonstration of Kenova">
     <TopContent>
         <Toolbar Buttons="@toolbar" />
     </TopContent>
