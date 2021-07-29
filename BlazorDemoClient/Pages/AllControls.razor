@@ -42,6 +42,11 @@
             MenuItems="@MenuItems"
             SelectedIdentifierExpression="() => Model2.SelectedMenuItem">
 
+    @if( this.Model2.SelectedMenuItem == "intro")
+                {
+
+                }
+
     <MenuPage Identifier="intro">
         <FillContent>
             <p>
@@ -124,7 +129,7 @@
         <FillContent>
             <h2>ButtonBar</h2>
             <ButtonBar>
-                <Button>One</Button>
+                <Button AutoFocus>One</Button>
                 <Button>Two</Button>
                 <Button>Three</Button>
                 <Button>Four</Button>
@@ -269,7 +274,7 @@
         <FillContent>
             <header>InputString (enabled)</header>
             <Rail>
-                <InputString FieldExpression="() => this.InputString" Caption="Caption:" Width="200" />
+                <InputString AutoFocus FieldExpression="() => this.InputString" Caption="Caption:" Width="200" />
                 <InputString ShowClearButton="true" ShowDropdownButton="true" ShowSearchIcon="true"
                              FieldExpression="() => this.InputString" Caption="Caption:" Width="200" />
             </Rail>
@@ -350,7 +355,7 @@
 
             <header>DisplayString / DisplayDecimal (enabled)</header>
             <Rail>
-                <DisplayString FieldExpression="() => this.Model2.Name" Caption="Name" Width="180" />
+                <DisplayString AutoFocus FieldExpression="() => this.Model2.Name" Caption="Name" Width="180" />
                 <DisplayString FieldExpression="() => this.Model2.Name" Caption="Name" Width="180" />
                 <DisplayDecimal Caption="Amount" FieldExpression="() => Model2.Amount" Suffix="€" Width="120" />
             </Rail>
@@ -401,7 +406,7 @@
     </MenuPage>
     <MenuPage Identifier="overlays">
         <ButtonBar>
-            <Button ButtonClicked="OpenFirstOverlay">Open the first overlay</Button>
+            <Button AutoFocus ButtonClicked="OpenFirstOverlay">Open the first overlay</Button>
         </ButtonBar>
     </MenuPage>
     <MenuPage Identifier="tabs">
@@ -409,7 +414,7 @@
             <ButtonBar>
                 <Button ButtonClicked="BtnSelectTab2">Select tab 2</Button>
             </ButtonBar>
-            <TabComponent SelectedTabExpression="() => Model2.SelectedTab" TabItems="@tabItems">
+            <TabComponent AutoFocus SelectedTabExpression="() => Model2.SelectedTab" TabItems="@tabItems">
                 <TabPage Identifier="1">
                     <p>This is tab page #1.</p>
                     <p>
@@ -491,7 +496,7 @@
     </MenuPage>
     <MenuPage Identifier="dropdownlist">
         <FillContent>
-            <DropdownList Width="200" Caption="Persons:" ItemType="Person" Items="@Persons"
+            <DropdownList AutoFocus Width="200" Caption="Persons:" ItemType="Person" Items="@Persons"
                           SelectedItemExpression="() => this.SelectedPerson"
                           ColumnExpression="c => c.Name" DisplayExpression="i => i.Name" />
 
@@ -504,7 +509,7 @@
     </MenuPage>
     <MenuPage Identifier="dropdownlistbasic">
         <FillContent>
-            <DropdownListBasic Width="200" Caption="State:" FieldExpression="() => this.SelectedState" ValueType="string"
+            <DropdownListBasic AutoFocus Width="200" Caption="State:" FieldExpression="() => this.SelectedState" ValueType="string"
                                Items="@UnitedStates.ItemCollection" FieldChanged="DropdownListBasic_FieldChanged" />
             <br />
             <br />
@@ -526,7 +531,7 @@
             <p>UseHeader="true"" and UseFilter="true"</p>
             <br />
 
-            <DropdownMultiCheckList Width="200" Caption="Persons:" ItemType="Person" Items="@Persons"
+            <DropdownMultiCheckList AutoFocus Width="200" Caption="Persons:" ItemType="Person" Items="@Persons"
                                     CheckedItems="@CheckedPersons"
                                     ColumnExpression="c => c.Name" DisplayExpression="i => i.Name"
                                     UseFilter="true" UseHeader="true" />
