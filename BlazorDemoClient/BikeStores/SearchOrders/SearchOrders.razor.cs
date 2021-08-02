@@ -116,6 +116,11 @@ namespace BlazorDemo.Client.Components
         private async Task SearchClicked()
         {
             await LongRunningTask.SimpleRun("Searching", Model.SearchExecTask);
+
+            if (Model.Recordset.RecordCount > 0)
+                this.SetFocus("datagrid");
+            else
+                this.SetFocus("searchtext");
         }
 
         private void ClearClicked()
@@ -123,6 +128,8 @@ namespace BlazorDemo.Client.Components
             Model.SearchOrderID = null;
             Model.SearchText = null;
             Model.Recordset.Clear();
+
+            this.SetFocus("searchtext");
         }
 
 

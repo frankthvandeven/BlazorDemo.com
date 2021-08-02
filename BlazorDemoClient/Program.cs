@@ -204,10 +204,10 @@ namespace BlazorDemo.Client
             settings.PortalMenuItems.Add("HyperGrid Samples", "/hypergridsamples", null, IconKind.FontAwesome, "fal fa-th");
             settings.PortalMenuItems.Icon.HtmlColor = "red";
 
-            settings.PortalMenuItems.Add("Treeview Demo", "/treeview", null, IconKind.FontAwesome, "fal fa-folder-tree");
+            settings.PortalMenuItems.Add("Treeview", "/treeview", null, IconKind.FontAwesome, "fal fa-folder-tree");
             settings.PortalMenuItems.Icon.HtmlColor = "forestgreen";
 
-            settings.PortalMenuItems.Add("Bike Stores Demo", "/bikestores", null, IconKind.FontAwesome, "fal fa-bicycle");
+            settings.PortalMenuItems.Add("Bike Stores", "/bikestores", null, IconKind.FontAwesome, "fal fa-bicycle");
             settings.PortalMenuItems.Icon.HtmlColor = "rebeccapurple";
 
             // caption, url, enabled

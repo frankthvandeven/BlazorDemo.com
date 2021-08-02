@@ -42,10 +42,10 @@
             MenuItems="@MenuItems"
             SelectedIdentifierExpression="() => Model2.SelectedMenuItem">
 
-    @if( this.Model2.SelectedMenuItem == "intro")
-                {
+    @if (this.Model2.SelectedMenuItem == "intro")
+    {
 
-                }
+    }
 
     <MenuPage Identifier="intro">
         <FillContent>
@@ -383,7 +383,7 @@
 
             <header>InputMultiline (enabled)</header>
             <Rail>
-                <InputMultiline Enabled="true" Width="250" TextMaxHeight="150" Caption="Description" FieldExpression="() => Model2.Description" />
+                <InputMultiline AutoFocus Enabled="true" Width="250" TextMaxHeight="150" Caption="Description" FieldExpression="() => Model2.Description" />
             </Rail>
 
             <header>InputMultiline (disabled)</header>
@@ -405,9 +405,11 @@
         </FillContent>
     </MenuPage>
     <MenuPage Identifier="overlays">
-        <ButtonBar>
-            <Button AutoFocus ButtonClicked="OpenFirstOverlay">Open the first overlay</Button>
-        </ButtonBar>
+        <FillContent>
+            <ButtonBar>
+                <Button AutoFocus ButtonClicked="OpenFirstOverlay">Open the first overlay</Button>
+            </ButtonBar>
+        </FillContent>
     </MenuPage>
     <MenuPage Identifier="tabs">
         <FillContent>

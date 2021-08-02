@@ -33,7 +33,7 @@ namespace BlazorDemo.Client.Components
                 this.Title = "Select customer";
 
                 toolbar.Add("Select", SelectClicked, () => Model.Recordset.CurrentRecord != null, IconKind.FontAwesome, "far fa-bullseye-pointer");
-                toolbar.ButtonKind = ButtonKind.Default;
+                //toolbar.ButtonKind = ButtonKind.Default;
             }
 
             toolbar.Add("Edit", EditClicked, () => Model.Recordset.CurrentRecord != null, IconKind.FontAwesome, "fas fa-pencil-alt");
@@ -156,6 +156,12 @@ namespace BlazorDemo.Client.Components
         private async Task SearchClicked()
         {
             await LongRunningTask.SimpleRun("Searching", () => Model.SearchExec());
+
+            if (Model.Recordset.RecordCount > 0)
+                this.SetFocus("datagrid");
+            else
+                this.SetFocus("name");
+
         }
 
         private void ClearClicked()
@@ -164,6 +170,8 @@ namespace BlazorDemo.Client.Components
             this.Model.SearchCustomerId = null;
             this.Model.Recordset.Clear();
             this.Model.ResetModelModified();
+
+            this.SetFocus("name");
         }
 
     }

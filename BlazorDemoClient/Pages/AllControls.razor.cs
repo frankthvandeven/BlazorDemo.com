@@ -9,15 +9,15 @@ namespace BlazorDemo.Client.Pages
 {
     public partial class AllControls : LayerComponentBase
     {
-        private readonly DemoModel Model = new DemoModel();
+        private readonly DemoModel Model = new();
         private readonly AllControlsModel Model2 = new();
-        private MenuItemCollection MenuItems = new MenuItemCollection();
+        private MenuItemCollection MenuItems = new();
         private string CssVersion;
 
-        private TabItemCollection tabItems = new TabItemCollection();
-        private ToolbarItemCollection toolbarButtons = new ToolbarItemCollection();
+        private TabItemCollection tabItems = new();
+        private ToolbarItemCollection toolbarButtons = new();
         private List<Person> Persons = SampleData.CreatePersonsList();
-        private List<Person> CheckedPersons = new List<Person>();
+        private List<Person> CheckedPersons = new();
 
         private Person SelectedPerson = null;
 

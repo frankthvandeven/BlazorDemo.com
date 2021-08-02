@@ -7,7 +7,7 @@
         <Toolbar Buttons="@toolbar" />
 
         <Rail>
-            <InputStringNullable AutoFocus Caption="Name" FieldExpression="() => Model.SearchName" Width="180" />
+            <InputStringNullable AutoFocus FocusID="name" Caption="Name" FieldExpression="() => Model.SearchName" Width="180" />
             <InputInt32Nullable Caption="Customer" FieldExpression="() => Model.SearchCustomerId" Width="80" />
         </Rail>
 
@@ -20,7 +20,8 @@
 
         <FillContent>
 
-            <HyperGrid @ref="_hypergrid"
+            <HyperGrid FocusID="datagrid"
+                       @ref="_hypergrid"
                        ItemType="SearchCustomersRecord" Data="@this.Data"
                        RowDoubleClicked="RowDoubleClicked" />
 

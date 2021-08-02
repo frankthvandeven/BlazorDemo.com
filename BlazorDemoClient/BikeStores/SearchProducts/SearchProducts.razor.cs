@@ -10,9 +10,9 @@ namespace BlazorDemo.Client.Components
     {
         private string Title;
 
-        private SearchProductsModel Model = new SearchProductsModel();
+        private SearchProductsModel Model = new();
 
-        ToolbarItemCollection toolbar = new ToolbarItemCollection();
+        ToolbarItemCollection toolbar = new();
 
         private HyperData<SearchProductsRecord> data = new();
 
@@ -90,6 +90,11 @@ namespace BlazorDemo.Client.Components
         private async Task SearchClicked()
         {
             await LongRunningTask.SimpleRun("Searching", Model.SearchExec);
+
+            if (Model.Recordset.RecordCount > 0)
+                this.SetFocus("datagrid");
+            else
+                this.SetFocus("name");
         }
 
         private void ClearClicked()
@@ -97,6 +102,8 @@ namespace BlazorDemo.Client.Components
             Model.SearchProductID = null;
             Model.SearchText = null;
             Model.Recordset.Clear();
+
+            this.SetFocus("name");
         }
 
 

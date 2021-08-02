@@ -8,19 +8,20 @@
         <Toolbar Buttons="@toolbar" />
 
         <Rail>
-            <InputStringNullable AutoFocus Caption="Name" FieldExpression="() => Model.SearchText" Width="200" />
+            <InputStringNullable AutoFocus FocusID="name" Caption="Name" FieldExpression="() => Model.SearchText" Width="200" />
             <InputInt32Nullable Caption="Product number" FieldExpression="() => Model.SearchProductID" Width="100" />
         </Rail>
 
         <ButtonBar>
-            <Button ButtonClicked="SearchClicked">Search</Button>
+            <Button Default ButtonClicked="SearchClicked">Search</Button>
             <Button ButtonClicked="ClearClicked">Clear</Button>
         </ButtonBar>
 
     </TopContent>
     <FillContent>
 
-        <HyperGrid ItemType="SearchProductsRecord"
+        <HyperGrid FocusID="datagrid"
+                   ItemType="SearchProductsRecord"
                    Data="@this.data"
                    RowDoubleClicked="EditClicked" />
 

@@ -1,11 +1,62 @@
 ﻿using Kenova.WebAssembly.Client.Components;
 using Microsoft.AspNetCore.Components;
+using System.Collections.Generic;
 
 namespace BlazorDemo.Client.Pages
 {
     public partial class Index : LayerComponentBase
     {
         private MenuItemCollection MenuItems = new MenuItemCollection();
+
+        private List<Pet> pets = new()
+        {
+            new Pet { PetId = 0, Name = "Mr. Bigglesworth" },
+            new Pet { PetId = 1, Name = "Salem Saberhagen" },
+            new Pet { PetId = 2, Name = "K-9" },
+            new Pet { PetId = 3, Name = "Mr. Bigglesworth" },
+            new Pet { PetId = 4, Name = "Salem Saberhagen" },
+            new Pet { PetId = 5, Name = "K-9" },
+            new Pet { PetId = 6, Name = "Mr. Bigglesworth" },
+            new Pet { PetId = 7, Name = "Salem Saberhagen" },
+            new Pet { PetId = 8, Name = "K-9" },
+            new Pet { PetId = 9, Name = "Mr. Bigglesworth" },
+            new Pet { PetId = 10, Name = "Salem Saberhagen" },
+            new Pet { PetId = 11, Name = "K-9" },
+            new Pet { PetId = 12, Name = "Mr. Bigglesworth" },
+            new Pet { PetId = 13, Name = "Salem Saberhagen" },
+            new Pet { PetId = 14, Name = "K-9" },
+            new Pet { PetId = 15, Name = "Mr. Bigglesworth" },
+            new Pet { PetId = 16, Name = "Salem Saberhagen" },
+            new Pet { PetId = 17, Name = "K-9" },
+            new Pet { PetId = 18, Name = "Mr. Bigglesworth" },
+            new Pet { PetId = 19, Name = "Salem Saberhagen" },
+            new Pet { PetId = 20, Name = "K-9" },
+            new Pet { PetId = 21, Name = "Mr. Bigglesworth" },
+            new Pet { PetId = 22, Name = "Salem Saberhagen" },
+            new Pet { PetId = 23, Name = "K-9" },
+            new Pet { PetId = 24, Name = "Mr. Bigglesworth" },
+            new Pet { PetId = 25, Name = "Salem Saberhagen" },
+            new Pet { PetId = 26, Name = "K-9" },
+            new Pet { PetId = 27, Name = "Mr. Bigglesworth" },
+            new Pet { PetId = 28, Name = "Salem Saberhagen" },
+            new Pet { PetId = 29, Name = "K-9" },
+            new Pet { PetId = 30, Name = "Mr. Bigglesworth" },
+            new Pet { PetId = 31, Name = "Salem Saberhagen" },
+            new Pet { PetId = 32, Name = "K-9" },
+            new Pet { PetId = 33, Name = "Mr. Bigglesworth" },
+            new Pet { PetId = 34, Name = "Salem Saberhagen" },
+            new Pet { PetId = 35, Name = "K-9" },
+            new Pet { PetId = 36, Name = "Mr. Bigglesworth" },
+            new Pet { PetId = 37, Name = "Salem Saberhagen" },
+            new Pet { PetId = 38, Name = "K-9" },
+            new Pet { PetId = 39, Name = "Mr. Bigglesworth" },
+            new Pet { PetId = 40, Name = "Salem Saberhagen" },
+            new Pet { PetId = 41, Name = "K-9" },
+            new Pet { PetId = 42, Name = "Mr. Bigglesworth" },
+            new Pet { PetId = 43, Name = "Salem Saberhagen" },
+            new Pet { PetId = 44, Name = "K-9" }
+        };
+
 
         protected override void OnLayerInitialized()
         {
@@ -18,10 +69,10 @@ namespace BlazorDemo.Client.Pages
             MenuItems.Add("HyperGrid Samples", "/hypergridsamples", null, IconKind.FontAwesome, "fal fa-th");
             MenuItems.Icon.HtmlColor = "red";
 
-            MenuItems.Add("Treeview Demo", "/treeview", null, IconKind.FontAwesome, "fal fa-folder-tree");
+            MenuItems.Add("Treeview", "/treeview", null, IconKind.FontAwesome, "fal fa-folder-tree");
             MenuItems.Icon.HtmlColor = "forestgreen";
 
-            MenuItems.Add("Bike Stores Demo", "/bikestores", null, IconKind.FontAwesome, "fal fa-bicycle");
+            MenuItems.Add("Bike Stores", "/bikestores", null, IconKind.FontAwesome, "fal fa-bicycle");
             MenuItems.Icon.HtmlColor = "rebeccapurple";
 
             //MenuItems.Add("/pharmacy", "Pharmacy Demo", null, IconKind.FontAwesome, "fal fa-file-prescription");
@@ -38,9 +89,15 @@ namespace BlazorDemo.Client.Pages
 
         }
     }
+
+    public class Pet
+    {
+        public int PetId { get; set; }
+        public string Name { get; set; }
+    }
+
+
 }
-
-
 
 
 

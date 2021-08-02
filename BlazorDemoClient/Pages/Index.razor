@@ -10,6 +10,23 @@
             Welcome to Kenova
         </header>
 
+        <FlexList Items="@pets">
+            <ItemTemplate Context="pet">
+                @{
+                    int index = pets.IndexOf(pet);
+
+                }
+                <div style="width:200px;background-color:aquamarine">
+                    <p>@pet.PetId</p>
+                    @if (index == 1)
+                    {
+                        <p>Extra line of data. Extra line of data. Extra line of data. Extra line of data. Extra line of data. </p>
+                    }
+                    <p>@pet.Name</p>
+                </div>
+            </ItemTemplate>
+        </FlexList>
+
         Netherlands, 29 July 2021
 
         <p>
