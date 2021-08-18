@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpOverrides;
+using Microsoft.AspNetCore.ResponseCompression;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -10,8 +11,10 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System.Data.SqlClient;
 using System.Text;
+using System.Linq;
 using VenturaSQL;
 using VenturaSQL.AspNetCore.Server.RequestHandling;
+using BlazorDemo.Server.Hubs;
 
 namespace Blazor1.Server
 {
@@ -28,6 +31,7 @@ namespace Blazor1.Server
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddSignalR();
 
             services.AddControllers(options =>
             {
@@ -36,6 +40,12 @@ namespace Blazor1.Server
             });
 
             services.AddRazorPages(); /* = support for .cshtml pages */
+
+            //services.AddResponseCompression(opts =>
+            //{
+            //    opts.MimeTypes = ResponseCompressionDefaults.MimeTypes.Concat(
+            //        new[] { "application/octet-stream" });
+            //});
 
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
             {
@@ -106,6 +116,7 @@ namespace Blazor1.Server
             {
                 endpoints.MapRazorPages(); /* = support for .cshtml pages */
                 endpoints.MapControllers();
+                endpoints.MapHub<ChatHub>("/chathub");
                 endpoints.MapFallbackToFile("index.html");
             });
 
