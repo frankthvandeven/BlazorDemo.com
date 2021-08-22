@@ -45,6 +45,10 @@ static void SetupVenturaSQL(WebAssemblyHostBuilder builder)
 
 static void SetupKenovaPortal()
 {
+    KenovaClientConfig.Labels.HomeButton = "Kenova 17";
+    KenovaClientConfig.Labels.TopbarCenterTitle = "Presentation of cross-platform Kenova (net6.0 preview 7)"; 
+    KenovaClientConfig.Labels.AppName = "Kenova Demo";
+
     var settings = KenovaClientConfig.Settings;
 
     settings.SupportedLanguagesList.Add("en", "English");
@@ -53,7 +57,6 @@ static void SetupKenovaPortal()
     //#if !DEBUG
     KenovaClientConfig.RefreshTokenMethodAsync = refreshTokenAsync;
     //#endif
-
 
     // List of date formats etc: https://www.basicdatepicker.com/samples/cultureinfo.aspx
     // Common culture names: en-US, nl-NL (date separator -), nl-BE (date separator /), ms-MY
@@ -178,7 +181,6 @@ static void SetupKenovaPortal()
 
     #endregion
 
-
     settings.LoadSettings();
 
     #region A list of menu items
@@ -219,7 +221,6 @@ static void SetupKenovaPortal()
     //settings.PortalMenuItems.Icon.HtmlColor = "forestgreen";
 
     #endregion
-
 
 
 }

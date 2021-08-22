@@ -2,6 +2,7 @@
 @using BlazorDemo.Client.VenturaAutoCreate
 @inherits LayerComponentBase
 @inject NavigationManager NavigationManager
+@attribute [AllowAnonymous]
 
 <MainLayout DisplayHeader="false">
     <FillContent>
@@ -10,7 +11,7 @@
             Welcome to Kenova
         </header>
 
-        <FlexList AutoFocus Items="@pets">
+        <FlexList ItemType="Pet" AutoFocus Items="@pets" RowClicked="XRowClicked">
             <ItemTemplate Context="pet">
                 @{
                     int index = pets.IndexOf(pet);
