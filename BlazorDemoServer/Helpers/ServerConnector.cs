@@ -1,6 +1,6 @@
 ﻿using VenturaSQL;
 
-namespace BlazorDemo.Client
+namespace BlazorDemo.Server
 {
     public static class ServerConnector
     {

@@ -1,24 +1,17 @@
 ﻿using BlazorDemo.Shared;
 using Kenova.WebAssembly.Client.Components;
 using Microsoft.AspNetCore.Components;
-using System;
 
 namespace Kenova.WebAssembly.Client.Pages
 {
     public partial class LogIn : LayerComponentBase
     {
-        [Parameter]
-        public string Title { get; set; }
 
         [Parameter]
-        public LoginModel Model { get; set; } = new LoginModel();
+        [SupplyParameterFromQuery]
+        public string ReturnTo { get; set; }
 
-        protected override void OnLayerInitialized()
-        {
-            if (Model == null)
-                throw new ArgumentNullException("model");
-
-        }
+        private LoginModel Model = new LoginModel();
 
         private async void LoginClicked()
         {
@@ -30,24 +23,18 @@ namespace Kenova.WebAssembly.Client.Pages
                 return;
             }
 
-            var state = await KenovaClientConfig.AuthenticationStateProvider.GetAuthenticationStateAsync();
+            KenovaClientConfig.NavigationManager.NavigateTo(this.ReturnTo??"/");
 
-            var navManager = KenovaClientConfig.NavigationManager;
-
-            //Microsoft.Extensions.Primitives.StringValues initCount;
-            //var uri = navManager.ToAbsoluteUri(navManager.Uri);
-
-            navManager.NavigateTo("/");
-
-            //if (QueryHelpers.ParseQuery(uri.Query).TryGetValue("initialCount", out initCount))
-            //{
-            //    currentCount = Convert.ToInt32(initCount);
-            //}
         }
-
-
-
-
 
     }
 }
+
+//var state = await KenovaClientConfig.AuthenticationStateProvider.GetAuthenticationStateAsync();
+//var navManager = KenovaClientConfig.NavigationManager;
+//Microsoft.Extensions.Primitives.StringValues initCount;
+//var uri = navManager.ToAbsoluteUri(navManager.Uri);
+//if (QueryHelpers.ParseQuery(uri.Query).TryGetValue("initialCount", out initCount))
+//{
+//    currentCount = Convert.ToInt32(initCount);
+//}
