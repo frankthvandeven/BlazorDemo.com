@@ -60,7 +60,7 @@ namespace BlazorDemo.Client.Components
                 [i => i.Model] = SearchModel
             };
 
-            var result = await ld.OpenAsync();
+            var result = await ld.OpenWaitForCloseAsync();
 
             if (result.Cancelled)
                 return;
@@ -87,7 +87,7 @@ namespace BlazorDemo.Client.Components
             _ld_staff.Width = 400;
             _ld_staff[i => i.Model] = SelectStaffModel;
 
-            var result = await _ld_staff.OpenAsync();
+            var result = await _ld_staff.OpenWaitForCloseAsync();
 
             if (result.Cancelled)
                 return;
@@ -113,7 +113,7 @@ namespace BlazorDemo.Client.Components
             _ld_store.Width = 400;
             _ld_store[i => i.Model] = SelectStoreModel;
 
-            var result = await _ld_store.OpenAsync();
+            var result = await _ld_store.OpenWaitForCloseAsync();
 
             if (result.Cancelled)
                 return;

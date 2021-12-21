@@ -118,7 +118,7 @@ namespace BlazorDemo.Client.Pages
                 [p => p.Number] = 0
             };
 
-            ld.Open();
+            ld.OpenNonBlockingAsync();
 
         }
 

@@ -49,7 +49,7 @@ namespace BlazorDemo.Client.Components
                     [i => i.Number] = Number + 1
                 };
 
-                ld.Open();
+                ld.OpenNonBlockingAsync();
             }
             else if (Mode == "ModalFullsize")
             {
@@ -59,7 +59,7 @@ namespace BlazorDemo.Client.Components
                     [i => i.Number] = Number + 1
                 };
 
-                ld.Open();
+                ld.OpenNonBlockingAsync();
             }
             else if (Mode == "ModelessRight")
             {
@@ -69,7 +69,7 @@ namespace BlazorDemo.Client.Components
                     [i => i.Number] = Number + 1
                 };
 
-                ld.Open();
+                ld.OpenNonBlockingAsync();
             }
             else if (Mode == "Dropdown")
             {
@@ -80,7 +80,7 @@ namespace BlazorDemo.Client.Components
                     [i => i.Number] = Number + 1
                 };
 
-                ld.Open();
+                ld.OpenNonBlockingAsync();
             }
             else if (Mode == "DropdownBalloon")
             {
@@ -91,7 +91,7 @@ namespace BlazorDemo.Client.Components
                     [i => i.Number] = Number + 1
                 };
 
-                ld.Open();
+                ld.OpenNonBlockingAsync();
             }
 
         }

@@ -51,7 +51,7 @@ namespace BlazorDemo.Client.Components
                 [i => i.Model] = EditModel
             };
 
-            LayerResult layerResult = await ld.OpenAsync();
+            LayerResult layerResult = await ld.OpenWaitForCloseAsync();
 
             if (layerResult.Cancelled)
                 return;
@@ -75,7 +75,7 @@ namespace BlazorDemo.Client.Components
                 [i => i.Model] = EditModel
             };
 
-            LayerResult layerResult = await ld.OpenAsync();
+            LayerResult layerResult = await ld.OpenWaitForCloseAsync();
 
             if (layerResult.Cancelled)
                 return;
