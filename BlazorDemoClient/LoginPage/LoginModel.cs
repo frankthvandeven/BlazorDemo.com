@@ -45,7 +45,7 @@ namespace Kenova.WebAssembly.Client.Pages
             if (!loginFailed)
             {
                 // Success! Store token in underlying auth state service
-                KenovaClientConfig.AuthenticationStateProvider.AuthenticateWithNewToken(result.Token);
+                KenovaClientConfig.AuthenticationStateProvider.AuthenticateWithNewTokenAsync(result.Token);
 
                 KenovaClientConfig.Labels.UserName = result.DisplayName;
                 KenovaClientConfig.Labels.DirectoryInfo = "Database: BikeStores";

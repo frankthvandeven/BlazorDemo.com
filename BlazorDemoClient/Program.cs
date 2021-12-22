@@ -34,7 +34,8 @@ host.Services.KenovaInitialize();
 VenturaSqlConfig.SetHttpClientFactory(connector => host.Services.GetService(typeof(HttpClient)) as HttpClient);
 
 SetupVenturaSQL(builder);
-SetupKenovaPortal();
+
+await SetupKenovaPortalAsync();
 
 await host.RunAsync();
 
@@ -47,7 +48,7 @@ static void SetupVenturaSQL(WebAssemblyHostBuilder builder)
     VenturaSqlConfig.DefaultConnector = ClientConnector.BikeStores;
 }
 
-static void SetupKenovaPortal()
+static async ValueTask SetupKenovaPortalAsync()
 {
     KenovaClientConfig.Labels.HomeButton = "Kenova 17";
     KenovaClientConfig.Labels.TopbarCenterTitle = "Presentation of cross-platform Kenova (net6.0)"; 
@@ -185,7 +186,7 @@ static void SetupKenovaPortal()
 
     #endregion
 
-    settings.LoadSettings();
+    await settings.LoadSettingsAsync();
 
     #region A list of portal menu items
 
@@ -231,7 +232,7 @@ static void SetupKenovaPortal()
 
 static async Task refreshTokenAsync()
 {
-    var token = KenovaClientConfig.AuthenticationStateProvider.GetSavedToken();
+    var token = await KenovaClientConfig.AuthenticationStateProvider.GetSavedTokenAsync();
 
     if (string.IsNullOrEmpty(token))
         return;
@@ -247,7 +248,7 @@ static async Task refreshTokenAsync()
         return;
 
     // Success! Store token in underlying auth state service
-    KenovaClientConfig.AuthenticationStateProvider.AuthenticateWithNewToken(result.Token);
+    await KenovaClientConfig.AuthenticationStateProvider.AuthenticateWithNewTokenAsync(result.Token);
 
     Console.WriteLine("SETTING DISPLAYNAME TO " + result.DisplayName);
 

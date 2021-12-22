@@ -4,6 +4,7 @@ using Kenova.WebAssembly.Client.Util;
 using Microsoft.AspNetCore.Components;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace BlazorDemo.Client.Pages
 {
@@ -94,14 +95,13 @@ namespace BlazorDemo.Client.Pages
 
         }
 
-        protected override void OnAfterRender(bool firstRender)
+        protected override async Task OnAfterRenderAsync(bool firstRender)
         {
             if (firstRender)
             {
-                CssVersion = JavaScriptCaller.KNGetCssVariable("--kenova-css-version");
+                CssVersion = await JavaScriptCaller.KNGetCssVariableAsync("--kenova-css-version");
                 this.StateHasChanged();
             }
-
         }
 
 

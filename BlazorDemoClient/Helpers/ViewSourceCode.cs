@@ -1,6 +1,7 @@
 ﻿using Kenova.WebAssembly.Client;
 using Kenova.WebAssembly.Client.Components;
 using Microsoft.JSInterop;
+using System.Threading.Tasks;
 
 namespace BlazorDemo.Client
 {
@@ -10,18 +11,18 @@ namespace BlazorDemo.Client
 
         public static void SourceCodeButton(this ToolbarItemCollection toolbar, string url_part)
         {
-            toolbar.Add("Source Code", () => ViewSourceCode.Open(url_part), null, IconKind.FontAwesome, "fab fa-github");
+            toolbar.Add("Source Code", async () => await ViewSourceCode.OpenAsync(url_part), null, IconKind.FontAwesome, "fab fa-github");
         }
 
 
         /// <summary>
         /// For example Open("BikeStores/SearchCustomers");
         /// </summary>
-        public static void Open(string url_part)
+        public static ValueTask OpenAsync(string url_part)
         {
             string url = _client_base + url_part;
 
-            KenovaClientConfig.JSInProcessRuntime.InvokeVoid("open", url, "_blank");
+            return KenovaClientConfig.JSRuntime.InvokeVoidAsync("open", url, "_blank");
 
         }
 

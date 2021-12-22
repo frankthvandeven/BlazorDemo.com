@@ -51,7 +51,7 @@ namespace BlazorDemo.Client.Components
                 [i => i.Model] = EditModel
             };
 
-            LayerResult layerResult = await ld.OpenWaitForCloseAsync();
+            LayerResult layerResult = await ld.OpenThenWaitForCloseAsync();
 
             if (layerResult.Cancelled)
                 return;
@@ -75,7 +75,7 @@ namespace BlazorDemo.Client.Components
                 [i => i.Model] = EditModel
             };
 
-            LayerResult layerResult = await ld.OpenWaitForCloseAsync();
+            LayerResult layerResult = await ld.OpenThenWaitForCloseAsync();
 
             if (layerResult.Cancelled)
                 return;
@@ -92,9 +92,9 @@ namespace BlazorDemo.Client.Components
             await LongRunningTask.SimpleRun("Searching", Model.SearchExec);
 
             if (Model.Recordset.RecordCount > 0)
-                this.SetFocus("datagrid");
+                this.SetFocusAsync("datagrid");
             else
-                this.SetFocus("name");
+                this.SetFocusAsync("name");
         }
 
         private void ClearClicked()
@@ -103,7 +103,7 @@ namespace BlazorDemo.Client.Components
             Model.SearchText = null;
             Model.Recordset.Clear();
 
-            this.SetFocus("name");
+            this.SetFocusAsync("name");
         }
 
 

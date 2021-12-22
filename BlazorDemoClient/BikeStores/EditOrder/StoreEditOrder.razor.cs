@@ -60,7 +60,7 @@ namespace BlazorDemo.Client.Components
                 [i => i.Model] = SearchModel
             };
 
-            var result = await ld.OpenWaitForCloseAsync();
+            var result = await ld.OpenThenWaitForCloseAsync();
 
             if (result.Cancelled)
                 return;
@@ -70,11 +70,11 @@ namespace BlazorDemo.Client.Components
         }
 
 
-        private async Task StaffZoomClicked()
+        private async ValueTask StaffZoomClicked()
         {
             if (_ld_staff.IsOpen)
             {
-                _ld_staff.CloseCancel();
+                await _ld_staff.CloseCancelAsync();
                 return;
             }
 
@@ -87,7 +87,7 @@ namespace BlazorDemo.Client.Components
             _ld_staff.Width = 400;
             _ld_staff[i => i.Model] = SelectStaffModel;
 
-            var result = await _ld_staff.OpenWaitForCloseAsync();
+            var result = await _ld_staff.OpenThenWaitForCloseAsync();
 
             if (result.Cancelled)
                 return;
@@ -96,11 +96,11 @@ namespace BlazorDemo.Client.Components
 
         }
 
-        private async Task StoreZoomClicked()
+        private async ValueTask StoreZoomClicked()
         {
             if (_ld_store.IsOpen)
             {
-                _ld_store.CloseCancel();
+                await _ld_store.CloseCancelAsync();
                 return;
             }
 
@@ -113,7 +113,7 @@ namespace BlazorDemo.Client.Components
             _ld_store.Width = 400;
             _ld_store[i => i.Model] = SelectStoreModel;
 
-            var result = await _ld_store.OpenWaitForCloseAsync();
+            var result = await _ld_store.OpenThenWaitForCloseAsync();
 
             if (result.Cancelled)
                 return;
