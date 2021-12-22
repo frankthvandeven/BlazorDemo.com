@@ -42,7 +42,7 @@ namespace BlazorDemo.Client.Components
 
             if (Model.LookupMode)
             {
-                toolbar.Add("Close", () => this.CloseCancel(), null, IconKind.FontAwesome, "far fa-times");
+                toolbar.Add("Close", () => this.CloseCancelAsync(), null, IconKind.FontAwesome, "far fa-times");
             }
 
             toolbar.SourceCodeButton("BikeStores/SearchCustomers");
@@ -79,7 +79,7 @@ namespace BlazorDemo.Client.Components
 
         private void SelectClicked()
         {
-            this.CloseOk();
+            this.CloseOkAsync();
         }
 
         private async void EditClicked()
@@ -153,14 +153,14 @@ namespace BlazorDemo.Client.Components
             this.StateHasChanged(); // Re-render the component
         }
 
-        private async Task SearchClicked()
+        private async ValueTask SearchClicked()
         {
             await LongRunningTask.SimpleRun("Searching", () => Model.SearchExec());
 
             if (Model.Recordset.RecordCount > 0)
-                this.SetFocusAsync("datagrid");
+                await this.SetFocusAsync("datagrid");
             else
-                this.SetFocusAsync("name");
+                await this.SetFocusAsync("name");
 
         }
 
@@ -171,7 +171,7 @@ namespace BlazorDemo.Client.Components
             this.Model.Recordset.Clear();
             this.Model.ResetModelModified();
 
-            this.SetFocusAsync("name");
+            _ = this.SetFocusAsync("name");
         }
 
     }

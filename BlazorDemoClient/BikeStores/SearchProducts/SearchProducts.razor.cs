@@ -92,9 +92,9 @@ namespace BlazorDemo.Client.Components
             await LongRunningTask.SimpleRun("Searching", Model.SearchExec);
 
             if (Model.Recordset.RecordCount > 0)
-                this.SetFocusAsync("datagrid");
+                await this.SetFocusAsync("datagrid");
             else
-                this.SetFocusAsync("name");
+                await this.SetFocusAsync("name");
         }
 
         private void ClearClicked()
@@ -103,7 +103,7 @@ namespace BlazorDemo.Client.Components
             Model.SearchText = null;
             Model.Recordset.Clear();
 
-            this.SetFocusAsync("name");
+            _ = this.SetFocusAsync("name");
         }
 
 

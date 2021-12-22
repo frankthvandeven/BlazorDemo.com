@@ -9,7 +9,7 @@ namespace BlazorDemo.Client.Components
         private List<Person> Persons = SampleData.CreatePersonsList();
         private HyperData<Person> GridList = new();
         private HyperData<Person> GridField = new();
-        private Person SelectedPerson = null;
+        //private Person SelectedPerson = null;
 
         protected override void OnInitialized()
         {

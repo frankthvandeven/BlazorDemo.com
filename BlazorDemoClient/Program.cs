@@ -230,7 +230,7 @@ static async ValueTask SetupKenovaPortalAsync()
 
 }
 
-static async Task refreshTokenAsync()
+static async ValueTask refreshTokenAsync()
 {
     var token = await KenovaClientConfig.AuthenticationStateProvider.GetSavedTokenAsync();
 

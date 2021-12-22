@@ -12,7 +12,7 @@
 
 
         <ButtonBar>
-            <Button Default ButtonClicked="SearchClicked">Search</Button>
+            <Button Default ButtonClicked="async () => await SearchClicked()">Search</Button>
             <Button ButtonClicked="ClearClicked">Clear</Button>
         </ButtonBar>
 

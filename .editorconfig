@@ -1,0 +1,4 @@
+﻿[*.cs]
+
+# LindhartAnalyserMissingAwaitWarning: Possible missing await keyword
+dotnet_diagnostic.LindhartAnalyserMissingAwaitWarning.severity = error

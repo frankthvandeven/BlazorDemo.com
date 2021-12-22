@@ -37,12 +37,12 @@ namespace BlazorDemo.Client.Components
             bool result = await LongRunningTask.SimpleRun("Saving", Model.SaveTask);
 
             if (result == true)
-                this.CloseOk();
+                this.CloseOkAsync();
         }
 
         private void CloseClicked()
         {
-            this.CloseCancel();
+            this.CloseCancelAsync();
         }
 
     }

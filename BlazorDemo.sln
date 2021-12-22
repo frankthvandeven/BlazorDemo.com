@@ -15,6 +15,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kenova.WebAssembly.Client",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kenova.WebAssembly.Server", "..\..\Kenova\Projects\Kenova.WebAssembly.Server\Kenova.WebAssembly.Server.csproj", "{2DB4DE81-749F-44E3-A1DF-F208A700233D}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{A9BDBA1A-6B1A-4AF5-B899-3D45CD469E0A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug .Net Native|Any CPU = Debug .Net Native|Any CPU

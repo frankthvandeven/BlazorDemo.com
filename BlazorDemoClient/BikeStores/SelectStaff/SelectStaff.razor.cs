@@ -42,7 +42,7 @@ namespace BlazorDemo.Client.Components
         {
             Model.staff_id = Model.Recordset.CurrentRecord.staff_id;
 
-            this.CloseOk();
+            this.CloseOkAsync();
         }
 
     }
