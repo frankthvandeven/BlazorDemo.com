@@ -11,24 +11,24 @@
             Welcome to Kenova
         </header>
 
- @*       <FlexList ItemType="Pet" AutoFocus Items="@pets" RowClicked="XRowClicked">
+        @*       <FlexList ItemType="Pet" AutoFocus Items="@pets" RowClicked="XRowClicked">
             <ItemTemplate Context="pet">
-                @{
-                    int index = pets.IndexOf(pet);
+            @{
+            int index = pets.IndexOf(pet);
 
-                }
-                <div>
-                    <p>@pet.PetId</p>
-                    @if (index == 1)
-                    {
-                        <p>Extra line of data. Extra line of data. Extra line of data. Extra line of data. Extra line of data. </p>
-                    }
-                    <p>@pet.Name</p>
-                </div>
+            }
+            <div>
+            <p>@pet.PetId</p>
+            @if (index == 1)
+            {
+            <p>Extra line of data. Extra line of data. Extra line of data. Extra line of data. Extra line of data. </p>
+            }
+            <p>@pet.Name</p>
+            </div>
             </ItemTemplate>
-        </FlexList>*@
+            </FlexList>*@
 
-        Netherlands, 13 October 2021
+        Netherlands, 25 December 2021
 
         <p>
             This is the presentation site for the Kenova project. Kenova is a complete system for the
@@ -37,6 +37,19 @@
         <p>
             Blazor with WebAssembly allows us to run C# in any web browser.
         </p>
+
+        <InfoBlock Kind="InfoKind.Error">
+            <header>Unstable builds for a few days</header>
+            <p>
+                Kenova is being adapted to run in a WebView2. This paves the way to use Kenova for building Windows Desktop apps.
+                Starting 22 December the uploaded demo builds will be buggy and unstable. That will be resolved in a few days.
+                Uploading to the live server allows me to rapidly test on multiple devices. The main change is that all JavaScript
+                interfacing is done out-of-process. Before I used in-process calls wherever possible.
+            </p>
+        </InfoBlock>
+
+
+
         <ul>
             <li>
                 See <a href="https://site.sysdev.nl" target="_blank">sysdev.nl</a> for more information and my contact details.

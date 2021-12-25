@@ -26,14 +26,14 @@
 
         <Rail>
             <InputInt32 CaptionWidth="120" InputBoxWidth="100"
-                        ShowZoomButton ZoomButtonClicked="StoreZoomClicked"
+                        ShowZoomButton ZoomButtonClicked="async () => await StoreZoomClickedAsync()"
                         Caption="Store ID" FieldExpression="() => Model.store_id"
                         CaptionLeft RemarkRight />
         </Rail>
 
         <Rail>
             <InputInt32 CaptionWidth="120" InputBoxWidth="100" 
-                        ShowZoomButton ZoomButtonClicked="StaffZoomClicked"
+                        ShowZoomButton ZoomButtonClicked="async () => await StaffZoomClickedAsync()"
                         Caption="Staff ID" FieldExpression="() => Model.staff_id"
                         CaptionLeft RemarkRight />
 

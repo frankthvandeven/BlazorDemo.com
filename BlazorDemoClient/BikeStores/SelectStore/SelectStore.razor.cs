@@ -41,7 +41,7 @@ namespace BlazorDemo.Client.Components
         {
             Model.store_id = Model.Recordset.CurrentRecord.store_id;
 
-            this.CloseOkAsync();
+            _ = this.CloseOkAsync();
         }
 
     }

@@ -79,7 +79,7 @@ namespace BlazorDemo.Client.Components
 
         private void SelectClicked()
         {
-            this.CloseOkAsync();
+            _ = this.CloseOkAsync();
         }
 
         private async void EditClicked()

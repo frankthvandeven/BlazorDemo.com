@@ -1,8 +1,9 @@
-@using Kenova.WebAssembly.Client.Authorization
-@using Microsoft.AspNetCore.Components.Authorization
 
-<CascadingAuthenticationState>
-    <Router AppAssembly="@typeof(App).Assembly" AdditionalAssemblies="new[] { typeof(Portal).Assembly}">
+<Portal AppAssembly="@typeof(App).Assembly" AdditionalAssemblies="new[] { typeof(Portal).Assembly}" />
+
+
+@*<CascadingAuthenticationState>
+    <Router >
         <Found Context="routeData">
             <KenovaRouteView RouteData="@routeData" />
         </Found>
@@ -11,4 +12,4 @@
         </NotFound>
     </Router>
 </CascadingAuthenticationState>
-
+*@

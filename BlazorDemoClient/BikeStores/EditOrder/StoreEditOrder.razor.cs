@@ -39,12 +39,12 @@ namespace BlazorDemo.Client.Components
             bool result = await LongRunningTask.SimpleRun("Saving", Model.SaveTask);
 
             if (result == true)
-                this.CloseOkAsync();
+                _ = this.CloseOkAsync();
         }
 
         private void CloseClicked()
         {
-            this.CloseCancelAsync();
+            _ = this.CloseCancelAsync();
         }
 
         private async Task CustomerZoomClicked()
@@ -70,7 +70,7 @@ namespace BlazorDemo.Client.Components
         }
 
 
-        private async ValueTask StaffZoomClicked()
+        private async ValueTask StaffZoomClickedAsync()
         {
             if (_ld_staff.IsOpen)
             {
@@ -96,7 +96,7 @@ namespace BlazorDemo.Client.Components
 
         }
 
-        private async ValueTask StoreZoomClicked()
+        private async ValueTask StoreZoomClickedAsync()
         {
             if (_ld_store.IsOpen)
             {
