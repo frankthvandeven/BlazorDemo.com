@@ -6,6 +6,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorDemoDesktop", "Blazor
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kenova.WebAssembly.Client", "..\..\Kenova\Projects\Kenova.WebAssembly.Client\Kenova.WebAssembly.Client.csproj", "{B05A97ED-BEEC-4AC8-A86C-414B7EE8137D}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorDemo.Client", "BlazorDemoClient\BlazorDemo.Client.csproj", "{974DFF81-8B08-4423-9A2C-75A494EE9749}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -22,6 +24,10 @@ Global
 		{B05A97ED-BEEC-4AC8-A86C-414B7EE8137D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B05A97ED-BEEC-4AC8-A86C-414B7EE8137D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B05A97ED-BEEC-4AC8-A86C-414B7EE8137D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{974DFF81-8B08-4423-9A2C-75A494EE9749}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{974DFF81-8B08-4423-9A2C-75A494EE9749}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{974DFF81-8B08-4423-9A2C-75A494EE9749}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{974DFF81-8B08-4423-9A2C-75A494EE9749}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

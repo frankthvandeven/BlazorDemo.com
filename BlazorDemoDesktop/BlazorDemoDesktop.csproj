@@ -60,6 +60,7 @@
 
 	<ItemGroup>
 	  <ProjectReference Include="..\..\..\Kenova\Projects\Kenova.WebAssembly.Client\Kenova.WebAssembly.Client.csproj" />
+	  <ProjectReference Include="..\BlazorDemoClient\BlazorDemo.Client.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>

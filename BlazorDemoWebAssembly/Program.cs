@@ -30,18 +30,12 @@ host.Services.KenovaInitialize();
 /// VenturaSQL requests HttpClient instances from Blazor WebAssembly.
 VenturaSqlConfig.SetHttpClientFactory(connector => host.Services.GetService(typeof(HttpClient)) as HttpClient);
 
-SetupVenturaSQL(builder);
+// This is for VenturaSQL
+ClientConnector.BikeStores = new HttpConnector("BikeStores", "api/venturasql");
+
+VenturaSqlConfig.DefaultConnector = ClientConnector.BikeStores;
 
 await host.RunAsync();
-
-
-static void SetupVenturaSQL(WebAssemblyHostBuilder builder)
-{
-    // This is for VenturaSQL
-    ClientConnector.BikeStores = new HttpConnector("BikeStores", "api/venturasql");
-
-    VenturaSqlConfig.DefaultConnector = ClientConnector.BikeStores;
-}
 
 
 // Snippets:

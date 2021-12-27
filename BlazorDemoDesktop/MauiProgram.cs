@@ -1,18 +1,14 @@
 ﻿using Microsoft.AspNetCore.Components.WebView.Maui;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Maui;
 using Microsoft.Maui.Hosting;
-using Microsoft.Maui.Controls.Compatibility;
 using Microsoft.Maui.Controls.Hosting;
-using BlazorDesktopDemo.Data;
 using System.Net.Http;
-using System;
 using VenturaSQL;
-using System.Diagnostics;
+using BlazorDemo.Client;
 
 namespace BlazorDesktopDemo
 {
-	public static class MauiProgram
+    public static class MauiProgram
 	{
 		public static MauiApp CreateMauiApp()
 		{
@@ -42,19 +38,15 @@ namespace BlazorDesktopDemo
 			/// VenturaSQL requests HttpClient instances from Blazor WebAssembly.
 			VenturaSqlConfig.SetHttpClientFactory(connector => host.Services.GetService(typeof(HttpClient)) as HttpClient);
 
-			SetupVenturaSQL();
+			// This is for VenturaSQL
+			ClientConnector.BikeStores = new HttpConnector("BikeStores", "api/venturasql");
+
+			VenturaSqlConfig.DefaultConnector = ClientConnector.BikeStores;
 
 
 			return host;
 
 		}
 
-		private static void SetupVenturaSQL()
-		{
-			// This is for VenturaSQL
-			//ClientConnector.BikeStores = new HttpConnector("BikeStores", "api/venturasql");
-
-			//VenturaSqlConfig.DefaultConnector = ClientConnector.BikeStores;
-		}
 	}
 }
