@@ -17,6 +17,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kenova.WebAssembly.Server",
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{A9BDBA1A-6B1A-4AF5-B899-3D45CD469E0A}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorDemoWebAssembly", "BlazorDemoWebAssembly\BlazorDemoWebAssembly.csproj", "{8DD87158-F29E-4CF8-ABB3-7A57558861DE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug .Net Native|Any CPU = Debug .Net Native|Any CPU
@@ -65,6 +67,14 @@ Global
 		{2DB4DE81-749F-44E3-A1DF-F208A700233D}.Debug-native|Any CPU.Build.0 = Debug|Any CPU
 		{2DB4DE81-749F-44E3-A1DF-F208A700233D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2DB4DE81-749F-44E3-A1DF-F208A700233D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8DD87158-F29E-4CF8-ABB3-7A57558861DE}.Debug .Net Native|Any CPU.ActiveCfg = Debug|Any CPU
+		{8DD87158-F29E-4CF8-ABB3-7A57558861DE}.Debug .Net Native|Any CPU.Build.0 = Debug|Any CPU
+		{8DD87158-F29E-4CF8-ABB3-7A57558861DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8DD87158-F29E-4CF8-ABB3-7A57558861DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8DD87158-F29E-4CF8-ABB3-7A57558861DE}.Debug-native|Any CPU.ActiveCfg = Debug|Any CPU
+		{8DD87158-F29E-4CF8-ABB3-7A57558861DE}.Debug-native|Any CPU.Build.0 = Debug|Any CPU
+		{8DD87158-F29E-4CF8-ABB3-7A57558861DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8DD87158-F29E-4CF8-ABB3-7A57558861DE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

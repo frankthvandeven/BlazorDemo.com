@@ -9,7 +9,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="6.0.0" />
+		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="6.0.1" />
 		<!--<PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="5.0.2" />-->
 		<PackageReference Include="System.Data.SqlClient" Version="4.8.3" />
 		<PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
@@ -18,7 +18,7 @@
 
 	<ItemGroup>
 		<ProjectReference Include="..\..\..\Kenova\Projects\Kenova.WebAssembly.Server\Kenova.WebAssembly.Server.csproj" />
-		<ProjectReference Include="..\BlazorDemoClient\BlazorDemo.Client.csproj" />
+		<ProjectReference Include="..\BlazorDemoWebAssembly\BlazorDemoWebAssembly.csproj" />
 		<ProjectReference Include="..\BlazorDemoShared\BlazorDemo.Shared.csproj" />
 	</ItemGroup>
 

@@ -1,30 +1,27 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.BlazorWebAssembly">
+﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
 
 	<PropertyGroup>
 		<LangVersion>default</LangVersion>
 		<TargetFramework>net6.0</TargetFramework>
-		<BlazorWebAssemblyLoadAllGlobalizationData>true</BlazorWebAssemblyLoadAllGlobalizationData>
 		<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
-		<RunAOTCompilation>false</RunAOTCompilation>
+		<GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+		<RunAnalyzersDuringBuild>true</RunAnalyzersDuringBuild>
+		<PackageId>BlazorDemo.Client</PackageId>
 	</PropertyGroup>
+
+	<ItemGroup>
+		<SupportedPlatform Include="browser" />
+	</ItemGroup>
 
 	<ItemGroup>
 		<PackageReference Include="Lindhart.Analyser.MissingAwaitWarning" Version="2.1.0-beta" />
 		<PackageReference Include="Kenova.SourceGenerators" Version="16.0.4503" />
-		<PackageReference Include="Microsoft.AspNetCore.Components.Authorization" Version="6.0.0" />
-		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="6.0.0" />
-		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="6.0.0" PrivateAssets="all" />
-		<PackageReference Include="Microsoft.AspNetCore.SignalR.Client" Version="6.0.0" />
+		<PackageReference Include="Microsoft.AspNetCore.Components.Authorization" Version="6.0.1" />
+		<PackageReference Include="Microsoft.AspNetCore.SignalR.Client" Version="6.0.1" />
 		<PackageReference Include="Microsoft.Extensions.Http" Version="6.0.0" />
 		<PackageReference Include="System.Net.Http.Json" Version="6.0.0" />
 		<PackageReference Include="VenturaSQL.NETStandard" Version="4.1.147" />
 		<!--<PackageReference Include="Microsoft.Extensions.Localization" Version="6.0.0-preview.7.21378.6" />-->
-	</ItemGroup>
-
-	<ItemGroup>
-		<ProjectReference Include="..\..\..\Kenova\Projects\Kenova.WebAssembly.Client\Kenova.WebAssembly.Client.csproj" />
-		<ProjectReference Include="..\BlazorDemoShared\BlazorDemo.Shared.csproj" />
-		<!--<ProjectReference Include="..\Kenova.SourceGenerators\Kenova.SourceGenerators.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />-->
 	</ItemGroup>
 
 
@@ -45,6 +42,11 @@
 
 	<ItemGroup>
 		<Folder Include="BikeStores\Main\" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\..\..\Kenova\Projects\Kenova.WebAssembly.Client\Kenova.WebAssembly.Client.csproj" />
+	  <ProjectReference Include="..\BlazorDemoShared\BlazorDemo.Shared.csproj" />
 	</ItemGroup>
 
 </Project>

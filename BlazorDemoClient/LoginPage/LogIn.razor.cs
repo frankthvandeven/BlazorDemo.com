@@ -23,7 +23,7 @@ namespace Kenova.WebAssembly.Client.Pages
                 return;
             }
 
-            KenovaClientConfig.NavigationManager.NavigateTo(this.ReturnTo??"/");
+            NavigationManager.NavigateTo(this.ReturnTo??"/");
 
         }
 
