@@ -1,5 +1,5 @@
 ﻿using BlazorDemo.Client.VenturaAutoCreate;
-using Kenova.WebAssembly.Client.Components;
+using Kenova.Client.Components;
 using System;
 using System.Threading.Tasks;
 

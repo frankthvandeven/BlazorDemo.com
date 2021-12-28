@@ -1,5 +1,5 @@
-﻿using Kenova.WebAssembly.Client;
-using Kenova.WebAssembly.Client.Components;
+﻿using Kenova.Client;
+using Kenova.Client.Components;
 using Microsoft.AspNetCore.Components;
 using System;
 using System.Threading.Tasks;

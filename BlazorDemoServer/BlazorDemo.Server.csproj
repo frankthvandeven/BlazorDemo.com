@@ -17,7 +17,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\..\..\Kenova\Projects\Kenova.WebAssembly.Server\Kenova.WebAssembly.Server.csproj" />
+		<ProjectReference Include="..\..\..\Kenova\Projects\Kenova.Server\Kenova.Server.csproj" />
 		<ProjectReference Include="..\BlazorDemoWebAssembly\BlazorDemoWebAssembly.csproj" />
 		<ProjectReference Include="..\BlazorDemoShared\BlazorDemo.Shared.csproj" />
 	</ItemGroup>

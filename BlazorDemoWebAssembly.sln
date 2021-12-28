@@ -11,9 +11,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorDemo.Shared", "Blazor
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Kenova", "Kenova", "{1C28852B-351D-4FA4-9F76-55C78EC231E0}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kenova.WebAssembly.Client", "..\..\Kenova\Projects\Kenova.WebAssembly.Client\Kenova.WebAssembly.Client.csproj", "{CDAFC493-FC4A-4E1B-9736-76CDBDDA47BA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kenova.Client", "..\..\Kenova\Projects\Kenova.Client\Kenova.Client.csproj", "{CDAFC493-FC4A-4E1B-9736-76CDBDDA47BA}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kenova.WebAssembly.Server", "..\..\Kenova\Projects\Kenova.WebAssembly.Server\Kenova.WebAssembly.Server.csproj", "{2DB4DE81-749F-44E3-A1DF-F208A700233D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kenova.Server", "..\..\Kenova\Projects\Kenova.Server\Kenova.Server.csproj", "{2DB4DE81-749F-44E3-A1DF-F208A700233D}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{A9BDBA1A-6B1A-4AF5-B899-3D45CD469E0A}"
 EndProject

@@ -1,6 +1,6 @@
 ﻿using BlazorDemo.Client.Components;
-using Kenova.WebAssembly.Client.Components;
-using Kenova.WebAssembly.Client.Util;
+using Kenova.Client.Components;
+using Kenova.Client.Util;
 using Microsoft.AspNetCore.Components;
 using System;
 using System.Collections.Generic;

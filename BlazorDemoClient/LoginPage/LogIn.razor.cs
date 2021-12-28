@@ -1,8 +1,8 @@
 ﻿using BlazorDemo.Shared;
-using Kenova.WebAssembly.Client.Components;
+using Kenova.Client.Components;
 using Microsoft.AspNetCore.Components;
 
-namespace Kenova.WebAssembly.Client.Pages
+namespace Kenova.Client.Pages
 {
     public partial class LogIn : LayerComponentBase
     {

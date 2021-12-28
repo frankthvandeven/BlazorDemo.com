@@ -1,4 +1,4 @@
-﻿using Kenova.WebAssembly.Client.Components;
+﻿using Kenova.Client.Components;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;

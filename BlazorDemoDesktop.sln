@@ -4,7 +4,7 @@ VisualStudioVersion = 17.0.31611.283
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorDemoDesktop", "BlazorDemoDesktop\BlazorDemoDesktop.csproj", "{50261E3C-2508-479F-9B98-F30087B9C486}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kenova.WebAssembly.Client", "..\..\Kenova\Projects\Kenova.WebAssembly.Client\Kenova.WebAssembly.Client.csproj", "{B05A97ED-BEEC-4AC8-A86C-414B7EE8137D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kenova.Client", "..\..\Kenova\Projects\Kenova.Client\Kenova.Client.csproj", "{B05A97ED-BEEC-4AC8-A86C-414B7EE8137D}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorDemo.Client", "BlazorDemoClient\BlazorDemo.Client.csproj", "{974DFF81-8B08-4423-9A2C-75A494EE9749}"
 EndProject

@@ -1,8 +1,8 @@
 ﻿using BlazorDemo.Shared;
-using Kenova.WebAssembly.Client.Components;
+using Kenova.Client.Components;
 using System.Threading.Tasks;
 
-namespace Kenova.WebAssembly.Client.Pages
+namespace Kenova.Client.Pages
 {
     [ViewModel]
     public partial class LoginModel

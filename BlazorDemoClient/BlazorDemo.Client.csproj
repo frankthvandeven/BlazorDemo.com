@@ -15,7 +15,7 @@
 
 	<ItemGroup>
 		<PackageReference Include="Lindhart.Analyser.MissingAwaitWarning" Version="2.1.0-beta" />
-		<PackageReference Include="Kenova.SourceGenerators" Version="16.0.4503" />
+		<PackageReference Include="Kenova.SourceGenerators" Version="17.0.1" />
 		<PackageReference Include="Microsoft.AspNetCore.Components.Authorization" Version="6.0.1" />
 		<PackageReference Include="Microsoft.AspNetCore.SignalR.Client" Version="6.0.1" />
 		<PackageReference Include="Microsoft.Extensions.Http" Version="6.0.0" />
@@ -45,7 +45,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\..\..\Kenova\Projects\Kenova.WebAssembly.Client\Kenova.WebAssembly.Client.csproj" />
+	  <ProjectReference Include="..\..\..\Kenova\Projects\Kenova.Client\Kenova.Client.csproj" />
 	  <ProjectReference Include="..\BlazorDemoShared\BlazorDemo.Shared.csproj" />
 	</ItemGroup>
 
