@@ -59,7 +59,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\..\..\Kenova\Projects\Kenova.WebAssembly.Client\Kenova.WebAssembly.Client.csproj" />
+	  <ProjectReference Include="..\..\..\Kenova\Projects\Kenova.Client\Kenova.Client.csproj" />
 	  <ProjectReference Include="..\BlazorDemoClient\BlazorDemo.Client.csproj" />
 	</ItemGroup>
 
@@ -68,7 +68,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Kenova.SourceGenerators" Version="16.0.4503" />
+		<PackageReference Include="Kenova.SourceGenerators" Version="17.0.1" />
 		<PackageReference Include="VenturaSQL.NETStandard" Version="4.1.147" />
 	</ItemGroup>
 

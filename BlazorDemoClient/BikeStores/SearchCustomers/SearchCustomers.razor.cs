@@ -1,6 +1,7 @@
 ﻿using BlazorDemo.Client.VenturaRecordsets;
 using Kenova.Client;
 using Kenova.Client.Components;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Components;
 using System;
 using System.Threading.Tasks;

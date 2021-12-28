@@ -5,6 +5,7 @@ using Microsoft.Maui.Controls.Hosting;
 using System.Net.Http;
 using VenturaSQL;
 using BlazorDemo.Client;
+using System;
 
 namespace BlazorDesktopDemo
 {
@@ -23,10 +24,9 @@ namespace BlazorDesktopDemo
 
 			builder.Services.AddBlazorWebView();
 
-			//builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
+			builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri("https://localhost:5001") });
 
 			builder.Services.AddOptions(); // Needed for Authorization according to docs. https://docs.microsoft.com/en-us/aspnet/core/blazor/security/?view=aspnetcore-6.0
-
 			builder.Services.AddAuthorizationCore();
 
 			builder.Services.AddKenovaClient<Startup>();
@@ -35,7 +35,7 @@ namespace BlazorDesktopDemo
 
 			host.Services.KenovaInitialize();
 
-			/// VenturaSQL requests HttpClient instances from Blazor WebAssembly.
+			/// VenturaSQL requests HttpClient instances from Blazor.
 			VenturaSqlConfig.SetHttpClientFactory(connector => host.Services.GetService(typeof(HttpClient)) as HttpClient);
 
 			// This is for VenturaSQL

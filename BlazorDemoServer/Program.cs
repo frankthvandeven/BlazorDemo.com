@@ -1,5 +1,4 @@
 ﻿using BlazorDemo.Server;
-using BlazorDemo.Server.Hubs;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.HttpOverrides;
