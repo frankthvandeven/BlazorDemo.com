@@ -35,14 +35,13 @@ namespace BlazorDesktopDemo
 
 			host.Services.KenovaInitialize();
 
-			/// VenturaSQL requests HttpClient instances from Blazor.
+			// VenturaSQL requests HttpClient instances from Blazor.
 			VenturaSqlConfig.SetHttpClientFactory(connector => host.Services.GetService(typeof(HttpClient)) as HttpClient);
 
 			// This is for VenturaSQL
 			ClientConnector.BikeStores = new HttpConnector("BikeStores", "api/venturasql");
 
 			VenturaSqlConfig.DefaultConnector = ClientConnector.BikeStores;
-
 
 			return host;
 
