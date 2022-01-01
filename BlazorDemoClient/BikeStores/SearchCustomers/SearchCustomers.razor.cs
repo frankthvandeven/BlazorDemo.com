@@ -154,7 +154,7 @@ namespace BlazorDemo.Client.Components
             this.StateHasChanged(); // Re-render the component
         }
 
-        private async ValueTask SearchClicked()
+        private async ValueTask SearchClickedAsync()
         {
             await LongRunningTask.SimpleRun("Searching", () => Model.SearchExec());
 

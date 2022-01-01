@@ -28,29 +28,22 @@
             </ItemTemplate>
             </FlexList>*@
 
-        Netherlands, 26 December 2021
+        Netherlands, 31 December 2021
 
         <p>
             This is the presentation site for the Kenova project. Kenova is a complete system for the
-            rapid development of Line of Business software for Microsoft Blazor WebAssembly and Blazor Desktop.
+            rapid development of Line of Business software. The software runs cross-platform on any browser, 
+            and also as a Windows Desktop application with full access to the Windows API.
         </p>
         <p>
-            Blazor WebAssembly allows us to run C# in any web browser.
+            Kenova uses Blazor WebAssembly to run C# code in any web browser. Blazor Desktop is used to run
+            Windows Desktop applications.
         </p>
-
-        <InfoBlock Kind="InfoKind.Error">
-            <header>Unstable builds for a few days</header>
-            <p>
-                Kenova is being adapted to run in a WebView2. This paves the way to use Kenova for building Windows Desktop apps.
-                Between 22 December and 1 January the uploaded demo builds will be buggy and unstable.
-                Uploading to the live server allows me to rapidly test on multiple devices.
-                <br />
-                The main change is that all JavaScript interfacing is done out-of-process and must be converted to async calls.
-                Before I used in-process calls wherever possible.
-            </p>
-        </InfoBlock>
-
-
+        <p>
+            Blazor WebAssembly is Microsoft's equivalent of Angular/React/Vue, all SPA platforms. 
+            Blazor Desktop is Microsoft's equivalent of Electron, where a Desktop program uses a browser rendering engine for
+            screen output.
+        </p>
 
         <ul>
             <li>

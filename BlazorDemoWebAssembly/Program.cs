@@ -16,7 +16,6 @@ builder.RootComponents.Add<App>("#app");
 builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
 
 builder.Services.AddOptions(); // Needed for Authorization according to docs. https://docs.microsoft.com/en-us/aspnet/core/blazor/security/?view=aspnetcore-6.0
-
 builder.Services.AddAuthorizationCore();
 
 builder.Services.AddKenovaClient<Startup>();
