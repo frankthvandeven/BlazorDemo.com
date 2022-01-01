@@ -21,7 +21,7 @@ namespace BlazorDemo.Client.Components
 
         private HyperGrid<SearchCustomersRecord> _hypergrid;
 
-        protected override void OnDialogInitialized()
+        protected override async Task OnDialogInitializedAsync()
         {
             this.Breadcrumb = "Customers";
             this.Title = "Customers";
@@ -60,10 +60,6 @@ namespace BlazorDemo.Client.Components
             Data.Columns.Add(c => c.state, "State", 150);
             Data.Columns.Add(c => c.zip_code, "Zip code", 100);
 
-        }
-
-        protected override async Task OnDialogInitializedAsync()
-        {
             await Model.SearchExec();
         }
 
@@ -165,14 +161,14 @@ namespace BlazorDemo.Client.Components
 
         }
 
-        private void ClearClicked()
+        private async ValueTask ClearClickedAsync()
         {
             this.Model.SearchName = null;
             this.Model.SearchCustomerId = null;
             this.Model.Recordset.Clear();
             this.Model.ResetModelModified();
 
-            _ = this.SetFocusAsync("name");
+            await this.SetFocusAsync("name");
         }
 
     }

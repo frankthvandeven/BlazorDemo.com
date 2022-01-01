@@ -10,10 +10,9 @@
             <InputInt32Nullable Caption="Customer" FieldExpression="() => Model.SearchCustomerId" Width="80" />
         </Rail>
 
-
         <ButtonBar>
             <Button Default ButtonClicked="async () => await SearchClickedAsync()">Search</Button>
-            <Button ButtonClicked="ClearClicked">Clear</Button>
+            <Button ButtonClicked="async () => await ClearClickedAsync()">Clear</Button>
         </ButtonBar>
 
     </TopContent>
