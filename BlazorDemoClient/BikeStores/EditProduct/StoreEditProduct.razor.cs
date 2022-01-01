@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BlazorDemo.Client.Components
 {
-    public partial class StoreEditProduct : LayerComponentBase
+    public partial class StoreEditProduct : KenovaDialogBase
     {
         [Parameter]
         public StoreEditProductModel Model { get; set; }
@@ -14,7 +14,7 @@ namespace BlazorDemo.Client.Components
         private string Title;
         private ToolbarItemCollection toolbar = new ToolbarItemCollection();
 
-        protected override async Task OnLayerInitializedAsync()
+        protected override async Task OnDialogInitializedAsync()
         {
             if (Model == null)
                 throw new ArgumentNullException("model");

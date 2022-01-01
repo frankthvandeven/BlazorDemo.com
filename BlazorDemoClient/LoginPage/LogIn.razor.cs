@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Components;
 
 namespace Kenova.Client.Pages
 {
-    public partial class LogIn : LayerComponentBase
+    public partial class LogIn : KenovaDialogBase
     {
 
         [Parameter]

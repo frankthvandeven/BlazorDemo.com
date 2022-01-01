@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BlazorDemo.Client.Components
 {
-    public partial class SearchProducts : LayerComponentBase
+    public partial class SearchProducts : KenovaDialogBase
     {
         private string Title;
 
@@ -16,7 +16,7 @@ namespace BlazorDemo.Client.Components
 
         private HyperData<SearchProductsRecord> data = new();
 
-        protected override async Task OnLayerInitializedAsync()
+        protected override async Task OnDialogInitializedAsync()
         {
             this.Breadcrumb = "Products";
             this.Title = "Products";

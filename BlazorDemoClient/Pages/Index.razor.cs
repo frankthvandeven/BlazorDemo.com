@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace BlazorDemo.Client.Pages
 {
-    public partial class Index : LayerComponentBase
+    public partial class Index : KenovaDialogBase
     {
         private MenuItemCollection MenuItems = new MenuItemCollection();
 
@@ -57,8 +57,7 @@ namespace BlazorDemo.Client.Pages
             new Pet { PetId = 44, Name = "K-9" }
         };
 
-
-        protected override void OnLayerInitialized()
+        protected override void OnDialogInitialized()
         {
             Breadcrumb = "Home";
 

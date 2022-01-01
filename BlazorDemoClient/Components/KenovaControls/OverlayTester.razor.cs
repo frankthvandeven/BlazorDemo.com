@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace BlazorDemo.Client.Components
 {
-    public partial class OverlayTester : LayerComponentBase
+    public partial class OverlayTester : KenovaDialogBase
     {
 
         private Button BtnOpen;
@@ -16,7 +16,7 @@ namespace BlazorDemo.Client.Components
         public int Number { get; set; } = 0;
 
 
-        protected override void OnLayerInitialized()
+        protected override void OnDialogInitialized()
         {
             Breadcrumb = $"Overlay{Number + 1}";
 

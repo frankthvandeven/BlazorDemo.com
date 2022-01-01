@@ -3,13 +3,13 @@ using Microsoft.AspNetCore.Components;
 
 namespace BlazorDemo.Client.Pages;
 
-public partial class BikeStores : LayerComponentBase
+public partial class BikeStores : KenovaDialogBase
 {
     private MenuItemCollection MenuItems = new MenuItemCollection();
 
     private string Title = "Bike Stores Demo";
 
-    protected override void OnLayerInitialized()
+    protected override void OnDialogInitialized()
     {
         Breadcrumb = Title;
 

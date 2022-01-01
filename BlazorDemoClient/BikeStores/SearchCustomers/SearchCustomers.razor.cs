@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace BlazorDemo.Client.Components
 {
-    public partial class SearchCustomers : LayerComponentBase
+    public partial class SearchCustomers : KenovaDialogBase
     {
         private string Title;
 
@@ -21,7 +21,7 @@ namespace BlazorDemo.Client.Components
 
         private HyperGrid<SearchCustomersRecord> _hypergrid;
 
-        protected override void OnLayerInitialized()
+        protected override void OnDialogInitialized()
         {
             this.Breadcrumb = "Customers";
             this.Title = "Customers";
@@ -62,7 +62,7 @@ namespace BlazorDemo.Client.Components
 
         }
 
-        protected override async Task OnLayerInitializedAsync()
+        protected override async Task OnDialogInitializedAsync()
         {
             await Model.SearchExec();
         }

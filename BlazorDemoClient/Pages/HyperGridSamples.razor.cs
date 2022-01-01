@@ -4,12 +4,12 @@ using System.Collections.Generic;
 
 namespace BlazorDemo.Client.Pages
 {
-    public partial class HyperGridSamples : LayerComponentBase
+    public partial class HyperGridSamples : KenovaDialogBase
     {
         private readonly DemoModel Model = new DemoModel();
         private MenuItemCollection MenuItems = new MenuItemCollection();
 
-        protected override void OnLayerInitialized()
+        protected override void OnDialogInitialized()
         {
             Breadcrumb = "HyperGrid Samples";
 
