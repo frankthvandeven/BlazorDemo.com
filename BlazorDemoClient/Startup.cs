@@ -3,6 +3,7 @@ using Kenova.Client;
 using Kenova.Client.Components;
 using Microsoft.Extensions.DependencyInjection;
 using System;
+using System.Net.Http;
 using System.Threading.Tasks;
 
 namespace BlazorDemo.Client
@@ -187,9 +188,7 @@ namespace BlazorDemo.Client
 
         }
 
-
-
-        public override async ValueTask RefreshTokenAsync()
+        public override async Task RefreshTokenAsync()
         {
             var token = await KenovaClientConfig.AuthenticationStateProvider.GetSavedTokenAsync();
 
@@ -197,26 +196,33 @@ namespace BlazorDemo.Client
                 return;
 
             var refresh = new RefreshTokenRequest();
+
             refresh.Token = token;
 
-            LoginResult result = await KenovaHttp.PostJsonAsync<LoginResult>("api/user/refreshtoken", refresh);
+            var loginFailed = true;
 
-            var loginFailed = result.Token == null;
+            try
+            {
+                LoginResult result = await KenovaHttp.PostJsonAsync<LoginResult>("api/user/refreshtoken", refresh);
 
-            if (loginFailed)
-                return;
+                loginFailed = result.Token == null;
 
-            // Success! Store token in underlying auth state service
-            await KenovaClientConfig.AuthenticationStateProvider.AuthenticateWithNewTokenAsync(result.Token);
+                if (loginFailed)
+                    return;
 
-            Console.WriteLine("SETTING DISPLAYNAME TO " + result.DisplayName);
+                // Success! Store token in underlying auth state service
+                await KenovaClientConfig.AuthenticationStateProvider.AuthenticateWithNewTokenAsync(result.Token);
 
-            KenovaClientConfig.Labels.UserName = result.DisplayName;
-            KenovaClientConfig.Labels.DirectoryInfo = "Database: BikeStores";
+                Console.WriteLine("SETTING DISPLAYNAME TO " + result.DisplayName);
+
+                KenovaClientConfig.Labels.UserName = result.DisplayName;
+                KenovaClientConfig.Labels.DirectoryInfo = "Database: BikeStores";
+
+            }
+            catch (HttpRequestException)
+            { }
+
         }
-
-
-
 
     }
 }
