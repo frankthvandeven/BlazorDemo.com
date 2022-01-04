@@ -23,7 +23,7 @@ namespace Kenova.Client.Pages
                 return;
             }
 
-            NavigationManager.NavigateTo(this.ReturnTo??"/");
+            await NavigationManager.PortalNavigateToAsync(this.ReturnTo??"/");
 
         }
 

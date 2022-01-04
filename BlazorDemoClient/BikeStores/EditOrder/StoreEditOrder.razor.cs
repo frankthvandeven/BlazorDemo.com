@@ -62,7 +62,7 @@ namespace BlazorDemo.Client.Components
 
             var result = await ld.OpenThenWaitForCloseAsync();
 
-            if (result.Cancelled)
+            if (result.Cancelled || result.Aborted)
                 return;
 
             this.Model.customer_id = SearchModel.Recordset.CurrentRecord.customer_id;
@@ -72,7 +72,7 @@ namespace BlazorDemo.Client.Components
 
         private async ValueTask StaffZoomClickedAsync()
         {
-            if (_ld_staff.IsOpen)
+            if (_ld_staff.IsOpen())
             {
                 await _ld_staff.CloseCancelAsync();
                 return;
@@ -89,7 +89,7 @@ namespace BlazorDemo.Client.Components
 
             var result = await _ld_staff.OpenThenWaitForCloseAsync();
 
-            if (result.Cancelled)
+            if (result.Cancelled || result.Aborted)
                 return;
 
             this.Model.staff_id = SelectStaffModel.Recordset.CurrentRecord.staff_id;
@@ -98,7 +98,7 @@ namespace BlazorDemo.Client.Components
 
         private async ValueTask StoreZoomClickedAsync()
         {
-            if (_ld_store.IsOpen)
+            if (_ld_store.IsOpen())
             {
                 await _ld_store.CloseCancelAsync();
                 return;
@@ -115,7 +115,7 @@ namespace BlazorDemo.Client.Components
 
             var result = await _ld_store.OpenThenWaitForCloseAsync();
 
-            if (result.Cancelled)
+            if (result.Cancelled || result.Aborted)
                 return;
 
             this.Model.store_id = SelectStoreModel.Recordset.CurrentRecord.store_id;

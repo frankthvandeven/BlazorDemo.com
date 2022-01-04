@@ -82,14 +82,14 @@ namespace BlazorDemo.Client.Pages
 
         }
 
-        private void XRowClicked(Pet pet)
-        {
-            NavigationManager.NavigateTo("/zzzzz");
-        }
+        //private void XRowClicked(Pet pet)
+        //{
+        //    NavigationManager.PortalNavigateToAsync("/zzzzz");
+        //}
 
         private void TileClicked(MenuItem item)
         {
-            //NavigationManager.NavigateTo(item.FocusID);
+            //NavigationManager.PortalNavigateTo(item.FocusID);
 
         }
     }

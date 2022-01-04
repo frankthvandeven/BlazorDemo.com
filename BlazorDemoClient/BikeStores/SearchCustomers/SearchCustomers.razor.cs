@@ -96,7 +96,7 @@ namespace BlazorDemo.Client.Components
 
             LayerResult result = await ld.OpenThenWaitForCloseAsync();
 
-            if (result.Cancelled)
+            if (result.Cancelled || result.Aborted)
                 return;
 
             // Update the DataGrid with modified data.
@@ -128,7 +128,7 @@ namespace BlazorDemo.Client.Components
 
             LayerResult result = await ld.OpenThenWaitForCloseAsync();
 
-            if (result.Cancelled)
+            if (result.Cancelled || result.Aborted)
                 return;
 
             // Update the DataGrid with modified data.

@@ -28,8 +28,3 @@ namespace BlazorDemo.Client
 
     }
 }
-
-
-
-
-//NavigationManager.NavigateTo(url, false);//opens the new page on same browser tab
