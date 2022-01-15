@@ -1,4 +1,5 @@
 ﻿using BlazorDemo.Server;
+using BlazorDemo.Server.Hubs;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.HttpOverrides;
@@ -16,7 +17,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-//builder.Services.AddSignalR();
+builder.Services.AddSignalR();
 
 builder.Services.AddControllers(options =>
 {
@@ -96,7 +97,9 @@ app.UseAuthorization(); // Obligated, must be placed between UseRouting() and Us
 
 app.MapRazorPages(); /* = support for .cshtml pages */
 app.MapControllers();
-//app.MapHub<ChatHub>("/chathub");
+
+app.MapHub<ChatHub>("/chathub");
+
 app.MapFallbackToFile("index.html");
 
 app.Run();

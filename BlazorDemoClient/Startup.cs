@@ -1,4 +1,5 @@
-﻿using BlazorDemo.Shared;
+﻿using BlazorDemo.Client.Pages;
+using BlazorDemo.Shared;
 using Kenova.Client;
 using Kenova.Client.Components;
 using Microsoft.Extensions.DependencyInjection;
@@ -175,9 +176,13 @@ namespace BlazorDemo.Client
             settings.PortalMenuItems.Add("Orders", "/orders", null, IconKind.FontAwesome, "fal fa-money-check-edit-alt");
             settings.PortalMenuItems.Add("Products", "/products", null, IconKind.FontAwesome, "fal fa-box");
 
+            settings.PortalMenuItems.Add("Push Messages", "/pushtest", null, IconKind.FontAwesome, "fal fa-comments");
+            settings.PortalMenuItems.Icon.HtmlColor = "darkblue";
 
             settings.PortalMenuItems.Add("WindowedTest", typeof(BlazorDemo.Client.Components.SearchCustomers), null, IconKind.FontAwesome, "fal fa-window");
             settings.PortalMenuItems.Icon.HtmlColor = "DarkGray";
+
+            settings.PortalMenuItems.Add("WorkflowTest", "/workflowtest", null, IconKind.FontAwesome, "fal fa-window");
 
 
 

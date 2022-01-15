@@ -1,0 +1,28 @@
+﻿@using BlazorDemo.Client.Components
+@page "/pushtest"
+@inherits KenovaDialogBase
+@inject NavigationManager NavigationManager
+
+<MainLayout Title="Push Messages Test">
+    <TopContent>
+        <Toolbar Buttons="@toolbar" />
+        <Rail>
+            <InputString AutoFocus FocusID="message" Caption="Message" FieldExpression="() => Model.Message" Width="180" />
+        </Rail>
+
+        <ButtonBar>
+            <Button Default ButtonClicked="async () => await SendMessageClickedAsync()">Search</Button>
+        </ButtonBar>
+
+    </TopContent>
+
+    <FillContent>
+
+        <HyperGrid FocusID="datagrid" DebugName="PushTest"
+                   @ref="_hypergrid"
+                   ItemType="PushTestData" Data="@this.Data"
+                    />
+
+    </FillContent>
+
+</MainLayout>

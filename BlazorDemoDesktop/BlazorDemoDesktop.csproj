@@ -69,6 +69,8 @@
 
 	<ItemGroup>
 		<PackageReference Include="Kenova.SourceGenerators" Version="17.0.1" />
+		<PackageReference Include="Microsoft.Graphics.Win2D" Version="1.0.0.30" />
+		<PackageReference Include="Microsoft.WindowsAppSDK" Version="1.0.0" />
 		<PackageReference Include="VenturaSQL.NETStandard" Version="4.1.147" />
 	</ItemGroup>
 

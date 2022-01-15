@@ -10,6 +10,10 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+	  <Content Remove="Properties\launchSettings.json" />
+	</ItemGroup>
+
+	<ItemGroup>
 		<SupportedPlatform Include="browser" />
 	</ItemGroup>
 
@@ -42,6 +46,10 @@
 
 	<ItemGroup>
 		<Folder Include="BikeStores\Main\" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Include="Properties\launchSettings.json" />
 	</ItemGroup>
 
 	<ItemGroup>
