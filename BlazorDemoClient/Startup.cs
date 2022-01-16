@@ -176,15 +176,14 @@ namespace BlazorDemo.Client
             settings.PortalMenuItems.Add("Orders", "/orders", null, IconKind.FontAwesome, "fal fa-money-check-edit-alt");
             settings.PortalMenuItems.Add("Products", "/products", null, IconKind.FontAwesome, "fal fa-box");
 
+            settings.PortalMenuItems.Add("WorkflowTest", "/workflowtest", null, IconKind.FontAwesome, "fal fa-bezier-curve");
+            settings.PortalMenuItems.Icon.HtmlColor = "#15aabf";
+
             settings.PortalMenuItems.Add("Push Messages", "/pushtest", null, IconKind.FontAwesome, "fal fa-comments");
             settings.PortalMenuItems.Icon.HtmlColor = "darkblue";
 
             settings.PortalMenuItems.Add("WindowedTest", typeof(BlazorDemo.Client.Components.SearchCustomers), null, IconKind.FontAwesome, "fal fa-window");
             settings.PortalMenuItems.Icon.HtmlColor = "DarkGray";
-
-            settings.PortalMenuItems.Add("WorkflowTest", "/workflowtest", null, IconKind.FontAwesome, "fal fa-window");
-
-
 
             //settings.PortalMenuItems.Add("Pharmacy Demo", "/pharmacy", null, IconKind.FontAwesome, "fas fa-file-prescription");
             //settings.PortalMenuItems.Icon.HtmlColor = "forestgreen";
