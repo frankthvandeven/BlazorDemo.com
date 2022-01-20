@@ -163,27 +163,16 @@ namespace BlazorDemo.Client
             settings.PortalMenuItems.Add("HyperGrid Samples", "/hypergridsamples", null, IconKind.FontAwesome, "fal fa-th");
             settings.PortalMenuItems.Icon.HtmlColor = "red";
 
-            settings.PortalMenuItems.Add("Treeview", "/treeview", null, IconKind.FontAwesome, "fal fa-folder-tree");
-            settings.PortalMenuItems.Icon.HtmlColor = "forestgreen";
-
             settings.PortalMenuItems.Add("Bike Stores", "/bikestores", null, IconKind.FontAwesome, "fal fa-bicycle");
             settings.PortalMenuItems.Icon.HtmlColor = "rebeccapurple";
-
-            // caption, url, enabled
-            //
 
             settings.PortalMenuItems.Add("Customers", "/customers", null, IconKind.FontAwesome, "fal fa-user-friends");
             settings.PortalMenuItems.Add("Orders", "/orders", null, IconKind.FontAwesome, "fal fa-money-check-edit-alt");
             settings.PortalMenuItems.Add("Products", "/products", null, IconKind.FontAwesome, "fal fa-box");
 
-            settings.PortalMenuItems.Add("WorkflowTest", "/workflowtest", null, IconKind.FontAwesome, "fal fa-bezier-curve");
+            settings.PortalMenuItems.Add("Experimental", "/experimental", null, IconKind.FontAwesome, "fad fa-flask");
             settings.PortalMenuItems.Icon.HtmlColor = "#15aabf";
 
-            settings.PortalMenuItems.Add("Push Messages", "/pushtest", null, IconKind.FontAwesome, "fal fa-comments");
-            settings.PortalMenuItems.Icon.HtmlColor = "darkblue";
-
-            settings.PortalMenuItems.Add("WindowedTest", typeof(BlazorDemo.Client.Components.SearchCustomers), null, IconKind.FontAwesome, "fal fa-window");
-            settings.PortalMenuItems.Icon.HtmlColor = "DarkGray";
 
             //settings.PortalMenuItems.Add("Pharmacy Demo", "/pharmacy", null, IconKind.FontAwesome, "fas fa-file-prescription");
             //settings.PortalMenuItems.Icon.HtmlColor = "forestgreen";

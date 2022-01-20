@@ -1,0 +1,18 @@
+﻿@page "/experimental"
+@inherits KenovaDialogBase
+@inject NavigationManager NavigationManager
+
+<MainLayout DisplayHeader="false">
+    <FillContent>
+
+        <header>
+            Experimental Features
+        </header>
+
+        <p>
+            Features for demo purposes.
+        </p>
+
+        <FeatureTiles MenuItems="@MenuItems" />
+    </FillContent>
+</MainLayout>
