@@ -68,11 +68,11 @@ namespace BlazorDemo.Client.Pages
             MenuItems.Add("HyperGrid Samples", "/hypergridsamples", null, IconKind.FontAwesome, "fal fa-th");
             MenuItems.Icon.HtmlColor = "red";
 
-            MenuItems.Add("Treeview", "/treeview", null, IconKind.FontAwesome, "fal fa-folder-tree");
-            MenuItems.Icon.HtmlColor = "forestgreen";
-
             MenuItems.Add("Bike Stores", "/bikestores", null, IconKind.FontAwesome, "fal fa-bicycle");
             MenuItems.Icon.HtmlColor = "rebeccapurple";
+
+            MenuItems.Add("Experimental", "/experimental", null, IconKind.FontAwesome, "fad fa-flask");
+            MenuItems.Icon.HtmlColor = "#15aabf";
 
             //MenuItems.Add("/pharmacy", "Pharmacy Demo", null, IconKind.FontAwesome, "fal fa-file-prescription");
             //MenuItems.Icon.HtmlColor = "forestgreen";

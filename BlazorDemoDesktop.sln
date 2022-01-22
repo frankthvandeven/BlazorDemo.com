@@ -8,8 +8,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kenova.Client", "..\..\Keno
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorDemo.Client", "BlazorDemoClient\BlazorDemo.Client.csproj", "{974DFF81-8B08-4423-9A2C-75A494EE9749}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorDemo.Server", "BlazorDemoServer\BlazorDemo.Server.csproj", "{7D5F2933-202B-4F37-98A8-E1D7F1EC73E8}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,10 +28,6 @@ Global
 		{974DFF81-8B08-4423-9A2C-75A494EE9749}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{974DFF81-8B08-4423-9A2C-75A494EE9749}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{974DFF81-8B08-4423-9A2C-75A494EE9749}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7D5F2933-202B-4F37-98A8-E1D7F1EC73E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7D5F2933-202B-4F37-98A8-E1D7F1EC73E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7D5F2933-202B-4F37-98A8-E1D7F1EC73E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7D5F2933-202B-4F37-98A8-E1D7F1EC73E8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -206,7 +206,7 @@ namespace BlazorDemo.Client
                 // Success! Store token in underlying auth state service
                 await KenovaClientConfig.AuthenticationStateProvider.AuthenticateWithNewTokenAsync(result.Token);
 
-                Console.WriteLine("SETTING DISPLAYNAME TO " + result.DisplayName);
+                if (KenovaClientConfig.Diagnostics) Console.WriteLine("SETTING DISPLAYNAME TO " + result.DisplayName);
 
                 KenovaClientConfig.Labels.UserName = result.DisplayName;
                 KenovaClientConfig.Labels.DirectoryInfo = "Database: BikeStores";

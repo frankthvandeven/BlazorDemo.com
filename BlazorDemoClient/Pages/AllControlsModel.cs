@@ -1,4 +1,5 @@
-﻿using Kenova.Client.Components;
+﻿using Kenova.Client;
+using Kenova.Client.Components;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -35,7 +36,7 @@ public partial class AllControlsModel
     {
         if (e.IsMember(m => m.SelectedMenuItem))
         {
-            Console.WriteLine($"Validating SelectedMenuItem {this.SelectedMenuItem}");
+            if (KenovaClientConfig.Diagnostics) Console.WriteLine($"Validating SelectedMenuItem {this.SelectedMenuItem}");
         }
 
         return null;

@@ -1,4 +1,5 @@
-﻿using Kenova.Client.Components;
+﻿using Kenova.Client;
+using Kenova.Client.Components;
 using Microsoft.AspNetCore.Components;
 using System;
 using System.Threading.Tasks;
@@ -25,7 +26,7 @@ namespace BlazorDemo.Client.Components
 
         protected override void OnDispose()
         {
-            Console.WriteLine($"OVERLAYTESTER DISPOSE Overlay{Number}");
+            if (KenovaClientConfig.Diagnostics) Console.WriteLine($"OVERLAYTESTER DISPOSE Overlay{Number}");
         }
 
         protected override void OnAfterRender(bool firstRender)
