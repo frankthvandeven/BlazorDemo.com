@@ -22,10 +22,12 @@ namespace BlazorDemo.Client.Components
             this.Breadcrumb = $"Edit product {Model.product_id}";
             this.Title = $"Edit product {Model.product_id}";
 
-            toolbar.Add("Save", SaveClicked, () => Model.IsModelModified, IconKind.FontAwesome, "far fa-save");
+            toolbar.Add("Save", SaveClicked, () => Model.IsModelModified,
+                IconKind.FontAwesome, "far fa-save");
             toolbar.ButtonKind = ButtonKind.Default;
 
-            toolbar.Add("Close", CloseClicked, () => true, IconKind.FontAwesome, "far fa-times");
+            toolbar.Add("Close", CloseClicked, () => true,
+                IconKind.FontAwesome, "far fa-times");
 
             toolbar.SourceCodeButton("BikeStores/EditProduct");
 

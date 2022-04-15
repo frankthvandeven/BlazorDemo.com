@@ -3,6 +3,7 @@ using BlazorDemo.Server.Hubs;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.HttpOverrides;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -52,6 +53,12 @@ builder.Services.AddSwaggerGen(c =>
     c.SwaggerDoc("v1", new OpenApiInfo { Title = "BlazorDemo.Server", Version = "v1" });
 });
 
+// Entity Framework Core 6
+builder.Services.AddDbContext<BikeStoresContext>(options =>
+  options.UseSqlServer(builder.Configuration.GetConnectionString("BikeStores")));
+
+builder.Services.AddDatabaseDeveloperPageExceptionFilter();
+
 var app = builder.Build();
 
 //string db_folder = env.ContentRootPath;
@@ -78,6 +85,9 @@ if (app.Environment.IsDevelopment())
     // Swagger
     app.UseSwagger();
     app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "WebApplication9 v1"));
+
+    app.UseDeveloperExceptionPage(); // EF Core
+    app.UseMigrationsEndPoint(); // EF Core
 
 }
 else
