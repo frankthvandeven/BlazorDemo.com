@@ -20,10 +20,37 @@ namespace BlazorDemo.Client.Pages
             if( firstRender)
             {
                 WorkflowData data = new WorkflowData();
+                WorkflowItem item = null;
 
-                data.items.Add(new WorkflowItem { x = 10, y = 10 });
-                data.items.Add(new WorkflowItem { x = 100, y = 10 });
-                data.items.Add(new WorkflowItem { x = 200, y = 10 });
+                item = new WorkflowItem();
+                item.id = "aap";
+                item.x = 10;
+                item.y = 10;
+                item.inConnectors.Add(new WorkflowConnector());
+                item.inConnectors.Add(new WorkflowConnector());
+                item.inConnectors.Add(new WorkflowConnector());
+                item.outConnectors.Add(new WorkflowConnector { connected = true, connectedTo = "mies", connectedIndex = 0 });
+                item.outConnectors.Add(new WorkflowConnector());
+                item.outConnectors.Add(new WorkflowConnector());
+                data.items.Add(item);
+
+                item = new WorkflowItem();
+                item.id = "noot";
+                item.x = 100;
+                item.y = 10;
+                item.inConnectors.Add(new WorkflowConnector());
+                item.inConnectors.Add(new WorkflowConnector());
+                item.outConnectors.Add(new WorkflowConnector());
+                item.outConnectors.Add(new WorkflowConnector());
+                data.items.Add(item);
+
+                item = new WorkflowItem();
+                item.id = "mies";
+                item.x = 200;
+                item.y = 10;
+                item.inConnectors.Add(new WorkflowConnector());
+                item.outConnectors.Add(new WorkflowConnector());
+                data.items.Add(item);
 
                 await WorkflowComponent.SetWorkflowData(data);
 
