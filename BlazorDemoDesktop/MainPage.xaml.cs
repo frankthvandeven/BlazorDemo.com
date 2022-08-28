@@ -1,13 +1,9 @@
-﻿using System;
-using Microsoft.Maui.Controls;
+﻿namespace BlazorDemoDesktop;
 
-namespace BlazorDesktopDemo
+public partial class MainPage : ContentPage
 {
-	public partial class MainPage : ContentPage
+	public MainPage()
 	{
-		public MainPage()
-		{
-			InitializeComponent();
-		}
+		InitializeComponent();
 	}
 }

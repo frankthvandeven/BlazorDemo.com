@@ -1,51 +1,49 @@
 ﻿using Microsoft.AspNetCore.Components.WebView.Maui;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Maui.Hosting;
-using Microsoft.Maui.Controls.Hosting;
-using System.Net.Http;
-using VenturaSQL;
 using BlazorDemo.Client;
-using System;
+using VenturaSQL;
 
-namespace BlazorDesktopDemo
+namespace BlazorDemoDesktop;
+
+public static class MauiProgram
 {
-    public static class MauiProgram
+	public static MauiApp CreateMauiApp()
 	{
-		public static MauiApp CreateMauiApp()
-		{
-			var builder = MauiApp.CreateBuilder();
-			builder
-				.RegisterBlazorMauiWebView()
-				.UseMauiApp<App>()
-				.ConfigureFonts(fonts =>
-				{
-					fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
-				});
+		var builder = MauiApp.CreateBuilder();
+		builder
+			.UseMauiApp<App>()
+			.ConfigureFonts(fonts =>
+			{
+				fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
+			});
 
-			builder.Services.AddBlazorWebView();
+		builder.Services.AddMauiBlazorWebView();
 
-			builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri("https://localhost:5001") });
+#if DEBUG
+		builder.Services.AddBlazorWebViewDeveloperTools();
+#endif
 
-			builder.Services.AddOptions(); // Needed for Authorization according to docs. https://docs.microsoft.com/en-us/aspnet/core/blazor/security/?view=aspnetcore-6.0
-			builder.Services.AddAuthorizationCore();
+        builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri("https://localhost:5001") });
 
-			builder.Services.AddKenovaClient<Startup>();
+        builder.Services.AddOptions(); // Needed for Authorization according to docs. https://docs.microsoft.com/en-us/aspnet/core/blazor/security/?view=aspnetcore-6.0
+        builder.Services.AddAuthorizationCore();
 
-			var host = builder.Build();
+        builder.Services.AddKenovaClient<Startup>();
 
-			host.Services.KenovaInitialize();
+        var host = builder.Build();
 
-			// VenturaSQL requests HttpClient instances from Blazor.
-			VenturaSqlConfig.SetHttpClientFactory(connector => host.Services.GetService(typeof(HttpClient)) as HttpClient);
+        host.Services.KenovaInitialize();
 
-			// This is for VenturaSQL
-			ClientConnector.BikeStores = new HttpConnector("BikeStores", "api/venturasql");
+        // VenturaSQL requests HttpClient instances from Blazor.
+        VenturaSqlConfig.SetHttpClientFactory(connector => host.Services.GetService(typeof(HttpClient)) as HttpClient);
 
-			VenturaSqlConfig.DefaultConnector = ClientConnector.BikeStores;
+        // This is for VenturaSQL
+        ClientConnector.BikeStores = new HttpConnector("BikeStores", "api/venturasql");
 
-			return host;
+        VenturaSqlConfig.DefaultConnector = ClientConnector.BikeStores;
 
-		}
+        return host;
 
-	}
+        //builder.Services.AddSingleton<WeatherForecastService>();
+        //return builder.Build();
+    }
 }

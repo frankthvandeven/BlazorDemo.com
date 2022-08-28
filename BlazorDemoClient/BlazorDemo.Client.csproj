@@ -20,8 +20,8 @@
 	<ItemGroup>
 		<PackageReference Include="Lindhart.Analyser.MissingAwaitWarning" Version="2.1.0-beta" />
 		<PackageReference Include="Kenova.SourceGenerators" Version="17.0.1" />
-		<PackageReference Include="Microsoft.AspNetCore.Components.Authorization" Version="6.0.4" />
-		<PackageReference Include="Microsoft.AspNetCore.SignalR.Client" Version="6.0.4" />
+		<PackageReference Include="Microsoft.AspNetCore.Components.Authorization" Version="6.0.8" />
+		<PackageReference Include="Microsoft.AspNetCore.SignalR.Client" Version="6.0.8" />
 		<PackageReference Include="Microsoft.Extensions.Http" Version="6.0.0" />
 		<PackageReference Include="System.Net.Http.Json" Version="6.0.0" />
 		<PackageReference Include="VenturaSQL.NETStandard" Version="4.1.149" />
