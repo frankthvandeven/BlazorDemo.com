@@ -1,12 +1,13 @@
 ﻿@page "/workflowtest"
 @inherits KenovaDialogBase
 @inject NavigationManager NavigationManager
-@attribute [AllowAnonymous]
+@attribute [AllowAnonymous] 
+@using Workflows.Client.Components
 
 <MainLayout Title="WorkflowTest">
     <FillContent>
 
-        <Workflow @ref="WorkflowComponent" />
+        <WorkflowComponent @ref="WorkflowComponent" />
 
     </FillContent>
 </MainLayout>

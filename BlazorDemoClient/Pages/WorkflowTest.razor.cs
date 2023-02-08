@@ -2,12 +2,13 @@
 using Microsoft.AspNetCore.Components;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Workflows.Client.Components;
 
 namespace BlazorDemo.Client.Pages
 {
     public partial class WorkflowTest : KenovaDialogBase
     {
-        private Workflow WorkflowComponent;
+        private WorkflowComponent WorkflowComponent;
 
         protected override void OnDialogInitialized()
         {

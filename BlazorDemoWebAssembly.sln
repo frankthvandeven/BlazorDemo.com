@@ -15,6 +15,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kenova.Server", "..\..\Keno
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorDemoWebAssembly", "BlazorDemoWebAssembly\BlazorDemoWebAssembly.csproj", "{8DD87158-F29E-4CF8-ABB3-7A57558861DE}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Workflows.Client", "..\..\Kenova\Projects\Workflows.Client\Workflows.Client.csproj", "{C76FCBAF-6B24-48CF-AA81-6934ED86B4EE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug .Net Native|Any CPU = Debug .Net Native|Any CPU
@@ -71,6 +73,14 @@ Global
 		{8DD87158-F29E-4CF8-ABB3-7A57558861DE}.Debug-native|Any CPU.Build.0 = Debug|Any CPU
 		{8DD87158-F29E-4CF8-ABB3-7A57558861DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8DD87158-F29E-4CF8-ABB3-7A57558861DE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C76FCBAF-6B24-48CF-AA81-6934ED86B4EE}.Debug .Net Native|Any CPU.ActiveCfg = Debug|Any CPU
+		{C76FCBAF-6B24-48CF-AA81-6934ED86B4EE}.Debug .Net Native|Any CPU.Build.0 = Debug|Any CPU
+		{C76FCBAF-6B24-48CF-AA81-6934ED86B4EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C76FCBAF-6B24-48CF-AA81-6934ED86B4EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C76FCBAF-6B24-48CF-AA81-6934ED86B4EE}.Debug-native|Any CPU.ActiveCfg = Debug|Any CPU
+		{C76FCBAF-6B24-48CF-AA81-6934ED86B4EE}.Debug-native|Any CPU.Build.0 = Debug|Any CPU
+		{C76FCBAF-6B24-48CF-AA81-6934ED86B4EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C76FCBAF-6B24-48CF-AA81-6934ED86B4EE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

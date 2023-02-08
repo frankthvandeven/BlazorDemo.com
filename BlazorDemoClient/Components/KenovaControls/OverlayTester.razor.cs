@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BlazorDemo.Client.Components
 {
-    public partial class OverlayTester : KenovaDialogBase
+    public partial class OverlayTester : KenovaDialogBase, IAsyncDisposable 
     {
 
         private Button BtnOpen;
@@ -23,6 +23,12 @@ namespace BlazorDemo.Client.Components
 
         }
 
+        public ValueTask DisposeAsync()
+        {
+            Console.WriteLine($"OVERLAYTESTER DISPOSE Overlay{Number}");
+            return ValueTask.CompletedTask;
+
+        }
 
         protected override void OnDispose()
         {
