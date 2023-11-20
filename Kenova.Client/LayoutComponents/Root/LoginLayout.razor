@@ -1,0 +1,24 @@
+﻿@namespace Kenova.Client.Components
+@inherits LayoutComponentBase
+
+@{
+    if (KenovaClientConfig.Diagnostics) Console.WriteLine("📺 Rendering <LoginLayout>");
+}
+
+
+<PortalRoot ShowPortalTopbar="false" ShowPortalMenu="false" ShowPortalBreadcrumb="false">
+	<div class="kn-loginlayout-container">
+
+		<div class="kn-loginlayout-contentsection">
+			<div class="kn-loginlayout-contentsection-appname">
+				@KenovaClientConfig.Labels.AppName
+			</div>
+			<div class="kn-loginlayout-contentsection-dialog">
+				@Body
+			</div>
+		</div>
+
+		<div class="kn-loginlayout-bottomsection">
+		</div>
+	</div>
+</PortalRoot>

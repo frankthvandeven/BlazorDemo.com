@@ -1,0 +1,24 @@
+﻿WHEN RUNNING THE APP OPENS THE BROWSER BUT NO URL APPEARS IN THE BROWSER'S URL BAR:
+There is probably a problem with the registration of the SSL certificate for testing.
+
+Open CMD as Administrator and then:
+
+cd "c:\Program Files (x86)\IIS Express"
+
+IisExpressAdminCmd.exe setupsslUrl -url:https://localhost:PORT/ -UseSelfSigned
+
+
+
+https://improveandrepeat.com/2020/05/recreate-the-self-signed-https-certificate-for-localhost-in-iis-express/
+https://www.hanselman.com/blog/WorkingWithSSLAtDevelopmentTimeIsEasierWithIISExpress.aspx
+
+
+LATEST .NET 5.0 INSTALLER:
+
+https://github.com/dotnet/installer
+
+
+
+
+
+https://visualstudiomagazine.com/articles/2021/11/04/new-aspnet-core-docs.aspx

@@ -1,0 +1,27 @@
+﻿@namespace Kenova.Client.Components
+@inherits KenovaComponentBase
+
+<div class="kn-header1-container">
+
+    <div class="kn-header1-title">
+        @this.ChildContent
+    </div>
+
+    @if (this.Subtitle != null)
+    {
+        <div class="kn-header1-subtitle">
+            @this.Subtitle
+        </div>
+    }
+
+</div>
+
+@code {
+    [Parameter]
+    public RenderFragment ChildContent { get; set; }
+
+    [Parameter]
+    public string Subtitle { get; set; } = null;
+
+
+}

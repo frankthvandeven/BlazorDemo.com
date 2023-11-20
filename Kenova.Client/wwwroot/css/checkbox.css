@@ -1,0 +1,132 @@
+﻿
+.kn-checkbox {
+    /*cursor: pointer;*/
+    /*overflow: hidden;*/
+    /*text-overflow: ellipsis;*/
+    /*background-clip: padding-box;*/
+    /*border: 1px solid transparent !important;*/
+    display: flex;
+    width: fit-content;
+}
+
+    .kn-checkbox:focus {
+        outline-offset: 2px;
+    }
+
+    .kn-checkbox.checked.enabled {
+        --display-svg-checked: block;
+        --display-svg-indeterminate: none;
+        --foreground-color: #fff;
+        --background-color: #0078d4;
+        --border-color: #0078d4;
+        --label-color: #323130;
+    }
+
+    .kn-checkbox.unchecked.enabled {
+        --display-svg-checked: none;
+        --display-svg-indeterminate: none;
+        --foreground-color: #0078d4;
+        --background-color: #fff;
+        --border-color: #201f1e;
+        --label-color: #323130;
+    }
+
+    .kn-checkbox.indeterminate.enabled {
+        --display-svg-checked: none;
+        --display-svg-indeterminate: initial;
+        --foreground-color: #0078d4;
+        --background-color: #fff;
+        --border-color: #201f1e;
+        --label-color: #323130;
+    }
+
+    .kn-checkbox.checked.disabled {
+        --display-svg-checked: block;
+        --display-svg-indeterminate: none;
+        --foreground-color: #a19f9d;
+        --background-color: #fff;
+        --border-color: #a19f9d;
+        --label-color: #a19f9d;
+    }
+
+    .kn-checkbox.unchecked.disabled {
+        --display-svg-checked: none;
+        --display-svg-indeterminate: none;
+        --foreground-color: #a19f9d;
+        --background-color: #fff;
+        --border-color: #a19f9d;
+        --label-color: #a19f9d;
+    }
+
+    .kn-checkbox.indeterminate.disabled {
+        --display-svg-checked: none;
+        --display-svg-indeterminate: initial;
+        --foreground-color: #a19f9d;
+        --background-color: #fff;
+        --border-color: #a19f9d;
+        --label-color: #a19f9d;
+    }
+
+    .kn-checkbox.enabled:hover {
+        cursor:pointer;
+    }
+
+    .kn-checkbox.checked.enabled:hover {
+        --background-color: #005a9e;
+        --border-color: #005a9e;
+    }
+
+    .kn-checkbox.unchecked.enabled:hover {
+        /*--display-svg-checked: block;*/
+        /*--foreground-color: #201f1e;*/
+        --background-color: #005a9e;
+        --border-color: #005a9e;
+    }
+
+    .kn-checkbox.indeterminate.enabled:hover {
+        --foreground-color: #005a9e;
+    }
+
+.kn-checkbox-tickbox {
+    flex: 0 0 auto;
+    position: relative;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 2px;
+    box-sizing: border-box;
+    border-color: var(--border-color);
+    background-color: var(--background-color);
+    width: 18px;
+    height: 18px;
+    transition-property: background-color, border-color;
+    transition-duration: .2s;
+    transition-timing-function: cubic-bezier(.4, 0, .23, 1);
+    /*margin-right: 10px;*/
+}
+
+.kn-checkbox-svg-checked {
+    display: var(--display-svg-checked);
+    position: absolute;
+    height: 90%;
+    width: 90%;
+    top: -1px;
+    left: 1px;
+    fill: var(--foreground-color);
+}
+
+.kn-checkbox-svg-indeterminate {
+    display: var(--display-svg-indeterminate);
+    position: absolute;
+    height: 50%;
+    width: 50%;
+    top: 25%;
+    left: 25%;
+    background-color: var(--foreground-color);
+}
+
+.kn-check-label {
+    flex: 0 0 auto;
+    align-self: center;
+    color: var(--label-color);
+    padding-left: 8px;
+}

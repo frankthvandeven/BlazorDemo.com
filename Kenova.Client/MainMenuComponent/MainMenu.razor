@@ -1,0 +1,62 @@
+﻿@namespace Kenova.Client.SystemComponents
+@inherits KenovaComponentBase
+
+@{
+    var collapsed = Collapsed ? "collapsed" : "expanded";
+}
+
+<div class="kn-mainmenu-container @collapsed">
+
+    @if (Collapsed == false)
+    {
+        <div class="kn-mainmenu-search-section">
+            <div class="kn-mainmenu-inputelement">
+                <InputString InputElementId="@input_element_id"
+                             FieldExpression="() => this.SearchText"
+                             FieldChanged="FilterTextChanged"
+                             FieldUpdate="UpdateKind.Timer" Milliseconds="400"
+                             ShowSearchIcon ShowClearButton
+                             Placeholder="Search (Ctrl+/)"
+                             AutoFocus AutoFocusPriority="5"/>
+            </div>
+            <div class="kn-mainmenu-collapsebutton" @onclick="CollapseClicked">
+                <svg viewBox="0 0 16 16">
+                    <g>
+                        <path d="M14.65 15.53L8 8.88l-6.65 6.65-.7-.71L8 7.47l7.35 7.35-.7.71z"></path>
+                        <path d="M14.65 8.53L8 1.88 1.35 8.53l-.7-.71L8 .47l7.35 7.35-.7.71z"></path>
+                    </g>
+                </svg>
+
+            </div>
+        </div>
+
+        <HyperGrid @ref="@hyper_grid" DebugName="MainMenu"
+                   AdditionalStyle="flex:1 1 auto;height:0px;"
+                   ItemType="MenuItem" Data="@this.Data"
+                   WidePadding="true"
+                   InputElementId="@input_element_id" />
+
+    }
+    else
+    {
+        <div class="kn-mainmenu-veil" @onclick="ExpandClicked">
+            <svg viewBox="0 0 16 16">
+                <g>
+                    <path d="M14.65 15.53L8 8.88l-6.65 6.65-.7-.71L8 7.47l7.35 7.35-.7.71z"></path>
+                    <path d="M14.65 8.53L8 1.88 1.35 8.53l-.7-.71L8 .47l7.35 7.35-.7.71z"></path>
+                </g>
+            </svg>
+        </div>
+    }
+</div>
+
+
+@code {
+
+    public enum XWidth
+    {
+        Container = -1,
+        Content = -2
+    }
+
+}

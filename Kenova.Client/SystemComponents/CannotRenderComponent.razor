@@ -1,0 +1,26 @@
+﻿@namespace Kenova.Client.SystemComponents
+@inherits KenovaComponentBase
+
+<div class="kn-cannot-render-container">
+    <div class="kn-cannot-render-header">
+        The data the component has to render is not as expected.
+    </div>
+    <div class="kn-cannot-render-subheader">
+        The data was either either modified without Kenova getting signalled the proper way or the
+        data was not set at all.
+    </div>
+
+    @if (this.Messages != null)
+    {
+        <ul>
+            @foreach (var msg in this.Messages)
+            {
+                <li>
+                    @((MarkupString)msg)
+                </li>
+            }
+        </ul>
+    }
+
+</div>
+

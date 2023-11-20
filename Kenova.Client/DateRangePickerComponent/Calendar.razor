@@ -1,0 +1,201 @@
+﻿@namespace Kenova.Client.Components
+@using System.Globalization
+@inherits KenovaComponentBase
+
+<table class="table-condensed">
+    <thead>
+        <tr>
+            @{
+                var minDate = Side == SideType.Left ? Picker.MinDate : Picker.StartDate;
+                var maxDate = Picker.MaxDate;
+                var prevBtnVisible = (!minDate.HasValue || minDate < CalendarData.FirstDay) && (LinkedCalendars != true || Side == SideType.Left);
+                var nextBtnVisible = (!maxDate.HasValue || maxDate > CalendarData.LastDay) && (LinkedCalendars != true || Side == SideType.Right); }
+            @if (ShowWeekNumbers == true || ShowISOWeekNumbers == true)
+            {
+            <th></th>
+            }
+
+            @if (prevBtnVisible)
+            {
+            <th class="kn-daterangepicker-prev-month" @onclick="@(e => PreviousMonth(e) )">
+                <span></span>
+            </th>
+            }
+            else
+            {
+            <th>
+                <span></span>
+            </th>
+            }
+
+
+            <th colspan="5" class="month">
+                @if (ShowDropdowns == true)
+                {
+                    var currentMonth = CalendarData[1][1].Month;
+                    var currentYear = CalendarData[1][1].Year;
+                    var inMinYear = currentYear == MinYear;
+                    var inMaxYear = currentYear == MaxYear;
+                <select id="@_select_year_id" @key="CalendarData.Month" class="monthselect" @onchange="@(m => MonthSelected(m))">
+                    @for (var m = 1; m < 13; m++)
+                        {
+                            var enabled = (!inMinYear || (m >= minDate?.Month)) && (!inMaxYear || (m <= maxDate?.Month));
+                            var selected = m == currentMonth;
+                    <option @key="m" selected="@selected" disabled="@(!enabled)" value="@m">
+                        @Culture.DateTimeFormat.GetMonthName(m)
+                    </option>
+                    }
+                </select>
+                <select @key="CalendarData.Month.Year" class="yearselect" @onchange="@(y => YearSelected(y))">
+                    @for (var y = MinYear; y <= MaxYear; y++)
+                        {
+                    <option @key="y" value="@y" selected="@(y == currentYear)">@y</option>
+                    }
+                </select>
+                }
+                else
+                {
+                @Culture.DateTimeFormat.GetMonthName(CalendarData[1][1].Month)<text>&nbsp;</text>
+                @CalendarData[1][1].Year
+                    }
+            </th>
+
+            @if (nextBtnVisible)
+            {
+            <th class="kn-daterangepicker-next-month" @onclick="@(e => NextMonth(e) )">
+                <span></span>
+            </th>
+            }
+            else
+            {
+            <th>
+                <span></span>
+            </th>
+            }
+
+        </tr>
+        <tr>
+
+            @if (ShowWeekNumbers == true || ShowISOWeekNumbers == true)
+            {
+            <th class="week">@WeekAbbreviation</th>
+            }
+
+            @foreach (var dayOfWeekName in DayNames)
+            {
+            <th>@dayOfWeekName</th>
+            }
+
+        </tr>
+    </thead>
+    <tbody>
+        @if (Picker.EndDate == null && Picker.StartDate != null && MaxSpan.HasValue)
+        {
+            var maxLimit = Picker.StartDate.Value.Add(MaxSpan.Value);
+            if (!maxDate.HasValue || maxLimit < maxDate)
+            {
+                maxDate = maxLimit;
+            }
+        }
+
+        @for (int row = 0; row < 6; row++)
+        {
+        <tr>
+            @if (ShowWeekNumbers == true)
+                {
+                    var weekRule = Culture.DateTimeFormat.CalendarWeekRule;
+                    var firstDayOfWeek = CalendarData.FirstDayOfWeek;
+            <td class="week">
+                @DateTimeFormatInfo.CurrentInfo.Calendar.GetWeekOfYear(CalendarData[row][0].DateTime, weekRule, firstDayOfWeek)
+            </td>
+            }
+                else if (ShowISOWeekNumbers == true)
+                {
+            <td class="week">
+                @GetIso8601WeekOfYear(CalendarData[row][0].DateTime)
+            </td>
+            }
+            
+
+            @for (int col = 0; col < 7; col++)
+            {
+                var dt = CalendarData[row][col];
+                var disabled = false;
+
+                sb.Clear();
+
+                //highlight today's date
+                if (dt.Date == DateTime.Today)
+                    sb.Append(" today");
+
+                //highlight weekends
+                if (dt.DayOfWeek == DayOfWeek.Saturday || dt.DayOfWeek == DayOfWeek.Sunday)
+                    sb.Append(" weekend");
+
+                //grey out the dates in other months displayed at beginning and end of this calendar
+                if (dt.Month != CalendarData[1][1].Month)
+                {
+                    sb.Append(" off");
+                    sb.Append(" ends");
+                }
+                //don't allow selection of dates before the minimum date
+                if (Picker.MinDate.HasValue && dt < Picker.MinDate)
+                {
+                    sb.Append(" off");
+                    sb.Append(" disabled");
+                    disabled = true;
+                }
+                //don't allow selection of dates after the maximum date
+                if (maxDate.HasValue && dt > maxDate)
+                {
+                    sb.Append(" off");
+                    sb.Append(" disabled");
+                    disabled = true;
+                }
+
+                //don't allow selection of date if a custom function decides it's invalid
+                if (this.IsDayDisabled(dt))
+                {
+                    sb.Append(" off");
+                    sb.Append(" disabled");
+                    disabled = true;
+                }
+
+                //highlight the currently selected start date
+                if (dt.ToString("yyyy-MM-dd") == Picker.StartDate?.ToString("yyyy-MM-dd"))
+                {
+                    sb.Append(" active");
+                    sb.Append(" start-date");
+                }
+
+                //highlight the currently selected end date
+                if (Picker.EndDate != null && dt.ToString("yyyy-MM-dd") == Picker.EndDate?.ToString("yyyy-MM-dd"))
+                {
+                    sb.Append(" active");
+                    sb.Append(" end-date");
+                }
+
+                //highlight dates in-between the selected dates
+                if (Picker.EndDate != null && dt > Picker.StartDate && dt < Picker.EndDate)
+                {
+                    sb.Append(" in-range");
+                }
+
+                //highlight dates in-between the selected dates when hover
+                if ((dt > Picker.StartDate && dt < HoverDate) || dt.Date == HoverDate?.Date)
+                {
+                    sb.Append(" in-range");
+                }
+
+                if (!disabled)
+                {
+                    sb.Append(" available");
+                }
+
+            <td class="@sb.ToString()" @onmouseover="@(_ => OnMouseOverDate(dt))" @onclick="@(_ => ClickDate(disabled, dt))">@dt.Day</td>
+            }
+        </tr>
+        }
+    </tbody>
+</table>
+

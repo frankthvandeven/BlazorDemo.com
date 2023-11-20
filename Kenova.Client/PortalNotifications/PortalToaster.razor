@@ -1,0 +1,23 @@
+﻿@namespace Kenova.Client.SystemComponents
+@inherits KenovaComponentBase
+@inject KenovaLocalizer Loc
+@inject NavigationManager NavigationManager
+
+<div class="kn-portal-toast-container">
+
+    <CascadingValue Value="this" IsFixed="true">
+
+        @for (int i = 0; i < this.Items.Count; i++)
+        {
+            var item = this.Items[i];
+
+            if (item.ToastVisible)
+            {
+                <ToastComponent @key="@item.Key" NotificationItem="@item" />
+            }
+
+        }
+
+    </CascadingValue>
+
+</div>

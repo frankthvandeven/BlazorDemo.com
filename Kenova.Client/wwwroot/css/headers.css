@@ -1,0 +1,31 @@
+﻿
+header {
+    font-weight: 600;
+    font-size: 18px;
+    margin-bottom: 16px;
+    /* min-width: 300px; */
+}
+
+.kn-header1-container {
+    margin: 8px 0px;
+}
+
+.kn-header1-title {
+    flex: 0 0 auto;
+    height: auto;
+    font-weight: 600;
+    font-size: 24px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.kn-header1-subtitle {
+    flex: 0 0 auto;
+    height: auto;
+    color: #646464;
+    font-size: 12px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

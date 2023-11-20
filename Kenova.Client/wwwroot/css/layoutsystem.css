@@ -1,0 +1,176 @@
+﻿
+.kn-mainlayout-container {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+}
+
+.kn-mainlayout-headersection {
+    flex: 0 0 auto;
+    height: auto;
+    display: flex;
+    padding: 8px 20px;
+}
+
+.kn-mainlayout-headersection-icon {
+    flex: 0 0 auto;
+    width: 0px;
+}
+
+.kn-mainlayout-headersection-titles {
+    flex: 1 1 auto;
+    width: 0px;
+    display: flex;
+    flex-direction: column;
+    /*justify-content: center;*/
+    /*align-items: center;*/
+}
+
+.kn-mainlayout-headersection-maintitle {
+    flex: 0 0 auto;
+    height: auto;
+    font-weight: 600;
+    font-size: 24px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+    .kn-mainlayout-headersection-maintitle span {
+        font-weight: 400;
+    }
+
+.kn-mainlayout-headersection-subtitle {
+    flex: 0 0 auto;
+    height: auto;
+    color: #646464;
+    font-size: 12px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+
+
+.kn-mainlayout-contentsection {
+    flex: 1 1 auto;
+    height: 0px;
+    /*background-color: antiquewhite;*/
+    display: flex;
+}
+
+.kn-mainlayout-contentsection-mainmenu {
+    flex: 0 0 auto;
+    width: auto;
+    /*background-color: darkkhaki;*/
+}
+
+.kn-mainlayout-contentsection-dialog {
+    flex: 1 1 auto;
+    width: 0px;
+    /*overflow-x: hidden;*/
+    /*overflow-y: scroll;*/
+}
+
+.kn-pagedivider-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.kn-pagedivider-container-menupage {
+    height: 100%;
+    display: flex;
+}
+
+.kn-pagedivider-topcontent {
+    flex: 0 0 auto;
+    height: auto;
+    overflow: visible; /* was hidden */
+    padding: 0 20px 0 20px;
+}
+
+.kn-pagedivider-fillcontent {
+    flex: 1 1 auto;
+    /*height: 0px;*/
+    padding: 20px;
+    overflow-x: auto; /* was hidden */
+    overflow-y: auto;
+}
+
+.kn-pagedivider-bottomcontent {
+    flex: 0 0 auto;
+    height: auto;
+    overflow: visible; /* was hidden */
+    padding: 0 20px 0 20px;
+}
+
+.kn-bluescreenlayout-container {
+    background-color: #0072C6;
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* LoginLayout */
+
+.kn-loginlayout-container {
+    background-color: #0072C6;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.kn-loginlayout-center-container {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+}
+
+.kn-loginlayout-contentsection {
+    flex: 1 1 auto;
+    height: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.kn-loginlayout-contentsection-appname {
+    /*flex: 0 0 auto;*/
+    /*height: auto;*/
+    font-weight: 300;
+    font-size: 36px;
+    color: white;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-bottom: 20px;
+}
+
+.kn-loginlayout-contentsection-dialog {
+    /*flex: 0 0 auto;*/
+    width: 300px;
+    /*height: auto;*/
+    padding: 40px;
+    background-color: white;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    border: 1px solid #818c94;
+}
+
+.kn-loginlayout-bottomsection {
+    flex: 0 0 auto;
+    height: 28px;
+    background-color: #002E4F;
+    /*display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;*/
+}

@@ -1,0 +1,46 @@
+﻿@namespace Kenova.Client.Components
+@inherits KenovaComponentBase
+
+@{
+    bool isChecked = CheckedFieldLink.Value;
+
+    string enabled = "disabled";
+    string threestate = isChecked ? "checked" : "unchecked";
+
+    if (Indeterminate)
+        threestate = "indeterminate";
+    
+    if (Enabled)
+    {
+        enabled = "enabled";
+    }
+
+    //tab_index = 0; // keyboard focus and mouse focus
+    //tab_index = -1; // no keyboard focus, but mouse focus only
+    //tab_index attribute omitted = no focus possible
+
+    //var classnames = string.Join(" ", classes);
+}
+
+<div id="@container_id"
+     class="kn-checkbox @threestate @enabled" 
+     style="@AdditionalStyle"
+     tabindex="@(this.Enabled ? "0" : null)"
+     @onclick="@(e=> Item_Div_Clicked(e))">
+
+    <div class="kn-checkbox-tickbox">
+        <div class="kn-checkbox-svg-checked">
+            <svg viewBox="0 0 12.7 9.1">
+                <path d="M12.7.7L4.4 9.1 0 4.7.7 4l3.7 3.6L12 0z"></path>
+            </svg>
+        </div>
+        <div class="kn-checkbox-svg-indeterminate"></div>
+    </div>
+
+    @if (ChildContent != null)
+    {
+        <span class="kn-check-label">
+            @ChildContent
+        </span>
+    }
+</div>

@@ -1,0 +1,33 @@
+﻿
+.kn-linkbutton {
+    display: inline;
+    /*font-weight: 600;*/
+    /*margin-right: 6px;*/
+    /*margin-bottom: 10px;*/
+    /*padding: 0px 20px;*/
+    /*height: 24px;*/
+    /*line-height: 20px;*/ /* keeps focus outline fully visible */
+}
+
+    .kn-linkbutton.enabled {
+        color: #0078d4;
+        cursor: pointer;
+    }
+
+    .kn-linkbutton.disabled {
+        color:#a19f9d;
+        cursor: default;
+    }
+
+    .kn-linkbutton.enabled:hover {
+        text-decoration: underline;
+        color: #106ebe; 
+    }
+
+    .kn-linkbutton.disabled:hover {
+        text-decoration: underline;
+    }
+
+    .kn-linkbutton.enabled:active {
+        color: #005a9e;
+    }

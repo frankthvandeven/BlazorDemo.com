@@ -1,0 +1,97 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
+
+	<PropertyGroup>
+		<LangVersion>default</LangVersion>
+		<TargetFramework>net8.0</TargetFramework>
+		<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+		<GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+		<RunAnalyzersDuringBuild>true</RunAnalyzersDuringBuild>
+		<PackageId>Kenova.Client</PackageId>
+
+	</PropertyGroup>
+
+	<ItemGroup>
+		<SupportedPlatform Include="browser" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Compile Remove="Core\ExpressionEx.cs" />
+		<Compile Remove="Core\ObjectEx.cs" />
+		<Compile Remove="Core\TypeEx.cs" />
+		<Compile Remove="__Informative\ComponentBase_net6.cs" />
+		<Compile Remove="__Informative\ComponentBase_net7.cs" />
+		<Compile Remove="__Informative\ComponentBase_net8.cs" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Content Remove="Properties\launchSettings.json" />
+	</ItemGroup>
+
+
+	<ItemGroup>
+		<PackageReference Include="Lindhart.Analyser.MissingAwaitWarning" Version="3.0.0-beta" />
+		<PackageReference Include="Microsoft.AspNetCore.Components.Authorization" Version="8.0.0" />
+		<PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="8.0.0" />
+		<PackageReference Include="Microsoft.JSInterop" Version="8.0.0" />
+		<PackageReference Include="PicoXLSX" Version="3.2.0" />
+		<PackageReference Include="System.Net.Http.Json" Version="8.0.0" />
+		<PackageReference Include="Microsoft.TypeScript.MSBuild" Version="5.2.2">
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+			<PrivateAssets>all</PrivateAssets>
+		</PackageReference>
+	</ItemGroup>
+
+
+	<ItemGroup>
+		<None Include="Core\ExpressionEx.cs" />
+		<None Include="Core\ObjectEx.cs" />
+		<None Include="Core\TypeEx.cs" />
+		<None Include="Properties\launchSettings.json" />
+		<None Include="__Informative\ComponentBase_net6.cs" />
+		<None Include="__Informative\ComponentBase_net8.cs" />
+		<None Include="__Informative\ComponentBase_net7.cs" />
+	</ItemGroup>
+
+
+	<ItemGroup>
+		<Content Update="tsconfig.json">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+			<CopyToPublishDirectory>Never</CopyToPublishDirectory>
+		</Content>
+	</ItemGroup>
+
+
+	<ItemGroup>
+		<EmbeddedResource Update="Resources\KenovaResources_en.resx">
+			<Generator></Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Resources\KenovaResources_nl.resx">
+			<Generator></Generator>
+		</EmbeddedResource>
+	</ItemGroup>
+
+
+	<ItemGroup>
+		<TypeScriptCompile Update="TypeScript\global.d.ts">
+		  <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+		  <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+		</TypeScriptCompile>
+		<TypeScriptCompile Update="TypeScript\startup.global.ts">
+		  <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+		  <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+		</TypeScriptCompile>
+	</ItemGroup>
+
+
+	<ItemGroup>
+	  <Folder Include="Properties\PublishProfiles\" />
+	</ItemGroup>
+
+
+	<ProjectExtensions>
+		<VisualStudio>
+			<UserProperties properties_4launchsettings_1json__JsonSchema="" />
+		</VisualStudio>
+	</ProjectExtensions>
+
+</Project>

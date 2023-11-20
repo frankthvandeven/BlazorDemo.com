@@ -1,0 +1,34 @@
+﻿@namespace Kenova.Client.Components
+@inherits KenovaComponentBase
+
+@{
+
+    string colorString = null;
+    string sizeString = "regularsize";
+
+    if (this.Size == IconSize.Double)
+        sizeString = "doublesize";
+}
+
+@if (this.Kind == IconKind.FontAwesome)
+{
+    if (Enabled && this.HtmlColor != null)
+    {
+        colorString = $"color:{this.HtmlColor}";
+    }
+
+    <div class="kn-icon-fontbased @(Enabled ? "enabled" : "disabled") @sizeString" style="@colorString">
+        <i class="@this.Data"></i>
+    </div>
+}
+else if (this.Kind == IconKind.Vector)
+{
+    if (Enabled && this.HtmlColor != null)
+    {
+        colorString = $"fill:{this.HtmlColor}";
+    }
+
+    <div class="kn-icon-svgbased @(Enabled ? "enabled" : "disabled") @sizeString" style="@colorString">
+        @((MarkupString)this.Data)
+    </div>
+}

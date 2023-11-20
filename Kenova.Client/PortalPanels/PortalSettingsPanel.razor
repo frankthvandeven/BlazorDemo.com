@@ -1,0 +1,51 @@
+﻿@namespace Kenova.Client.SystemComponents
+@inherits KenovaDialogBase
+@inject KenovaLocalizer Loc
+@inject NavigationManager NavigationManager
+
+<MainLayout Width="350" Title="@Loc["portalsettings_header"]">
+    <FillContent>
+        <TabComponent TabItems="@tabItems">
+
+            <TabPage KeepAlive="false" Identifier="general">
+                <span>
+                    @Loc["portal_menumode_explain"]
+                </span>
+
+                @*<InputString AutoFocus Caption="Frank" FieldExpression="()=>SelectedLanguage" />*@
+
+                <OptionGroup AutoFocus SelectedExpression="() => portalMenuIdentifier" SelectedIdentifierChanged="MenuModeChangedAsync">
+                    <OptionButton Identifier="flyout">@Loc["portal_mode_flyout"]</OptionButton>
+                    <OptionButton Identifier="docked">@Loc["portal_mode_dock"]</OptionButton>
+                </OptionGroup>
+            </TabPage>
+
+            <TabPage KeepAlive="false" Identifier="region">
+
+                <p style="margin-bottom:4px">
+                    <b>@Loc["portal_language"]</b>
+                    <br />
+                    @Loc["portal_language_explain"]
+                </p>
+
+                <DropdownListBasic AutoFocus FieldExpression="() => this.SelectedLanguage" ValueType="string"
+                                   Items="@KenovaClientConfig.Settings.SupportedLanguagesList" FieldChanged="LanguageFieldChanged" />
+
+                <p style="margin-bottom:4px">
+                    <b>@Loc["portal_regionalformat"]</b>
+                    <br />
+                    @Loc["portal_regional_explain"]
+                </p>
+
+                <DropdownListBasic FieldExpression="() => this.SelectedCulture" ValueType="string"
+                                   Items="@KenovaClientConfig.Settings.SupportedCulturesList" FieldChanged="CultureNameFieldChanged" />
+
+                <ButtonBar>
+                    <Button Enabled="DidLanguageOrCultureChange()" ButtonClicked="async () => await btnApplyAsync()">@Loc["apply"]</Button>
+                    <Button Enabled="DidLanguageOrCultureChange()" ButtonClicked="btnDiscard">@Loc["discard"]</Button>
+                </ButtonBar>
+
+            </TabPage>
+        </TabComponent>
+    </FillContent>
+</MainLayout>

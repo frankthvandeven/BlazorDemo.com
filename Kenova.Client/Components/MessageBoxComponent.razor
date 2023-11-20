@@ -1,0 +1,28 @@
+﻿@namespace Kenova.Client.Components
+@inherits KenovaDialogBase  
+
+<MainLayout Title="@this.Caption">
+    <FillContent>
+        <p style="user-select:text">@this.Message</p>
+    </FillContent>
+    <BottomContent>
+        <ButtonBar>
+            <Button ButtonClicked="BtnClose">Close</Button>
+        </ButtonBar>
+    </BottomContent>
+</MainLayout>
+
+
+@code {
+
+    [Parameter] public string Caption { get; set; }
+
+    [Parameter] public string Message { get; set; }
+
+    private void BtnClose()
+    {
+        _ = this.CloseCancelAsync();
+    }
+
+
+}

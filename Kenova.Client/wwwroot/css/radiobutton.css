@@ -1,0 +1,106 @@
+﻿
+
+.kn-radio-list {
+    display: inline-flex;
+    /*padding: 1px;*/
+    /*flex-wrap: wrap;*/
+    /*position: relative;*/
+    row-gap: 8px;
+    column-gap: 8px;
+}
+
+    .kn-radio-list.columnar {
+        flex-direction: column;
+    }
+
+.kn-radio-item {
+    /*overflow: hidden;*/
+    /*text-overflow: ellipsis;*/
+    /*border-radius: 10px;*/
+    /*background-clip: padding-box;*/
+    /*border: 1px solid transparent !important;*/
+    display: flex;
+    /*padding-right: 8px;*/
+    /*padding-bottom: 8px;*/
+}
+
+    .kn-radio-item.enabled {
+        cursor: pointer;
+    }
+
+    .kn-radio-item.default.enabled {
+        --outer-color: black;
+        --inner-color: transparent;
+        --label-color: #323130;
+    }
+
+    .kn-radio-item.selected.enabled {
+        --outer-color: #0078d4;
+        --inner-color: #0078d4;
+        --label-color: #323130;
+    }
+
+    .kn-radio-item.default.disabled {
+        --outer-color: #a19f9d;
+        --inner-color: transparent;
+        --label-color: #a19f9d;
+    }
+
+    .kn-radio-item.selected.disabled {
+        --outer-color: #a19f9d;
+        --inner-color: #a19f9d;
+        --label-color: #a19f9d;
+    }
+
+    .kn-radio-item.default.enabled:hover {
+        --outer-color: #201f1e;
+        --inner-color: #201f1e;
+    }
+
+    .kn-radio-item.default.enabled:active {
+        --outer-color: #005a9e;
+        --inner-color: #005a9e;
+    }
+
+    .kn-radio-item.selected.enabled:hover {
+        --outer-color: #005a9e;
+        --inner-color: #005a9e;
+    }
+
+    .kn-radio-item.selected.enabled:active {
+        --outer-color: #005a9e;
+        --inner-color: #005a9e;
+    }
+
+    .kn-radio-item:focus {
+        outline-offset: 1px;
+    }
+
+.kn-radio-circle-outer {
+    flex: 0 0 auto;
+    position: relative;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    border: 1px solid;
+    border-color: var(--outer-color);
+    margin-right: 10px;
+}
+
+.kn-radio-circle-inner {
+    position: absolute;
+    top: 25%;
+    /* half of height */
+    left: 25%;
+    height: 50%;
+    width: 50%;
+    border-radius: 50%;
+    border-width: 2px;
+    background-color: var(--inner-color);
+}
+
+.kn-radio-label {
+    flex: 1 1 auto;
+    align-self: center;
+    color: var(--label-color);
+}

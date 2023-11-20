@@ -1,0 +1,23 @@
+﻿@namespace Kenova.Client.Components
+@inherits KenovaComponentBase
+
+@{
+    string tabindex = "0";
+    string enabled = "enabled";
+
+    if (TabStop == false)
+    {
+        tabindex = "-1";
+    }
+
+    if (Enabled == false)
+    {
+        tabindex = null; // null causes the "tabindex" attribute not to be rendered at all
+        enabled = "disabled";
+    }
+
+}
+
+<div class="kn-linkbutton @enabled"
+     tabindex="@tabindex"
+     @onclick="@(e=> Item_Div_Clicked(e))">@ChildContent</div>

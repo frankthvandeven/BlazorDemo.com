@@ -1,0 +1,44 @@
+﻿Resultset.Sort(string expression) uses Dynamite.
+
+Text copied from: https://archive.codeplex.com/?p=dynamite
+
+Easy-to-use and high performance dynamic sorting library supporting SQL-like syntax and complex/nested expressions,
+that uses System.Linq.Expression to dynamically build fast comparers. 
+
+With this library you can sort a List<T> using a textual sort expression:
+
+List<Person> person;
+
+person.Sort("Name.Length, BirthDate DESCENDING");
+
+You can also use LINQ style OrderBy like this:
+
+// Print names ordered by year of birth (and then by Name).
+foreach( Person p in persons.OrderBy("BirthDate.Year, Name")
+{
+   Console.WriteLine(p.Name);
+}
+
+Dynamite uses the System.Linq.Expression namespace to build and compile fast running comparer.
+
+CodeProject article:
+https://www.codeproject.com/Articles/29660/Dynamite-High-Performace-Dynamic-Sorting-Using-Exp
+
+
+/*
+ * Copyright 2008 Henrik Jonsson
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *  See the License for the specific language governing permissions and
+ * limitations under the License.
+ *
+ *
+*/

@@ -1,0 +1,35 @@
+﻿@namespace Kenova.Client.Components
+@inherits KenovaComponentBase
+
+@{
+
+    _container_style.Clear();
+
+    if (this.Width != -1)
+        _container_style.Append($"width:{this.Width.ToPixels()};");
+
+    if (this.Height != -1)
+        _container_style.Append($"height:{this.Height.ToPixels()};");
+    else if (this.HeightMode == HeightMode.Container)
+        _container_style.Append($"height:100%;");
+    else if (this.HeightMode == HeightMode.Content)
+        _container_style.Append($"height:auto;");
+
+    if (this.MaxHeight != -1)
+        _container_style.Append($"max-height:{this.MaxHeight.ToPixels()};");
+
+    if (this.Gap != -1)
+    {
+        _container_style.Append($"gap:{this.Gap.ToPixels()};");
+    }
+
+    if (this.AdditionalStyle != null)
+    {
+        _container_style.Append(this.AdditionalStyle);
+    }
+
+}
+
+<div class="kn-stackpanel @(this.Horizontal ? "horizontal" : "vertical")" style="@_container_style.ToString()">
+    @ChildContent
+</div>

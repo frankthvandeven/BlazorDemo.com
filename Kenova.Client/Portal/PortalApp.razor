@@ -1,0 +1,33 @@
+﻿@namespace Kenova.Client.Components
+@using Kenova.Client.Authorization
+@using Microsoft.AspNetCore.Components.Routing
+@using Microsoft.Extensions.DependencyInjection
+@using Microsoft.JSInterop
+@inherits KenovaComponentBase
+@inject KenovaStartup Startup
+@inject IJSRuntime JSRuntime
+@* @attribute [StreamRendering(true)] *@
+
+@if (_initialized == false)
+{
+    if (KenovaClientConfig.Diagnostics) Console.WriteLine("📺 Rendering <PortalApp> as initializing");
+
+	<FullscreenMessage Message="@StartingCaption" />
+}
+else
+{
+    if (KenovaClientConfig.Diagnostics) Console.WriteLine("📺 Rendering <PortalApp> as normal");
+
+    <CascadingAuthenticationState>
+        <Router AppAssembly="@this.AppAssembly" AdditionalAssemblies="@this.AdditionalAssemblies">
+            <Found Context="routeData">
+                <KenovaRouteView RouteData="@routeData" />
+            </Found>
+            <NotFound>
+                <RouteNotFoundMessage />
+            </NotFound>
+        </Router>
+    </CascadingAuthenticationState>
+
+}
+

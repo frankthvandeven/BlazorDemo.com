@@ -1,0 +1,63 @@
+﻿
+.kn-toolbar-container {
+    display: flex;
+    width: 100%;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-color: rgba(204,204,204,.8);
+    /*margin: 0 20px;*/
+    /*outline: none !important;*/
+}
+
+.kn-toolbar-button {
+    display: flex;
+    align-items: center;
+    flex: 0 0 auto;
+    height: 36px;
+    padding: 0px 8px;
+}
+
+    .kn-toolbar-button.btn-default {
+        /*box-shadow: 0 0 0 4px rgb(21 156 228 / 40%);*/
+        outline: 2px dotted #00bcf2;
+        outline-offset: -5px;
+    }
+
+    .kn-toolbar-button:focus {
+        outline: 1px solid black;
+        outline-offset: 0px;
+    }
+
+    .kn-toolbar-button.enabled {
+        cursor: pointer;
+        --icon-color: #0078d4;
+        --label-color: #323130;
+    }
+
+    .kn-toolbar-button.disabled {
+        --icon-color: #a19f9d;
+        --label-color: #999898;
+    }
+
+    .kn-toolbar-button.enabled:hover {
+        background-color: #f3f2f1;
+    }
+
+    .kn-toolbar-button.enabled:active {
+        background-color: #edebe9;
+    }
+
+.kn-toolbar-fontbased-icon {
+    font-size: 18px;
+    color: var(--icon-color);
+}
+
+.kn-toolbar-svgbased-icon {
+    width: 16px;
+    height: 16px;
+    fill: var(--icon-color);
+}
+
+.kn-toolbar-label {
+    color: var(--label-color);
+}

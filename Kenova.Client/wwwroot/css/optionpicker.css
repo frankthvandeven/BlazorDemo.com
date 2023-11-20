@@ -1,0 +1,75 @@
+﻿
+
+.kn-optionpicker-list {
+    display: inline-flex;
+    border: 1px solid #7f7f7f;
+    border-radius: 12px;
+    padding: 1px;
+    /*flex-wrap: wrap;*/
+}
+
+.kn-optionpicker-item {
+    min-width: 46px;
+    line-height: 13px;
+    font-size: 13px;
+    padding: 2px 8px 3px;
+    text-align: center;
+    cursor: pointer;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    border-radius: 10px;
+    background-clip: padding-box;
+    border: 1px solid transparent !important;
+}
+
+    .kn-optionpicker-item:focus {
+        /*border: 1px dashed #00bcf2 !important;*/
+        border: 1px dashed black !important;
+        outline: 0;
+    }
+
+    .kn-optionpicker-item.default.enabled {
+        background-color: #fff;
+        border-color: #8a8886;
+        color: #323130;
+    }
+
+    .kn-optionpicker-item.selected.enabled {
+        background-color: #0078d4;
+        border-color: #0078d4;
+        color: #fff;
+    }
+
+    .kn-optionpicker-item.default.disabled {
+        color: #a19f9d;
+        cursor: default;
+    }
+
+    .kn-optionpicker-item.selected.disabled {
+        background-color: #f3f2f1;
+        border-color: #f3f2f1;
+        color: #a19f9d;
+        cursor: default;
+    }
+
+
+    .kn-optionpicker-item.default.enabled:hover {
+        color: #201f1e;
+        fill: #201f1e;
+        background-color: #f3f2f1;
+    }
+
+    .kn-optionpicker-item.selected.enabled:hover {
+        background-color: #106ebe;
+        border-color: #106ebe;
+    }
+
+    .kn-optionpicker-item.default.enabled:active {
+        color: #201f1e;
+        background-color: #edebe9;
+    }
+
+    .kn-optionpicker-item.selected.enabled:active {
+        background-color: #005a9e;
+        border-color: #005a9e;
+    }

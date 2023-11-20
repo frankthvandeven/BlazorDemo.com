@@ -1,0 +1,38 @@
+﻿@namespace Kenova.Client.Components.Panels
+@inherits KenovaDialogBase
+@typeparam ItemType
+
+@{
+    /* 1) A dropdown panel must determine its own height and weight explicitly.
+
+    A dropdown panel receives the LayerDefinition as parameter.
+
+    LayerDefinition.ContentWidth = suggested width (ownerwidth) or -1 if not set.
+    LayerDefinition.ContentHeight = suggested height or -1 if not set.
+    LayerDefinition.ContentMaxWidth = maximum width. It is the panel's responsibility not to exceed it.
+    LayerDefinition.ContentMaxHeight = maximum height. It is the panel's responsibility not to exceed it.
+
+    A hypergrid without explicit  "DropdownMode=true" will have a
+
+    */
+
+
+    bool display_filter_at_bottom = false;
+
+    if (LayerDefinition.DropdownPosition == DropdownPosition.Above)
+        display_filter_at_bottom = true;
+
+    var ld = LayerDefinition;
+
+}
+
+<HyperGrid @ref="@hyper_grid" DebugName="PanelHyperGrid"
+           ItemType="ItemType"
+           Data="@Data"
+           Width="@ld.ContentSuggestedWidth"
+           MaxHeight="@ld.ContentMaxHeight"
+           DisplayFilterAtBottom="@display_filter_at_bottom"
+           RowDoubleClicked="@RowDoubleClicked"/>
+
+@* Read the comment below. IsChecked, SetChecked and SetUnchecked cannot be null. We can not simply cascade the parameter down. *@
+

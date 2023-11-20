@@ -1,0 +1,57 @@
+﻿@namespace Kenova.Client.Components
+@typeparam ItemType
+@inherits KenovaComponentBase
+
+@{
+
+    ItemType selected = default;
+    int count = 0;
+    bool all_selected = false;
+
+    if (this.CheckedItems != null)
+    {
+        count = CheckedItems.Count;
+
+        if (CheckedItems.Count == 1)
+            selected = CheckedItems[0];
+
+        if (CheckedItems.Count == Items.Count)
+            all_selected = true;
+    }
+    else
+    {
+
+        for (int i = 0; i < Items.Count; i++)
+        {
+            var item = this.Items[i];
+
+            if( this.IsChecked(item))
+            {
+                count++;
+                selected = item;
+            }
+
+            if (count == Items.Count)
+                all_selected = true;
+        }
+
+    }
+
+    if (count == 1)
+        this.FieldText = DisplayExpression.Invoke(selected);
+    else if (all_selected)
+        this.FieldText = $"All ({Items.Count})";
+    else
+        this.FieldText = $"{count} selected";
+
+}
+
+<InputString @ref="InputComponent" DropdownOpen="this.DropdownOpen"
+             Caption="@Caption" Width="@Width" InputBoxWidth="@InputBoxWidth"
+             AdditionalStyle="@AdditionalStyle" MaxWidth="@MaxWidth"
+             CaptionLeft="@CaptionLeft" RemarkRight="@RemarkRight" HideRemark="@HideRemark"
+             CaptionWidth="@CaptionWidth" RemarkWidth="@RemarkWidth" Enabled="@Enabled"
+             NoInputElement="true" ShowDropdownButton="true" FieldExpression="() => this.FieldText"
+             AutoFocus="@AutoFocus" AutoFocusPriority="@AutoFocusPriority" FocusID="@FocusID"
+             DropdownButtonClicked="DropdownButtonClickedAsync" />
+

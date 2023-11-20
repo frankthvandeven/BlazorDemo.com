@@ -1,0 +1,23 @@
+﻿@namespace Kenova.Client.Components
+@inherits KenovaDialogBase
+@inject KenovaLocalizer Loc
+
+<div class="kn-userpanel-container">
+
+	<div class="kn-userpanel-topbar">
+		@if (KenovaClientConfig.AuthenticationStateProvider.IsAuthenticated)
+		{
+			<div class="kn-userpanel-topbar-button" @onclick="async () => await btnSignOutClickedAsync()">@Loc["signout"]</div>
+		}
+		else
+		{
+			<div class="kn-userpanel-topbar-button" @onclick="async () => await btnSignInClickedAsync()">@Loc["signin"]</div>
+		}
+	</div>
+
+	@*<div class="kn-avatarmenu-tenant-image-container">
+		<img class="kn-avatarmenu-tenant-image" src="_content/Kenova.Client/static/AvatarSmall.png" />
+		</div>*@
+
+
+</div>

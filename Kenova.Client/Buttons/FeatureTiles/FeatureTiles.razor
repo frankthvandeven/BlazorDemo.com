@@ -1,0 +1,43 @@
+﻿@namespace Kenova.Client.Components
+@inject NavigationManager NavigationManager
+@inherits KenovaComponentBase
+
+@{
+//int? tabindex = null;
+//bool isSelected = EqualityComparer<string>.Default.Equals(Parent.GetSelectedIdentifier(), FocusID);
+
+//string selected = isSelected ? "selected" : "default";
+//string enabled = "disabled";
+
+//if (Enabled)
+//{
+//    enabled = "enabled";
+//    tabindex = isSelected ? 0 : -1;
+//}
+
+//tab_index = 0; // keyboard focus and mouse focus
+//tab_index = -1; // no keyboard focus, but mouse focus only
+//tab_index attribute omitted = no focus possible
+
+//var classnames = string.Join(" ", classes);
+}
+
+<div id="@container_id" class="kn-featuretiles-container">
+
+    @for (int i = 0; i < this.MenuItems.Count; i++)
+    {
+        var item = this.MenuItems[i];
+
+        <div class="kn-featuretiles-tile"
+            tabindex="-1"
+            @onclick="@(e => this.Tile_Div_ClickedAsync(e, item))">
+            <div class="kn-featuretiles-icon">
+                <FastIcon IconDefinition="@item.Icon" Size="IconSize.Double" />
+            </div>
+            <div class="kn-featuretiles-caption">
+                @item.Caption
+            </div>
+        </div>
+    }
+
+</div>

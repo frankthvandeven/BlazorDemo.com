@@ -1,0 +1,23 @@
+﻿@namespace Kenova.Client.Components
+@inherits KenovaComponentBase
+
+@{
+
+    bool active = EqualityComparer<string>.Default.Equals(this.Parent.SelectedIdentifierForTabPage(), this.Identifier);
+
+    string visibleClass = active ? "visible" : "hidden";
+
+}
+
+@if (this.KeepAlive || active)
+{
+
+    <div id="@_tabItem.StagingAreaID" class="kn-tabcomponent-stagingarea @visibleClass">
+        @ChildContent
+    </div>
+
+}
+else
+{
+    if (KenovaClientConfig.Diagnostics) Console.WriteLine("XXXX SKIPPING TABPAGE");
+}

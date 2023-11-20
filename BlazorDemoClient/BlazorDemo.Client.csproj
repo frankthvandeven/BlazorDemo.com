@@ -17,8 +17,8 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Lindhart.Analyser.MissingAwaitWarning" Version="3.0.0-beta" />
 		<PackageReference Include="Kenova.SourceGenerators" Version="17.0.5" />
+		<PackageReference Include="Lindhart.Analyser.MissingAwaitWarning" Version="3.0.0-beta" />
 		<PackageReference Include="Microsoft.AspNetCore.Components.Authorization" Version="8.0.0" />
 		<PackageReference Include="Microsoft.Extensions.Http" Version="8.0.0" />
 		<PackageReference Include="System.Net.Http.Json" Version="8.0.0" />
@@ -52,8 +52,8 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\..\..\Kenova\Projects\Kenova.Client\Kenova.Client.csproj" />
-	  <ProjectReference Include="..\..\..\VenturaSQL\Projects\VenturaSQL.NETStandard\VenturaSQL.NETStandard.csproj" />
+	  <ProjectReference Include="..\Kenova.Client\Kenova.Client.csproj" />
+	  <ProjectReference Include="..\VenturaSQL.NETStandard\VenturaSQL.NETStandard.csproj" />
 	</ItemGroup>
 
 </Project>

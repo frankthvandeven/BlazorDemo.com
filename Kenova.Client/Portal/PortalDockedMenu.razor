@@ -1,0 +1,26 @@
+﻿@namespace Kenova.Client.Components
+@inherits KenovaComponentBase
+@inject NavigationManager NavigationManager
+@{
+    if (KenovaClientConfig.Diagnostics) Console.WriteLine("📺 Rendering <PortalDockedMenu>");
+
+    string xtraStyle = KenovaClientConfig.Settings.PortalMenuCollapsed ? "collapsed" : "open";
+}
+
+<div class="kn-docked-container @xtraStyle">
+
+    <div class="kn-docked-collapsebutton @xtraStyle" @onclick="CollapseClick">
+        <svg viewBox="0 0 16 16">
+            <path d="M14.65 15.53L8 8.88l-6.65 6.65-.7-.71L8 7.47l7.35 7.35-.7.71z"></path>
+            <path d="M14.65 8.53L8 1.88 1.35 8.53l-.7-.71L8 .47l7.35 7.35-.7.71z"></path>
+        </svg>
+    </div>
+
+    <HyperGrid @ref="@hyper_grid" AdditionalStyle="flex:1 1 auto;height:0px;" DebugName="PortalDockedMenu"
+               Width="225"
+               ItemType="PortalMenuItem"
+               Data="@this.Data"
+               RowDoubleClicked="SelectItem"/>
+
+</div>
+

@@ -1,0 +1,13 @@
+﻿@namespace Kenova.Client.Components
+@inherits KenovaComponentBase
+@using Microsoft.JSInterop
+@inject IJSRuntime JSRuntime
+
+
+<div style="height:auto;background-color:burlywood">
+
+    <canvas tabindex="0" @onfocus="FocusCallback" @onblur="UnfocusCallback" style="border:1px solid grey;width:200px;height:200px" id="@canvas_id" />
+
+</div>
+
+

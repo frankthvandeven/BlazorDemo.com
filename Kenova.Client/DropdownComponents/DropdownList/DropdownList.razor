@@ -1,0 +1,28 @@
+﻿@namespace Kenova.Client.Components
+@typeparam ItemType
+@inherits KenovaComponentBase
+
+@{ 
+
+    var selected_item = SelectedItemFieldLink.Value;
+
+    if (selected_item == null)
+    {
+        this.FieldText = "";
+    }
+    else
+    {
+        this.FieldText = DisplayExpression.Invoke(selected_item);
+    }
+
+}
+
+<InputString @ref="InputComponent" DropdownOpen="this.DropdownOpen"
+             Caption="@Caption" Width="@Width" InputBoxWidth="@InputBoxWidth"
+             AdditionalStyle="@AdditionalStyle" MaxWidth="@MaxWidth"
+             CaptionLeft="@CaptionLeft" RemarkRight="@RemarkRight" HideRemark="@HideRemark"
+             CaptionWidth="@CaptionWidth" RemarkWidth="@RemarkWidth" Enabled="@Enabled"
+             NoInputElement="true" ShowDropdownButton="true" FieldExpression="() => this.FieldText"
+             AutoFocus="@AutoFocus" AutoFocusPriority="@AutoFocusPriority" FocusID="@FocusID"
+             DropdownButtonClicked="DropdownButtonClickedAsync" />
+

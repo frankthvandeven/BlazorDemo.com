@@ -1,0 +1,16 @@
+﻿@namespace Kenova.Client.SystemComponents
+@inherits KenovaComponentBase
+
+<div class="fxs-progress-container">
+    <div class="fxs-progress-center">
+        <div class="fxs-progress-dots">
+            <div class="fxs-progress-dots-dot" />
+            <div class="fxs-progress-dots-dot" />
+            <div class="fxs-progress-dots-dot" />
+        </div>
+        @if (Caption != null)
+        {
+            <div class="fxs-progress-caption">@Caption</div>
+        }
+    </div>
+</div>

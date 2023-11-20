@@ -1,0 +1,65 @@
+﻿@namespace Kenova.Client.Components
+@inherits KenovaComponentBase
+
+@{
+
+    string infokind = null;
+
+    if (Kind == InfoKind.Information)
+    {
+        infokind = "information";
+    }
+    else if (Kind == InfoKind.Warning)
+    {
+        infokind = "warning";
+    }
+    else if (Kind == InfoKind.Error)
+    {
+        infokind = "error";
+    }
+
+}
+
+<div class="kn-infoblock-container @infokind" tabindex="-1">
+
+    @if (Kind == InfoKind.Information)
+    {
+        <div class="kn-infoblock-image @infokind">
+            <svg viewBox="0 0 16 16">
+                <g>
+                    <circle cx="8" cy="8" r="8"></circle>
+                    <circle cx="8" cy="4.116" r="1.449" class="fillwhite"></circle>
+                    <path d="M9.1 13.987v-7H6.911l-.011 7h2.2z" class="fillwhite"></path>
+                </g>
+            </svg>
+        </div>
+    }
+    else if (Kind == InfoKind.Warning)
+    {
+        <div class="kn-infoblock-image @infokind">
+            <svg viewBox="0 0 9 9">
+                <g>
+                    <path d="M8.267 8H.733c-.6 0-.916-.623-.62-1.129L2.014 3.53 3.896.384c.302-.507.903-.514 1.197-.008L7.001 3.65l1.882 3.229C9.183 7.383 8.881 8 8.267 8z"></path>
+                    <circle cx="4.5" cy="6.178" r=".615" class="fillwhite"></circle>
+                    <path d="M4.623 2.428H3.98l.164 2.85h.774l.165-2.85z" class="fillwhite"></path>
+                </g>
+            </svg>
+        </div>
+    }
+    else if (Kind == InfoKind.Error)
+    {
+        <div class="kn-infoblock-image @infokind">
+            <svg viewBox="0 0 9 9">
+                <g>
+                    <circle cx="4.5" cy="4.5" r="4.5"></circle>
+                    <path d="M7 2.8L6.2 2 4.5 3.7 2.8 2l-.8.8 1.7 1.7L2 6.2l.8.8 1.7-1.7L6.2 7l.8-.8-1.7-1.7z" class="fillwhite">
+                    </path>
+                </g>
+            </svg>
+        </div>
+    }
+
+    <div class="kn-infoblock-text">
+        @ChildContent
+    </div>
+</div>

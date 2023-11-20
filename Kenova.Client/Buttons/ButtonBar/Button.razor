@@ -1,0 +1,50 @@
+﻿@namespace Kenova.Client.Components
+@inherits KenovaComponentBase
+
+@{
+    string background = LightBackground ? "lightbackground" : "darkbackground";
+    string enabled = "enabled";
+    string containerStyle = null;
+
+    bool defaultbutton = false;
+
+    if (this.MinWidth != -1)
+    {
+        containerStyle = $"min-width:{this.MinWidth.ToPixels()};";
+    }
+
+    if (this.Default && this.Enabled)
+    {
+        defaultbutton = true;
+    }
+
+    if (!this.Enabled)
+    {
+        enabled = "disabled";
+    }
+
+
+}
+
+@if (TextOnly == false)
+{
+
+        <div id="@ContainerID"
+             class="kn-button @enabled @background"
+             style="@containerStyle"
+             tabindex="-1"
+             _kn_defaultbutton="@defaultbutton"
+             @onclick="@(e => Item_Div_Clicked(e))">@ChildContent</div>
+
+}
+else
+{
+        <div id="@ContainerID"
+             class="kn-textonlybutton @enabled"
+             style="@containerStyle"
+             tabindex="-1"
+             _kn_defaultbutton="@defaultbutton"
+             @onclick="@(e => Item_Div_Clicked(e))">@ChildContent</div>
+
+}
+

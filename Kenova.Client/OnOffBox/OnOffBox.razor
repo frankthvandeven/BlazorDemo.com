@@ -1,0 +1,12 @@
+﻿@namespace Kenova.Client.SystemComponents
+@inherits KenovaComponentBase
+
+<div class="kn-onoffbox @(Checked ? "checked" : "unchecked") @(Enabled ? " enabled" : " disabled")" 
+     @onclick="@(e=> Item_Div_Clicked(e))">
+    <div class="kn-onoffbox-svg-checked">
+        <svg viewBox="0 0 12.7 9.1">
+            <path d="M12.7.7L4.4 9.1 0 4.7.7 4l3.7 3.6L12 0z"></path>
+        </svg>
+    </div>
+</div>
+

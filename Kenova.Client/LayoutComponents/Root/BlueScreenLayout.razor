@@ -1,0 +1,10 @@
+﻿@namespace Kenova.Client.Components
+@inherits LayoutComponentBase
+
+@{
+    if (KenovaClientConfig.Diagnostics) Console.WriteLine("📺 Rendering <BlueScreenLayout>");
+}
+
+<div class="kn-bluescreenlayout-container">
+    @Body
+</div>

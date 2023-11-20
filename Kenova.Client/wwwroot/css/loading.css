@@ -1,0 +1,37 @@
+﻿
+.kn-loading-container {
+    background-color: #0072C6;
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.kn-loading-caption {
+    flex: 0 0 auto;
+    height: auto;
+    font-weight: 300;
+    font-size: 36px;
+    color: white;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-bottom: 20px;
+}
+
+.kn-loading-caption.fadein {
+    animation: fadeIn ease 0.6s;
+}
+
+.kn-loading-animation {
+    flex: 0 0 auto;
+}
+
+.kn-loading-animation.fadein {
+    animation: fadeIn ease 0.6s;
+}

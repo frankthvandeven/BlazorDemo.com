@@ -1,0 +1,72 @@
+﻿
+.kn-tabcomponent-container {
+    width: 100%;
+    margin: 14px 0;
+}
+
+.kn-tabcomponent-tabbar {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 36px;
+    font-size: 14px;
+    outline: none !important;
+    margin-bottom: 12px;
+    gap: 8px;
+}
+
+.kn-tabcomponent-tabitem {
+    position: relative;
+    height: 100%;
+    padding: 0px 8px;
+    display: flex;
+    align-items: center;
+    transition: background-color .09s ease;
+    flex: 0 0 auto;
+}
+
+.kn-tabcomponent-tabitem.disabled {
+    color: #999898;
+}
+
+.kn-tabcomponent-tabitem.selected {
+    font-weight: 600;
+}
+
+.kn-tabcomponent-tabitem.enabled.selected::before {
+    background-color: #0078d4;
+    bottom: 0;
+    content: "";
+    height: 2px;
+    left: 8px;
+    position: absolute;
+    right: 8px;
+    transition: left .267s cubic-bezier(.1,.25,.75,.9) 0s,right .267s cubic-bezier(.1,.25,.75,.9) 0s;
+}
+
+.kn-tabcomponent-tabitem.enabled.selected:hover::before {
+    left: 0;
+    right: 0;
+}
+
+.kn-tabcomponent-tabitem.enabled:hover {
+    cursor: pointer;
+    background-color: #f3f2f1;
+}
+
+.kn-tabcomponent-tabitem.enabled:active {
+    background-color: #edebe9;
+}
+
+.kn-tabcomponent-stagingarea {
+    display: block;
+    /*overflow: hidden;*/
+}
+
+    .kn-tabcomponent-stagingarea.visible {
+    }
+
+    .kn-tabcomponent-stagingarea.hidden {
+        display: none;
+    }
+

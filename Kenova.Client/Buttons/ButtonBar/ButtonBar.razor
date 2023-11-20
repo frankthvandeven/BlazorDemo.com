@@ -1,0 +1,11 @@
+﻿@namespace Kenova.Client.Components
+@inherits KenovaComponentBase
+
+<div id="@container_id" class="kn-button-container">
+
+    <CascadingValue Value="this" IsFixed="true">
+        @ChildContent
+    </CascadingValue>
+
+</div>
+

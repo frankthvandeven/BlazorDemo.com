@@ -1,0 +1,30 @@
+﻿@namespace Kenova.Client.Components
+@typeparam ItemType
+@inherits KenovaComponentBase
+
+@{
+
+    _container_style.Clear();
+
+    if (this.Width != -1)
+        _container_style.Append($"width:{this.Width.ToPixels()};");
+
+    if (this.AdditionalStyle != null)
+        _container_style.Append(this.AdditionalStyle);
+
+
+
+}
+
+
+<div class="kn-flexlist-container" style="@_container_style.ToString()" id="@_container_id">
+
+    @for (int i = 0; i < this.Items.Count; i++)
+    {
+        var item = this.Items[i];
+        <div class="kn-flexlist-datarow" @onclick="@((e) => OnRowDoubleClick(item))" @ondblclick="((e) => OnRowDoubleClick(item))">
+            @ItemTemplate(this.Items[i])
+        </div>
+    }
+
+</div>

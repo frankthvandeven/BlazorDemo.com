@@ -1,0 +1,22 @@
+﻿@namespace Kenova.Client.Authorization
+@using Microsoft.Extensions.DependencyInjection
+@inherits KenovaComponentBase
+@inject KenovaLocalizer Loc
+@inject KenovaStartup Startup
+
+@if (RefreshTokenMode)
+{
+	if (KenovaClientConfig.Diagnostics)Console.WriteLine("📺 Rendering <KenovaRouteView> as Authorizing");
+
+	<FullscreenMessage Message="@(Loc["authorizing"])" />
+}
+else
+{
+	if (KenovaClientConfig.Diagnostics)Console.WriteLine("📺 Rendering <KenovaRouteView> as normal");
+
+	<AuthorizeRouteView RouteData="@this.RouteData" DefaultLayout="@typeof(PortalLayout)">
+		<NotAuthorized>
+			<HandleNotAuthorized />
+		</NotAuthorized>
+	</AuthorizeRouteView>
+}

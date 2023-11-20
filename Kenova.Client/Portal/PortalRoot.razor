@@ -1,0 +1,130 @@
+﻿@namespace Kenova.Client.Components
+@using Microsoft.JSInterop
+@inject IJSRuntime JSRuntime
+@inherits KenovaComponentBase
+@* Multiple parts a la ChildContent: https://blazor-university.com/templating-components-with-renderfragements/*@
+
+@{
+    if (KenovaClientConfig.Diagnostics) Console.WriteLine("📺 Rendering <PortalRoot>");
+
+    LayerDefinition[] arr = LayerManager.LayerStack.ToArray();
+
+    long ticks = DateTime.Now.Ticks;
+}
+
+<div class="kn-portal-base">
+
+    @if (this.ShowPortalTopbar)
+    {
+        <PortalTopbar ForceRender="@ticks" />
+    }
+
+    <div class="kn-portal-stagingarea">
+
+        @if (this.ShowPortalMenu)
+        {
+            if (KenovaClientConfig.Settings.PortalMenuMode == PortalMenuMode.Docked)
+            {
+                <div id="kn-tabsave-dockmenu" class="kn-portal-dockmenu-section">
+                    <PortalDockedMenu ForceRender="@ticks" />
+                    <div class="kn-portal-dockmenu-shadow"></div>
+                </div>
+            }
+        }
+
+        <div class="kn-portal-content-section">
+
+            @if (this.ShowPortalBreadcrumb)
+            {
+                <PortalBreadcrumb ForceRender="@ticks" />
+            }
+
+            <div class="kn-portal-contentlayers">
+                <div class="kn-portal-basecomponent">
+                    @ChildContent
+                </div>
+
+                @for (int x = arr.Length - 1; x >= 0; x--)
+                {
+                    LayerDefinition ld = arr[x];
+                    //bool is_last = (x == 0);
+
+                    if (ld.Kind == LayerKind.ModalWindow)
+                    {
+                        <div class="kn-portal-modallayer-transparentbg">
+                            <div id="@ld.ContainerID" class="kn-portal-modallayer-windowed">
+                                @LaunchComponent(ld)
+                                <TopRightCloseButton CloseButtonClickedCallback="@( () => ld.CloseCancelAsync() )" />
+                            </div>
+                        </div>
+                    }
+                    else if (ld.Kind == LayerKind.Modal)
+                    {
+                        <div id="@ld.ContainerID" class="kn-portal-modallayer-fullsize">
+                            @LaunchComponent(ld)
+                            <TopRightCloseButton CloseButtonClickedCallback="@( () => ld.CloseCancelAsync() )" />
+                        </div>
+                    }
+                    else if (ld.Kind == LayerKind.ModelessRight || ld.Kind == LayerKind.TopmostModelessRight)
+                    {
+                        <div id="@ld.ContainerID" class="kn-portal-modelesslayer-right kn-cliptop" style="@ld.LayerStyle">
+                            @LaunchComponent(ld)
+                            <TopRightCloseButton CloseButtonClickedCallback="@( () => ld.CloseCancelAsync() )" />
+                        </div>
+                    }
+                    else if (ld.Kind == LayerKind.Dropdown)
+                    {
+
+                        <div id="@ld.ContainerID" class="kn-portal-dropdownlayer" style="@ld.LayerStyle">
+                            @LaunchComponent(ld)
+                        </div>
+                    }
+                    else if (ld.Kind == LayerKind.DropdownBalloon)
+                    {
+
+                        <div id="@ld.ContainerID" class="kn-portal-dropdownlayer-balloon" style="@ld.LayerStyle">
+                            @if (ld.DropdownPosition == DropdownPosition.Below)
+                            {
+                                <div class="balloon-pointer"></div>
+                            }
+                            else
+                            {
+                                <div class="balloon-pointer bottom"></div>
+                            }
+                            <div class="balloon-curtain">
+                                @LaunchComponent(ld)
+                            </div>
+                        </div>
+                    }
+                    else if (ld.Kind == LayerKind.FlyoutLeft)
+                    {
+                        <div id="@ld.ContainerID" class="kn-portal-flyoutlayer-left">
+                            @LaunchComponent(ld)
+                        </div>
+                    }
+                }
+
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+@if (this.ShowPortalTopbar)
+{
+    <PortalToaster Items="@NotificationManager.NotificationList" />
+}
+
+    <div id="kn-id-taskrunner-layer" class="kn-portal-taskrunner-transparentbg">
+        <div class="kn-portal-taskrunner-window">
+            <div id="kn-id-taskrunner-caption" class="kn-portal-taskrunner-caption dotdotdot"></div>
+            <div class="sk-folding-cube">
+                <div class="sk-cube1 sk-cube"></div>
+                <div class="sk-cube2 sk-cube"></div>
+                <div class="sk-cube4 sk-cube"></div>
+                <div class="sk-cube3 sk-cube"></div>
+            </div>
+        </div>
+    </div>
+

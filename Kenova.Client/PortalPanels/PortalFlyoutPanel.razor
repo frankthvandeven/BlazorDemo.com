@@ -1,0 +1,23 @@
+﻿@namespace Kenova.Client.SystemComponents
+@using Kenova.Client.Util
+@inherits KenovaDialogBase
+@inject NavigationManager NavigationManager
+
+<div class="kn-portal-flyoutpanel-container">
+
+    <div class="kn-flyout-hamburgerbutton" @onclick="HamburgerButtonClicked">
+        <div class="kn-flyout-hamburgerbutton-icon">
+            <svg viewBox="0 0 16 16">
+                <path d="M1 4.5v-1h14v1zm0 4v-1h14v1zm0 4v-1h14v1z"></path>
+            </svg>
+        </div>
+    </div>
+
+    <HyperGrid @ref="@hyper_grid" AdditionalStyle="flex:1 1 auto;height:0px;" DebugName="PortalFlyoutPanel"
+               AutoFocus
+               ItemType="PortalMenuItem"
+               Data="this.Grid"
+               RowDoubleClicked="async (item) => await SelectItemAsync(item)"/>
+
+</div>
+

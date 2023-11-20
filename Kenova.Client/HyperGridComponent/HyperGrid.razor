@@ -1,0 +1,268 @@
+﻿@namespace Kenova.Client.Components
+@inherits KenovaComponentBase
+@typeparam ItemType
+@inject KenovaLocalizer Loc
+@using Microsoft.AspNetCore.Components.Web.Virtualization
+
+@{
+    if (KenovaClientConfig.Diagnostics) Console.WriteLine($"📺 Rendering <HyperGrid> (itemcount {this.Data.DisplayItems.Count})");
+
+    if (this.Data.UseMultiCheck != MultiCheck.Off)
+    {
+        CalculateHeaderCheckbox();
+    }
+
+    int start_index = this.Data.PageStartIndex;
+    int item_count = this.Data.PageItemCount;
+
+    string modeclass = null;
+
+    if (this.Data.DropdownMode)
+        modeclass = "dropdownmode";
+
+    _container_style.Clear();
+
+    if (this.Width != -1)
+        _container_style.Append($"width:{this.Width.ToPixels()};");
+
+    if (this.Height != -1)
+        _container_style.Append($"height:{this.Height.ToPixels()};");
+    else if (this.HeightMode == HeightMode.Container)
+        _container_style.Append($"height:100%;");
+    else if (this.HeightMode == HeightMode.Content)
+        _container_style.Append($"height:auto;");
+
+    if (this.MaxHeight != -1)
+        _container_style.Append($"max-height:{this.MaxHeight.ToPixels()};");
+
+    if (this.AdditionalStyle != null)
+        _container_style.Append(this.AdditionalStyle);
+
+    _didrender_header = false;
+    _didrender_table = false;
+
+}
+
+<div class="kn-hyper-container @modeclass" style="@_container_style.ToString()" id="@_container_id">
+
+    @if (this.Data.UseFilter == true && this.Data.DropdownMode == false)
+    {
+        <div class="kn-hyper-div-filter">
+            <div class="kn-hyper-filterrow">
+
+                <InputString InputElementId="@InputElementId"
+                             FieldExpression="() => this.Data.FilterText"
+                             FieldChanged="FilterTextChanged"
+                             FieldUpdate="UpdateKind.Timer" Milliseconds="400"
+                             ShowSearchIcon ShowClearButton
+                             Placeholder="@Loc["filter"]"
+                             MaxWidth="180" />
+
+                @if (this.Data.FilterText.Length == 0)
+                {
+                    <span>@Loc["hyper_recordcount", this.Data.DisplayItems.Count]</span>
+                }
+                else
+                {
+                    <span>@Loc["hyper_recordcount_filtered", this.Data.Items.Count, this.Data.DisplayItems.Count]</span>
+                }
+
+                @if (this.Data.Mode == DisplayMode.Pagination)
+                {
+                    if (item_count == 0)
+                    {
+                        <span>@Loc["hyper_showing", 0, 0]</span>
+                    }
+                    else
+                    {
+                        <span>@Loc["hyper_showing", start_index + 1, start_index + item_count]</span>
+                    }
+                }
+
+                @if (this.Data.UseMultiCheck != MultiCheck.Off)
+                {
+                    if (this.Data.CheckedItemsCount == 0)
+                    {
+                        <span>@Loc["hyper_norecords_checked"]</span>
+                    }
+                    else if (this.Data.CheckedItemsCount == 1)
+                    {
+                        <span>@Loc["hyper_onerecord_checked"]</span>
+                    }
+                    else
+                    {
+                        <span>@Loc["hyper_records_checked", this.Data.CheckedItemsCount]</span>
+                    }
+                }
+
+                @if (LoadmoreButtonCallback.HasDelegate)
+                {
+                    <LinkButton TabStop="false" OnClick="BtnLoadmoreClick">@Loc["hyper_loadmore"]</LinkButton>
+                }
+
+                <LinkButton TabStop="false" OnClick="BtnExportClick">@Loc["hyper_export_excel"]</LinkButton>
+
+
+            </div>
+        </div>
+    }
+
+    @if (this.Data.UseFilter == true && this.Data.DropdownMode == true && DisplayFilterAtBottom == false)
+    {
+        <div class="kn-hyper-div-filter">
+            <div class="kn-hyper-filterrow-dropdown">
+                <InputString InputElementId="@InputElementId"
+                             FieldExpression="() => this.Data.FilterText"
+                             FieldChanged="FilterTextChanged"
+                             FieldUpdate="UpdateKind.Timer" Milliseconds="100" />
+            </div>
+        </div>
+    }
+
+    @if (this.Data.DropdownMode == false && this.Data.UseHeader == true && this.Data.Columns.Count > 0)
+    {
+        _didrender_header = true;
+
+        <div id="@_header_div_id" class="kn-hyper-div-header">
+            <div class="kn-hyper-header-row">
+                @if (this.Data.UseMultiCheck != MultiCheck.Off)
+                {
+                    <div class="kn-hyper-header-column" style="width:18px;overflow:visible">
+                        <CheckBox CheckedExpression="() => this.HeaderCheckboxChecked"
+                                  Indeterminate="this.HeaderCheckboxIndeterminate"
+                                  CheckedChanged="HeaderCheckBoxChanged"
+                                  IndeterminateClicked="HeaderCheckBoxIndeterminateClicked" />
+                    </div>
+                }
+
+                @for (int x = 0; x < this.Data.Columns.Count; x++)
+                {
+                    Column<ItemType> column = this.Data.Columns[x];
+
+                    string column_style = $"width:{column.Width.ToPixels()}";
+
+                    if (column.Sortable == false)
+                    {
+                        <div class="kn-hyper-header-column" style="@column_style">
+                            <div>
+                                @column.Header
+                            </div>
+                        </div>
+                    }
+                    else if (this.Data.LastSortColumn != column)
+                    {
+                        <div class="kn-hyper-header-column sortable" style="@column_style" @onclick="@(e => this.Data.ToggleSorting(column))">
+                            <div>
+                                @column.Header
+                                <i class="fas fa-sort kn-hyper-unsortedcolor"></i>
+                            </div>
+                        </div>
+                    }
+                    else if (this.Data.LastSortMode == ColumnSortMode.Ascending)
+                    {
+                        <div class="kn-hyper-header-column sortable" style="@column_style" @onclick="@(e => this.Data.ToggleSorting(column))">
+                            <div>
+                                @column.Header
+                                <i class="fas fa-sort-up"></i>
+                            </div>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="kn-hyper-header-column sortable" style="@column_style" @onclick="@(e => this.Data.ToggleSorting(column))">
+                            <div>
+                                @column.Header
+                                <i class="fas fa-sort-down"></i>
+                            </div>
+                        </div>
+                    }
+                }
+            </div>
+        </div>
+    }
+
+    @if (this.Data.DropdownMode == true && DisplayFilterAtBottom == false && this.Data.UseHeader == true && this.Data.UseMultiCheck != MultiCheck.Off && this.Data.Columns.Count > 0 && this.Data.FilterText.Length == 0)
+    {
+        <div class="kn-hyper-div-dropdownheader">
+            <CheckBox CheckedExpression="() => this.HeaderCheckboxChecked"
+                      Indeterminate="this.HeaderCheckboxIndeterminate"
+                      CheckedChanged="HeaderCheckBoxChanged"
+                      IndeterminateClicked="HeaderCheckBoxIndeterminateClicked"
+                      AdditionalStyle="width:100%">Select all</CheckBox>
+        </div>
+    }
+
+    @{
+        _didrender_table = true;
+    }
+
+    <div id="@_table_div_id" class="kn-hyper-div-datasection @modeclass">
+
+        @if (this.Data.Mode == DisplayMode.Virtualization)
+        {
+
+            <Virtualize TItem="ItemType" Context="item" Items="@this.Data.DisplayItems">
+                <ItemContent>
+                    @{
+                        BuildRow(__builder2, item);
+                    }
+                </ItemContent>
+            </Virtualize>
+        }
+        else
+        {
+            @for (int row_index = start_index; row_index < (start_index + item_count); row_index++)
+            {
+                ItemType item = this.Data.DisplayItems[row_index];
+
+                BuildRow(__builder, item, row_index);
+            }
+        }
+
+        @if (this.Data.FilterText.Trim().Length > 0 && item_count == 0)
+        {
+            <div class="kn-hyper-noresults">
+                <span>@Loc["hyper_noresults"]</span>
+            </div>
+        }
+
+    </div>
+
+    @if (this.Data.Mode == DisplayMode.Pagination)
+    {
+        <div class="kn-hyper-div-pagination">
+            <ButtonBar>
+                <Button Enabled="this.Data.CurrentPage != 1" ButtonClicked="this.Data.FirstPage">@Loc["first"]</Button>
+                <Button Enabled="this.Data.CurrentPage != 1" ButtonClicked="this.Data.PreviousPage">&lt; @Loc["previous"]</Button>
+                <Button TextOnly MinWidth="105">@Loc["hyper_pageinfo", this.Data.CurrentPage, this.Data.GetPageCount()]</Button>
+                <Button Enabled="this.Data.CurrentPage != this.Data.GetPageCount()" ButtonClicked="this.Data.NextPage">@Loc["next"] &gt;</Button>
+                <Button Enabled="this.Data.CurrentPage != this.Data.GetPageCount()" ButtonClicked="this.Data.LastPage">@Loc["last"]</Button>
+            </ButtonBar>
+        </div>
+    }
+
+    @if (this.Data.DropdownMode == true && DisplayFilterAtBottom == true && this.Data.UseHeader == true && this.Data.UseMultiCheck != MultiCheck.Off && this.Data.Columns.Count > 0 && this.Data.FilterText.Length == 0)
+    {
+        <div class="kn-hyper-div-dropdownheader">
+            <CheckBox CheckedExpression="() => this.HeaderCheckboxChecked"
+                      Indeterminate="this.HeaderCheckboxIndeterminate"
+                      CheckedChanged="HeaderCheckBoxChanged"
+                      IndeterminateClicked="HeaderCheckBoxIndeterminateClicked"
+                      AdditionalStyle="width:100%">Select all</CheckBox>
+        </div>
+    }
+
+    @if (this.Data.UseFilter == true && this.Data.DropdownMode == true && DisplayFilterAtBottom == true)
+    {
+        <div class="kn-hyper-div-filter">
+            <div class="kn-hyper-filterrow-dropdown">
+                <InputString InputElementId="@InputElementId"
+                             FieldExpression="() => this.Data.FilterText"
+                             FieldChanged="FilterTextChanged"
+                             FieldUpdate="UpdateKind.Timer" Milliseconds="100" />
+            </div>
+        </div>
+    }
+
+</div>
+

@@ -1,0 +1,29 @@
+﻿@namespace Kenova.Client.Components.Panels
+@inherits KenovaDialogBase
+
+@{
+    /* 
+    
+    A dropdown panel must determine its own height and weight explicitly.
+
+    A dropdown panel receives the LayerDefinition as parameter.
+
+    LayerDefinition.ContentSuggestedWidth = suggested width (ownerwidth) or -1 if not set.
+    LayerDefinition.ContentSuggestedHeight = suggested height or -1 if not set.
+    LayerDefinition.ContentMaxWidth = maximum width. It is the panel's responsibility not to exceed it.
+    LayerDefinition.ContentMaxHeight = maximum height. It is the panel's responsibility not to exceed it.
+        
+    */
+
+    var ld = LayerDefinition;
+    //double width = ld.ContentSuggestedWidth;
+    double width = 192;
+}
+
+<HyperGrid @ref="@hyper_grid"  DebugName="PanelDropdownMenu"
+           ItemType="MenuItem"
+           Data="@this.Data"
+           Width="@width"
+           MaxHeight="@ld.ContentMaxHeight"
+           RowDoubleClicked="RowDoubleClicked" />
+

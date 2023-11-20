@@ -1,0 +1,70 @@
+﻿@namespace Kenova.Client.Components
+@inherits KenovaComponentBase
+
+@*
+    * author: Sergey Zaikin zaikinsr@yandex.ru
+    * copyright: Copyright (c) 2019 Sergey Zaikin. All rights reserved.
+    * GitHub: https://github.com/jdtcn/BlazorDateRangePicker
+    * Demo: https://blazordaterangepicker.azurewebsites.net/
+*@
+
+<div id="@container_id" class="kn-daterangepicker">
+    <div class="kn-daterangepicker-sidebyside">
+        <CascadingValue Value="this" IsFixed="true">
+
+            <div class="drp-calendar left @(SingleDatePicker == true || ShowOnlyOneCalendar == true ? "single" : "")">
+                <div class="calendar-table">
+                    <Calendar @ref="@this.CalendarLeft"
+                              Side="SideType.Left"
+                              CalendarData="@LeftCalendar"
+                              ShowWeekNumbers="@ShowWeekNumbers"
+                              ShowISOWeekNumbers="@ShowISOWeekNumbers"
+                              LinkedCalendars="@LinkedCalendars"
+                              ShowDropdowns="@ShowDropdowns"
+                              SingleDatePicker="@SingleDatePicker"
+                              WeekAbbreviation="@WeekAbbreviation"
+                              OnMonthChanged="@(date => MonthChanged(date, SideType.Left))"
+                              OnClickDate="@(date => ClickDate(date))"
+                              HoverDate="@HoverDate"
+                              OnHoverDate="@(date => OnHoverDate(date))"
+                              Culture="@Culture"
+                              DaysEnabledFunction="@DaysEnabledFunction"
+                              CustomDateFunction="@CustomDateFunction"
+                              MaxSpan="@MaxSpan" />
+                </div>
+            </div>
+
+            @if (SingleDatePicker != true && ShowOnlyOneCalendar != true)
+            {
+<div class="drp-calendar right">
+    <div class="calendar-table">
+        <Calendar @ref="@this.CalendarRight"
+                  Side="SideType.Right"
+                  CalendarData="@RightCalendar"
+                  ShowWeekNumbers="@ShowWeekNumbers"
+                  ShowISOWeekNumbers="@ShowISOWeekNumbers"
+                  LinkedCalendars="@LinkedCalendars"
+                  ShowDropdowns="@ShowDropdowns"
+                  SingleDatePicker="@SingleDatePicker"
+                  WeekAbbreviation="@WeekAbbreviation"
+                  OnMonthChanged="@(date => MonthChanged(date, SideType.Right))"
+                  OnClickDate="@(date => ClickDate(date))"
+                  HoverDate="@HoverDate"
+                  OnHoverDate="@(date => OnHoverDate(date))"
+                  Culture="@Culture"
+                  DaysEnabledFunction="@DaysEnabledFunction"
+                  CustomDateFunction="@CustomDateFunction"
+                  MaxSpan="@MaxSpan" />
+    </div>
+</div>}
+        </CascadingValue>
+    </div>
+
+    @if (this.AutoApply == false)
+    {
+<ButtonBar>
+    <Button ButtonClicked="@ClickCancel">Cancel</Button>
+    <Button ButtonClicked="@ClickApply" Enabled="@(StartDate != null && EndDate != null)">Apply</Button>
+</ButtonBar>}
+
+</div>

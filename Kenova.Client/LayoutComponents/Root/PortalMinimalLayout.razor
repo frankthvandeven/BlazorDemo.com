@@ -1,0 +1,10 @@
+﻿@namespace Kenova.Client.Components
+@inherits LayoutComponentBase
+
+@{
+    if (KenovaClientConfig.Diagnostics) Console.WriteLine("📺 Rendering <PortalMinimalLayout>");
+}
+
+<PortalRoot ShowPortalTopbar="false" ShowPortalMenu="false" ShowPortalBreadcrumb="false">
+    @Body
+</PortalRoot>

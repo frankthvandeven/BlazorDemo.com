@@ -1,0 +1,141 @@
+﻿/*
+    The greater than sign (>) selects only those elements which are direct children of a parent.
+    It looks only one level down the markup structure and not further deep down.
+    Elements which are not the direct child of the specified parent is not selected.
+
+    .aa.bb.cc selects class="aa bb cc"
+*/
+
+.kn-rail-container {
+    display: flex;
+    margin: 10px 0 10px 0;
+    gap: 10px;
+}
+
+    .kn-rail-container > div {
+        /*padding-left: 10px;*/
+        flex: 0 0 auto;
+    }
+
+/*  .kn-rail-container > div:first-child {
+        padding-left: initial;
+    }
+*/
+
+.kn-infoblock-container {
+    margin: 19px 0;
+    /*width: 100%;*/
+    box-sizing: border-box;
+    display: flex;
+    border: 1px solid;
+    border-radius: 2px;
+    padding-right: 16px;
+}
+
+    .kn-infoblock-container.information {
+        background-color: #f0f6ff;
+        border-color: #f0f6ff;
+    }
+
+    .kn-infoblock-container.warning {
+        background-color: #fff8f0;
+        border-color: #fff8f0;
+    }
+
+    .kn-infoblock-container.error {
+        background-color: #fef0f1;
+        border-color: #fef0f1;
+    }
+
+    .kn-infoblock-container:focus {
+        border-color: #015cda;
+        outline: none;
+    }
+
+.kn-infoblock-image {
+    flex: 0 0 auto;
+    width: 16px;
+    height: 16px;
+    padding: 16px;
+}
+
+    .kn-infoblock-image.information {
+        fill: #015cda;
+    }
+
+    .kn-infoblock-image.warning {
+        fill: #ff8c00;
+    }
+
+    .kn-infoblock-image.error {
+        fill: #a4262c;
+    }
+
+    .kn-infoblock-image svg {
+    }
+
+        .kn-infoblock-image svg .fillwhite {
+            fill: #fff;
+        }
+
+.kn-infoblock-text {
+    padding: 16px 0 16px 0;
+    font-size: 12px;
+    /*line-height: 15px;*/
+    color: #323130;
+    /*white-space: pre-wrap;*/
+    /*overflow: hidden;*/
+    /*text-overflow: ellipsis;*/
+}
+
+.kn-icon-fontbased {
+    /*text-align: center;*/
+}
+
+    .kn-icon-fontbased.regularsize {
+        font-size: 18px;
+    }
+
+    .kn-icon-fontbased.doublesize {
+        font-size: 36px;
+    }
+
+    .kn-icon-fontbased.enabled {
+        color: #0078d4;
+    }
+
+    .kn-icon-fontbased.disabled {
+        color: #a19f9d;
+    }
+
+.kn-icon-svgbased.regularsize {
+    width: 16px;
+    height: 16px;
+}
+
+.kn-icon-svgbased.doublesize {
+    width: 32px;
+    height: 32px;
+}
+
+.kn-icon-svgbased.enabled {
+    fill: #0078d4;
+}
+
+.kn-icon-svgbased.disabled {
+    fill: #a19f9d;
+}
+
+.kn-stackpanel {
+    display: flex;
+    row-gap: 8px;
+    column-gap: 16px;
+}
+
+    .kn-stackpanel.horizontal {
+        flex-direction: row;
+    }
+
+    .kn-stackpanel.vertical {
+        flex-direction: column;
+    }

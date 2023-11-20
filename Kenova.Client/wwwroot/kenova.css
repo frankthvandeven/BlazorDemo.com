@@ -1,0 +1,232 @@
+﻿/*
+    This is the Kenova style sheet. It must be included in the 'index.html' of the Blazor project:
+    <link href="_content/Kenova.Client/kenova.css" rel="stylesheet" />
+
+    The greater than sign (>) selects only those elements which are direct children of a parent.
+    It looks only one level down the markup structure and not further deep down.
+    Elements which are not the direct child of the specified parent is not selected.
+
+    .aa.bb.cc selects class="aa bb cc"
+*/
+
+@import url('lib/font-awesome/css/all.min.css');
+@import url('css/blazorerror.css');
+@import url('css/loading.css');
+@import url('css/headers.css');
+@import url('css/portal.css');
+@import url('css/inputbase.css');
+@import url('css/controls.css');
+@import url('css/daterangepicker.css');
+@import url('css/mainmenu.css');
+@import url('css/toolbar.css');
+@import url('css/tabcomponent.css');
+@import url('css/button.css');
+@import url('css/linkbutton.css');
+@import url('css/optionpicker.css');
+@import url('css/radiobutton.css');
+@import url('css/checkbox.css');
+@import url('css/onoffbox.css');
+@import url('css/hypergrid.css');
+@import url('css/animations.css');
+@import url('css/layoutsystem.css');
+@import url('css/featuretiles.css');
+
+:root {
+    --kenova-css-version: 'Kenova V16.1.1000';
+}
+
+/*a:focus {
+    outline-color: #00bcf2;
+    outline-width: 1px;
+    outline-style: dashed;
+}*/
+
+:focus {
+    outline-width: 1px;
+    outline-style: solid;
+    outline-color: black;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    /*font-family: az_ea_font,'Segoe UI',az_font,system-ui,-apple-system,BlinkMacSystemFont,Roboto,Oxygen,Ubuntu,Cantarell,'Open Sans','Helvetica Neue',sans-serif;*/
+    font-family: 'Segoe UI',system-ui,-apple-system,BlinkMacSystemFont,Roboto,Oxygen,Ubuntu,Cantarell,'Open Sans','Helvetica Neue',sans-serif;
+    font-size: 13px;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden;
+    /*width: 100%;*/
+    /*display: block;*/
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -moz-user-select: none; /* Old versions of Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none;
+    -webkit-tap-highlight-color: transparent; /* remove grey highlight upon tap*/
+    touch-action: manipulation; /* disables double-tap zoom */
+}
+
+button, input, select, textarea {
+    font-family: az_ea_font,'Segoe UI',az_font,system-ui,-apple-system,BlinkMacSystemFont,Roboto,Oxygen,Ubuntu,Cantarell,'Open Sans','Helvetica Neue',sans-serif;
+    font-weight: 400;
+    font-size: 13px;
+    border-radius: 0;
+}
+
+header {
+    font-weight: 600;
+    font-size: 18px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-bottom: 16px;
+    /*min-width: 300px;*/
+}
+
+.h1, h1 {
+    color: black; /* was #337ab7 */
+    font-weight: 600;
+    font-size: 18px;
+    margin-bottom: 16px;
+}
+
+.h2, h2 {
+    color: black; /* was #337ab7 */
+    font-weight: 600;
+    font-size: 18px;
+    margin-bottom: 16px;
+}
+
+.h3, h3 {
+    color: black; /* was #337ab7 */
+    font-weight: 600;
+    font-size: 18px;
+    margin-bottom: 16px;
+}
+
+.h4, h4 {
+    color: black; /* was #337ab7 */
+    font-weight: 600;
+    font-size: 18px;
+    margin-bottom: 16px;
+}
+
+.h5, h5 {
+    color: black; /* was #337ab7 */
+    font-weight: 600;
+    font-size: 18px;
+    margin-bottom: 16px;
+}
+
+.h6, h6 {
+    color: black; /* was #337ab7 */
+    font-weight: 600;
+    font-size: 18px;
+    margin-bottom: 16px;
+}
+
+.kn-center-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.kn-nowrap {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.kn-hidefocusoutline {
+    outline: none !important;
+}
+
+.kn-flexoneone {
+    flex: 1 1 auto;
+}
+
+* > :first-child {
+    margin-top: 0 !important;
+}
+
+* > :last-child {
+    margin-bottom: 0 !important;
+}
+
+/* Make the sides to clip "0" and the rest "-100%" */
+
+.kn-cliptop {
+    clip-path: inset(0 -100% -100% -100%);
+}
+
+.kn-clipright {
+    clip-path: inset(-100% 0 -100% -100%);
+}
+
+.kn-clipbottom {
+    clip-path: inset(-100% -100% 0 -100%);
+}
+
+.kn-clipleft {
+    clip-path: inset(-100% -100% -100% 0);
+}
+
+
+.kn-cannot-render-container {
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    overflow-y: scroll;
+    border-color: red;
+    border-width: 4px;
+    border-style: dashed;
+    box-sizing: border-box;
+    padding: 20px;
+    font-size: 12px;
+}
+
+.kn-cannot-render-header {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.kn-cannot-render-subheader {
+    margin-bottom: 20px;
+}
+
+
+/* FlexList component */
+
+.kn-flexlist-container {
+    display: flex;
+    flex-direction: column;
+    margin: 10px 0;
+}
+
+.kn-flexlist-datarow {
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-color: #f3f2f1;
+    /*height: max-content;*/
+    box-sizing: border-box;
+    /*min-width: 100%;*/
+    /*width: max-content;*/
+    padding: 6px 6px;
+}
+
+    .kn-flexlist-datarow:focus {
+        outline-offset: -1px;
+    }
+
+    .kn-flexlist-datarow:active {
+        background-color: #e1dfdd;
+    }
+
+    .kn-flexlist-datarow:focus-within {
+        background-color: #e1dfdd;
+    }
+

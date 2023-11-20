@@ -1,0 +1,46 @@
+﻿@namespace Kenova.Client.Components
+@inherits KenovaComponentBase
+
+<div id="@container_id" class="kn-toolbar-container">
+
+    @for (int index = 0; index < this.Buttons.Count; index++)
+    {
+        var item = this.Buttons[index];
+        bool separator = (item.Icon.IconKind != IconKind.None && item.Caption != null);
+        bool isEnabled = item.EnabledExpression();
+        bool defaultbutton = false;
+
+        if (item.Kind == ButtonKind.Default && isEnabled)
+        {
+            defaultbutton = true;
+        }
+
+        <div class="kn-toolbar-button @(isEnabled ? "enabled" : "disabled")"
+             tabindex="-1" _kn_defaultbutton="@defaultbutton"
+             id="@item.ContainerID">
+
+            <FastIcon Enabled="@isEnabled" IconDefinition="@item.Icon" />
+
+            @if (separator)
+            {
+                <div style="width:8px;background-color:green"></div>
+            }
+
+            <div class="kn-toolbar-label">
+                @item.Caption
+            </div>
+        </div>
+
+    }
+
+    <div id="@overflow_id" tabindex="-1" class="kn-toolbar-button enabled">
+
+        <div class="kn-toolbar-svgbased-icon">
+            <svg viewBox="0 0 16 16">
+                <path d="M2 7a1 1 0 0 1 .39.08.94.94 0 0 1 .53.53 1 1 0 0 1 0 .78.94.94 0 0 1-.53.53 1 1 0 0 1-.78 0 .94.94 0 0 1-.53-.53 1 1 0 0 1 0-.78.94.94 0 0 1 .53-.53A1 1 0 0 1 2 7zm6 0a1 1 0 0 1 .39.08.94.94 0 0 1 .53.53 1 1 0 0 1 0 .78.94.94 0 0 1-.53.53 1 1 0 0 1-.78 0 .94.94 0 0 1-.53-.53 1 1 0 0 1 0-.78.94.94 0 0 1 .53-.53A1 1 0 0 1 8 7zm6 0a1 1 0 0 1 .39.08.94.94 0 0 1 .53.53 1 1 0 0 1 0 .78.94.94 0 0 1-.53.53 1 1 0 0 1-.78 0 .94.94 0 0 1-.53-.53 1 1 0 0 1 0-.78.94.94 0 0 1 .53-.53A1 1 0 0 1 14 7z"></path>
+            </svg>
+        </div>
+
+    </div>
+
+</div>

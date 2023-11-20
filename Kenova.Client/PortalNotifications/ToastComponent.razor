@@ -1,0 +1,66 @@
+﻿@namespace Kenova.Client.SystemComponents
+@inherits KenovaComponentBase
+
+<div class="kn-portal-toast-item">
+    @* Small progress indicator - three black squares - animated *@
+
+    <svg viewBox="0 0 16 16">
+        <path d="M0 6h4v4H0zm6 0h4v4H6zm6 0h4v4h-4z" class="x14" />
+    </svg>
+
+    <p>
+        @NotificationItem.Message
+    </p>
+
+    @if (true)
+    {
+
+        @*Size inside notification page: 21px x 21px *@
+        @*Size inside activity log (hypergrid): 12px x 12px *@
+        @*Size inside toast: 14px x 14px (ook de progress dots!) *@
+
+        @*Info - blue circle with white exclamation mark *@
+        <svg viewBox="0 0 16 16">
+            <g>
+                <title></title>
+                <circle cx="8" cy="8" r="8" style="fill: #015cda"></circle>
+                <circle cx="8" cy="4.116" r="1.449" style="fill:white"></circle>
+                <path d="M9.1 13.987v-7H6.911l-.011 7h2.2z" style="fill:white"></path>
+            </g>
+        </svg>
+
+        @*Success - green circle with checkmark *@
+        <svg viewBox="0 0 16 16">
+            <g>
+                <title></title>
+                <circle cx="8" cy="8" r="8" style="fill: #57a300"></circle>
+                <path d="M3.553 8.291a.406.406 0 0 1 .022-.575l.835-.772a.407.407 0 0 1 .57.022l2.136 2.292 3.807-4.875a.402.402 0 0 1 .566-.073l.906.699c.173.128.21.377.08.554l-4.868 6.233a.5.5 0 0 1-.76.033L3.553 8.291z" style="fill: white"></path>
+            </g>
+        </svg>
+
+        @* Failed - red circle with white exclamation mark "*@
+        <svg viewBox="0 0 9 9">
+            <g>
+                <circle cx="4.5" cy="4.5" r="4.5" style="fill: #a4262c"></circle>
+                <circle cx="4.5" cy="6.438" r=".697" style="fill:white"></circle>
+                <path d="M4.604 2.186h-.729l.186 3.232h.878l.186-3.232z" style="fill:white"></path>
+            </g>
+        </svg>
+
+        @* Warning - orange triangle with white exclamation mark *@
+
+        <svg viewBox="0 0 9 9">
+            <g>
+                <path fill="#db7500" d="M8.267 8H.733c-.6 0-.916-.623-.62-1.129L2.014 3.53 3.896.384c.302-.507.903-.514 1.197-.008L7.001 3.65l1.882 3.229C9.183 7.383 8.881 8 8.267 8z"></path>
+                <circle cx="4.5" cy="6.178" r=".615" style="fill:white"></circle>
+                <path d="M4.623 2.428H3.98l.164 2.85h.774l.165-2.85z" style="fill:white"></path>
+            </g>
+        </svg>
+    }
+
+    <svg viewBox="0 0 15.8 15.8" class="kn-portal-toast-close-svg" @onclick="Close_Div_Clicked">
+        <path d="M8.7 7.9l7.1 7.1-.8.8-7.1-7.1-7.1 7.1L0 15l7.1-7.1L0 .8.8 0l7.1 7.1L15 0l.8.8z"></path>
+    </svg>
+</div>
+
+

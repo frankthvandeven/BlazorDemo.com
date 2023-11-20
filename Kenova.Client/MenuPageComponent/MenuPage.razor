@@ -1,0 +1,32 @@
+﻿@namespace Kenova.Client.Components
+@inherits KenovaComponentBase
+
+@{
+    string selectedIdentifier = null;
+
+    if (this.Parent.ActiveMenuItem != null)
+    {
+        selectedIdentifier = this.Parent.ActiveMenuItem.Identifier;
+    }
+
+    bool is_selected = EqualityComparer<string>.Default.Equals(selectedIdentifier, Identifier);
+
+}
+
+@if (KeepAlive)
+{
+    string styleString = is_selected ? "display:inherit" : "display:none";
+
+    <div id="@_menuItem.StagingAreaID" class="kn-pagedivider-container-menupage" style="@styleString">
+        @ChildContent
+    </div>
+}
+else
+{
+    if (is_selected)
+    {
+        <div id="@_menuItem.StagingAreaID" class="kn-pagedivider-container-menupage">
+            @ChildContent
+        </div>
+    }
+}

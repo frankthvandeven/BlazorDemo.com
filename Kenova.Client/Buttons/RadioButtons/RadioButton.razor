@@ -1,0 +1,29 @@
+﻿@namespace Kenova.Client.Components
+@inherits KenovaComponentBase
+
+@{
+    bool isSelected = EqualityComparer<string>.Default.Equals(Parent.SelectedFieldLink.Value, Identifier);
+
+    string selected = isSelected ? "selected" : "default";
+    string enabled = "disabled";
+
+    if (Enabled)
+    {
+        enabled = "enabled";
+    }
+
+    //var classnames = string.Join(" ", classes);
+}
+
+<div class="kn-radio-item @enabled @selected"
+     id="@ContainerID"
+     tabindex="-1"
+     @onclick="@(e=> Item_Div_Clicked(e))">
+
+    <div class="kn-radio-circle-outer">
+        <div class="kn-radio-circle-inner"></div>
+    </div>
+    <span class="kn-radio-label">
+        @ChildContent
+    </span>
+</div>

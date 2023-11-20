@@ -1,0 +1,57 @@
+﻿@namespace Kenova.Client.Components
+@inherits KenovaComponentBase
+@inject KenovaLocalizer Loc
+@using Microsoft.AspNetCore.Components.Web.Virtualization
+@using Kenova.Client.SystemComponents
+
+@{
+    if (KenovaClientConfig.Diagnostics) Console.WriteLine("📈 TreeView - BuildRenderTree");
+
+    var list = this._tvData.CreateRenderList();
+
+}
+
+<div class="" style="width:360px;height:400px;border-style:solid;overflow:auto">
+
+    <Virtualize TItem="TreeViewRenderItem" Context="item" Items="@list">
+        <ItemContent>
+            @{
+                double indent = item.Level * 20d;
+            }
+            <div style="display:flex;flex-direction:row;height:24px" @onclick="@(e => this.OnRowClick(e, item))">
+
+                 @*greenyellow*@ 
+                <div style="flex:0 0 auto;width:@(indent)px;background-color:white" />
+
+                @if (item.ChildCount > 0)
+                {
+                    if (item.IsExpanded)
+                    {
+                        <div style="flex:0 0 auto;width:20px;background-color:lightblue">[-]</div>
+                    }
+                    else
+                    {
+                        <div style="flex:0 0 auto;width:20px;background-color:lightblue">[+]</div>
+                    }
+                }
+                else
+                {
+                    <div style="flex:0 0 auto;width:20px;background-color:white"></div>
+                }
+
+
+                @if (item.IsFolder)
+                {
+                    <div style="flex:0 0 auto;width:200px;background-color:yellow">@item.Name (folder)</div>
+                }
+                else
+                {
+                    //lightgoldenrodyellow
+                    <div style="flex:0 0 auto;width:200px;background-color:white">@item.Name</div>
+                }
+            </div>
+        </ItemContent>
+    </Virtualize>
+
+</div>
+

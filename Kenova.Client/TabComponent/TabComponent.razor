@@ -1,0 +1,70 @@
+﻿@namespace Kenova.Client.Components
+@inherits KenovaComponentBase
+
+@{ 
+
+    _container_style.Clear();
+
+    if (this.Width != -1)
+        _container_style.Append($"width:{this.Width.ToPixels()};");
+
+    if (this.Height != -1)
+        _container_style.Append($"height:{this.Height.ToPixels()};");
+    else if (this.HeightMode == HeightMode.Container)
+        _container_style.Append($"height:100%;");
+    else if (this.HeightMode == HeightMode.Content)
+        _container_style.Append($"height:auto;");
+
+    if (this.MaxHeight != -1)
+        _container_style.Append($"max-height:{this.MaxHeight.ToPixels()};");
+
+    if (this.AdditionalStyle != null)
+        _container_style.Append(this.AdditionalStyle);
+
+
+    int active_tabindex = this.getTabIndex(this.SelectedTabFieldLink.Value);
+
+    if (active_tabindex == -1)
+    {
+        active_tabindex = 0;
+    }
+
+}
+
+<div class="kn-tabcomponent-container" style="@_container_style.ToString()">
+
+    <div id="@container_id" class="kn-tabcomponent-tabbar">
+
+        @for (int index = 0; index < this.TabItems.Count; index++)
+        {
+            var item = this.TabItems[index];
+
+            string selectedClass = null;
+            string enabledClass = item.EnabledExpression() ? "enabled" : "disabled";
+
+            if (active_tabindex == index)
+            {
+                selectedClass = "selected";
+            }
+
+            <div class="kn-tabcomponent-tabitem @enabledClass @selectedClass" tabindex="-1" id="@item.ContainerID">
+                <div>
+                    @item.Caption
+                </div>
+            </div>
+        }
+
+        <div id="@overflow_id" tabindex="-1" class="kn-toolbar-button enabled">
+            <div class="kn-toolbar-svgbased-icon">
+                <svg viewBox="0 0 16 16">
+                    <path d="M2 7a1 1 0 0 1 .39.08.94.94 0 0 1 .53.53 1 1 0 0 1 0 .78.94.94 0 0 1-.53.53 1 1 0 0 1-.78 0 .94.94 0 0 1-.53-.53 1 1 0 0 1 0-.78.94.94 0 0 1 .53-.53A1 1 0 0 1 2 7zm6 0a1 1 0 0 1 .39.08.94.94 0 0 1 .53.53 1 1 0 0 1 0 .78.94.94 0 0 1-.53.53 1 1 0 0 1-.78 0 .94.94 0 0 1-.53-.53 1 1 0 0 1 0-.78.94.94 0 0 1 .53-.53A1 1 0 0 1 8 7zm6 0a1 1 0 0 1 .39.08.94.94 0 0 1 .53.53 1 1 0 0 1 0 .78.94.94 0 0 1-.53.53 1 1 0 0 1-.78 0 .94.94 0 0 1-.53-.53 1 1 0 0 1 0-.78.94.94 0 0 1 .53-.53A1 1 0 0 1 14 7z"></path>
+                </svg>
+            </div>
+        </div>
+    </div>
+
+    <CascadingValue Value="this" IsFixed="true">
+        @ChildContent
+    </CascadingValue>
+
+</div>

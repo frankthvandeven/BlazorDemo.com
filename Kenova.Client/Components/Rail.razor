@@ -1,0 +1,34 @@
+﻿@namespace Kenova.Client.Components
+@inherits KenovaComponentBase
+
+@{
+
+    _container_style.Clear();
+
+    if (this.Align == RailAlign.Center)
+    {
+        _container_style.Append("justify-content:center;");
+    }
+    else if (this.Align == RailAlign.Right)
+    {
+        _container_style.Append("justify-content:flex-end;");
+    }
+
+    if (this.AlignItems == RailItemsAlign.Top)
+    {
+        _container_style.Append("align-items:flex-start;");
+    }
+    else if (this.AlignItems == RailItemsAlign.Center)
+    {
+        _container_style.Append("align-items:center;");
+    }
+    else if (this.AlignItems == RailItemsAlign.Bottom)
+    {
+        _container_style.Append("align-items:flex-end;");
+    }
+
+}
+
+<div class="kn-rail-container" style="@_container_style.ToString()">
+    @ChildContent
+</div>

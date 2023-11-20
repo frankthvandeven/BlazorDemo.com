@@ -1,0 +1,241 @@
+﻿
+/* design grid online: https://grid.layoutit.com */
+
+.kn-inputbase-container {
+    display: grid;
+    /*grid-template-columns: 1fr 1fr 1fr;*/
+    /*grid-template-rows: auto 1fr auto;*/
+    grid-template-areas: ". caption-top ." "caption-left inputbox remark-right" ". remark-bottom .";
+}
+
+.kn-inputbase-caption {
+    width: 100%;
+    height: 20px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+    .kn-inputbase-caption.top {
+        grid-area: caption-top;
+    }
+
+    .kn-inputbase-caption.left {
+        padding-right: 6px;
+        box-sizing: border-box;
+        align-self: center;
+        grid-area: caption-left;
+    }
+
+.kn-inputbase-borderbox {
+    display: flex;
+    width: 100%;
+    height: 24px;
+    border-radius: 2px;
+    border-color: #8a8886;
+    border-width: 1px;
+    border-style: solid;
+    box-sizing: border-box;
+    position: relative;
+    grid-area: inputbox;
+}
+
+    .kn-inputbase-borderbox.displaycomponent {
+        border-color: #e6e6e6;
+        background-color: #e6e6e6;
+    }
+
+    .kn-inputbase-borderbox.enabled.showhand {
+        cursor: pointer; /* since there is not text-input control in the container, we can display a hand cursor */
+    }
+
+    .kn-inputbase-borderbox:focus-within::after {
+        content: "";
+        position: absolute;
+        top: -1px;
+        left: -1px;
+        right: -1px;
+        bottom: -1px;
+        pointer-events: none;
+        /*display: block;*/
+        border-width: 2px;
+        border-radius: 2px;
+        border-style: solid;
+        border-color: #0078d4;
+    }
+
+    .kn-inputbase-borderbox.enabled:hover {
+        border-color: #323130;
+        color: #201f1e;
+    }
+
+.kn-inputbase-remarkarea {
+    width: 100%;
+}
+
+    .kn-inputbase-remarkarea.bottom {
+        grid-area: remark-bottom;
+        min-height: 24px;
+        margin-top: 6px;
+    }
+
+    .kn-inputbase-remarkarea.right {
+        padding-left: 6px;
+        box-sizing: border-box;
+        align-self: center;
+        grid-area: remark-right;
+    }
+
+/* Remark component */
+
+.kn-remark-container {
+    height: auto;
+    color: inherit;
+}
+
+    .kn-remark-container.invalid {
+        color: red;
+    }
+
+    .kn-remark-container.wordwrap {
+    }
+
+    .kn-remark-container.nowrap {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+/* the input control is stripped from boxes and margins*/
+
+.kn-inputbox-input-element {
+    box-sizing: border-box;
+    padding: 0px 8px 2px 8px;
+    min-width: 10px;
+    flex: 1 1 auto;
+    width: 0px;
+    border-style: none; /* remove default border */
+    border-width: 0px; /* remove default border */
+    font-size: 13px;
+    background-color: transparent;
+}
+
+.kn-inputbox-span-element {
+    box-sizing: border-box;
+    padding: 2px 8px 0px 8px;
+    min-width: 10px;
+    flex: 1 1 auto;
+    font-size: 13px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+    .kn-inputbox-span-element.disabled {
+        color: #a19f9d;
+    }
+
+    .kn-inputbox-input-element:focus,
+    .kn-inputbox-span-element:focus,
+    .kn-inputbox-suffix:focus,
+    .kn-inputbox-image:focus {
+        outline: none; /* focus outline will be on outer kn-inputbase-borderbox */
+    }
+
+.kn-inputbox-suffix {
+    flex: 0 0 auto;
+    padding: 1.5px 6px 0 6px;
+    /*align-items: center;*/
+    /*display: inline-flex;*/
+}
+
+    .kn-inputbox-suffix.disabled {
+        color: #a19f9d;
+    }
+
+
+.kn-inputbox-image {
+    flex: 0 0 26px;
+    box-sizing: border-box;
+    /*font-weight: 600;*/
+    transition-property: background-color, border-color;
+    transition-duration: 0.2s;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.23, 1);
+    /*background-color: aquamarine;*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    fill: #0078d4;
+}
+
+    .kn-inputbox-image svg {
+        width: 13px;
+        height: 13px;
+    }
+
+    .kn-inputbox-image.search svg {
+        width: 12px;
+        height: 12px;
+    }
+
+    .kn-inputbox-image.cleartext svg {
+        width: 11px;
+        height: 11px;
+    }
+
+    .kn-inputbox-image.search.disabled,
+    .kn-inputbox-image.cleartext.disabled,
+    .kn-inputbox-image.zoom.disabled,
+    .kn-inputbox-image.dropdown.disabled {
+        fill: #a19f9d;
+    }
+
+    .kn-inputbox-image.cleartext.enabled:hover,
+    .kn-inputbox-image.zoom.enabled:hover,
+    .kn-inputbox-image.dropdown.enabled:hover {
+        background-color: #f3f2f1;
+        cursor: pointer;
+    }
+
+    .kn-inputbox-image.dropdown.flip {
+        transform: scaleY(-1);
+    }
+
+/* hide the cleartext button when not focussed */
+
+/*.kn-inputbox-image.cleartext {
+        display: none;
+    }*/
+
+/* display the cleartext button when focus withing the borderbox */
+
+/*.kn-inputbase-borderbox:focus-within .kn-inputbox-image.cleartext {
+    display: flex;
+}*/
+
+/* InputMultiline */
+
+.kn-inputbase-borderbox.multiline {
+    height: 100%;
+}
+
+.kn-inputbox-textarea-element {
+    box-sizing: border-box;
+    padding: 2px 8px 2px 8px;
+    flex: 1 1 auto;
+    border-style: none; /* remove default border */
+    border-width: 0px; /* remove default border */
+    font-size: 13px;
+    background-color: transparent;
+    height: auto;
+    resize: none;
+    overflow-y: scroll;
+}
+
+    .kn-inputbox-textarea-element:disabled {
+        color: #a19f9d;
+    }
+
+    .kn-inputbox-textarea-element:focus {
+        outline: none; /* focus outline will be on outer kn-inputbase-borderbox */
+    }

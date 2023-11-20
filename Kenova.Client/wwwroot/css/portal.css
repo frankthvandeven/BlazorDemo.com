@@ -1,0 +1,695 @@
+﻿
+.kn-portal-base {
+    background-color: white;
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    /*overflow: hidden;*/
+    display: flex;
+    flex-direction: column;
+}
+
+.kn-portal-stagingarea {
+    flex: 1 1 auto;
+    /*position: relative;*/
+    display: flex;
+}
+
+.kn-portal-dockmenu-section {
+    flex: 0 0 auto;
+    position: relative;
+}
+
+.kn-portal-dockmenu-shadow {
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 8px;
+    background: linear-gradient(270deg,rgba(0,0,0,.06) 0,rgba(0,0,0,0) 100%);
+}
+
+.kn-docked-container {
+    background-color: #f3f2f1;
+    width: 225px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+    .kn-docked-container.collapsed {
+        width: 40px;
+        overflow: hidden;
+    }
+
+.kn-docked-collapsebutton {
+    flex: 0 0 auto;
+    height: 28px;
+    width: 100%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+    .kn-docked-collapsebutton:hover {
+        background-color: rgba(85,179,255,.1);
+    }
+
+    .kn-docked-collapsebutton svg {
+        width: 8px;
+        height: 8px;
+        fill: #333;
+        transform: rotate(-90deg);
+        margin-left: auto;
+        margin-right: 10px;
+    }
+
+    .kn-docked-collapsebutton.collapsed svg {
+        transform: rotate(90deg);
+    }
+
+.kn-portal-content-section {
+    flex: 1 1 auto;
+    width: 0px;
+    /* home of the breadcrumb and data layers */
+    display: flex;
+    flex-direction: column;
+}
+
+.kn-portal-contentlayers {
+    flex: 1 1 auto;
+    height: 0px;
+    position: relative;
+}
+
+.kn-portal-basecomponent {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box; /* this includes the padding inside the 100% */
+}
+
+.kn-portal-modallayer-transparentbg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /*background-color: rgba(0,0,0,0.5);*/
+}
+
+.kn-portal-modallayer-windowed {
+    position: relative;
+    width: 90%;
+    height: 90%;
+    /*left: calc(width /2 );*/
+    background-color: white;
+    box-sizing: border-box;
+    /* new bits */
+    box-shadow: 0 5px 15px 2px rgba(0,0,0,.3);
+    border: 1px solid;
+    border-color: rgba(204,204,204,.8);
+}
+
+/*.kn-portal-padded-scroller {
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    padding: 20px;
+    box-sizing: border-box;
+}*/
+
+.kn-portal-modallayer-fullsize {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+}
+
+.kn-portal-modelesslayer-right {
+    position: fixed; /* was absolute */
+    top: 40px; /* was 0 */
+    right: 0;
+    bottom: 0;
+    width: auto;
+    min-width: 10px;
+    background-color: white;
+    box-sizing: border-box;
+    box-shadow: 0 25.6px 57.6px 0 rgba(0,0,0,.22), 0 4.8px 14.4px 0 rgba(0,0,0,.18);
+}
+
+.kn-topright-closebutton {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    box-sizing: border-box;
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+    transition: background-color .2s ease-out;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+    .kn-topright-closebutton:hover {
+        background-color: #ba141a;
+        fill: #fff !important;
+    }
+
+    .kn-topright-closebutton svg {
+        height: 12px;
+        width: 12px;
+    }
+
+.kn-portal-dropdownlayer {
+    box-sizing: border-box;
+    position: fixed;
+    background-color: #fff;
+    box-shadow: 0 3.2px 7.2px 0 rgba(0,0,0,.132), 0 0.6px 1.8px 0 rgba(0,0,0,.108);
+    border: 1px solid;
+    border-color: rgba(204, 204, 204, 0.8);
+}
+
+.kn-portal-dropdownlayer-balloon {
+    box-sizing: border-box;
+    position: fixed;
+    background-color: #fff;
+    box-shadow: 0 5px 15px 2px rgba(0, 0, 0, 0.3);
+    border: 1px solid;
+    border-color: rgba(204, 204, 204, 0.8);
+}
+
+.balloon-pointer {
+    transform-origin: left top;
+    transform: rotate(45deg);
+    position: absolute;
+    left: 18px;
+    top: -12px;
+    width: 16px;
+    height: 16px;
+    background-color: white;
+    box-shadow: 0 5px 15px 2px rgba(0, 0, 0, 0.3);
+    border: 1px solid;
+    border-color: rgba(204, 204, 204, 0.8);
+}
+
+    .balloon-pointer.bottom {
+        top: initial;
+        bottom: -4px;
+    }
+
+.balloon-curtain {
+    position: relative;
+    /*position: absolute;*/
+    /*left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;*/
+    box-sizing: border-box;
+    background-color: white;
+    /*padding: 20px;*/
+}
+
+.kn-portal-flyoutlayer-left {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: auto;
+    background-color: white;
+    box-sizing: border-box;
+    box-shadow: 0 6.4px 14.4px 0 rgba(0,0,0,.132), 0 1.2px 3.6px 0 rgba(0,0,0,.108);
+}
+
+.kn-portal-flyoutpanel-container {
+    width: 225px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.kn-flyout-hamburgerbutton {
+    flex: 0 0 auto;
+    width: 100%;
+    height: 40px;
+    cursor: pointer;
+}
+
+    .kn-flyout-hamburgerbutton:hover {
+        background-color: rgba(85,179,255,.1);
+    }
+
+.kn-flyout-hamburgerbutton-icon {
+    height: 40px;
+    width: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+    .kn-flyout-hamburgerbutton-icon svg {
+        width: 16px;
+        height: 16px;
+        fill: #0078d4;
+    }
+
+.kn-kenovadialogbase {
+}
+
+    .kn-kenovadialogbase:focus {
+        outline-style: none;
+    }
+
+    /* The portal's TopBar*/
+    .kn-portal-topbar {
+        /*box-shadow: 0 6.4px 14.4px 0 rgba(0,0,0,.132), 0 1.2px 3.6px 0 rgba(0,0,0,.108);*/
+        background-color: #0078d4;
+        height: 40px;
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+.kn-topbar-left {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+}
+
+.kn-topbar-brand {
+    display: inline-block;
+    font-size: 15px;
+    padding: 0 20px;
+    height: 40px;
+    line-height: 40px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+    .kn-topbar-brand:hover {
+        /*color: #fff;*/
+        background-color: #106ebe;
+    }
+
+.kn-topbar-center {
+    flex: 1 1 auto;
+    text-align: center;
+}
+
+@media only screen and (max-width: 700px) {
+    .kn-topbar-center span {
+        display: none;
+    }
+}
+
+.kn-topbar-right {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    height: 40px;
+}
+
+/*.kn-topbar-buttons-container {
+    display: flex;
+    flex: 0 0 auto;
+}*/
+
+.kn-topbar-button {
+    display: flex;
+    height: 40px;
+    width: 40px;
+    flex: 0 0 auto;
+    align-items: center;
+    justify-content: center;
+    fill: #fff;
+    cursor: pointer;
+    position: relative;
+}
+
+    .kn-topbar-button.open {
+        background-color: #fff;
+        fill: #1664a7;
+    }
+
+    .kn-topbar-button.default:hover {
+        background-color: #106ebe;
+    }
+
+    .kn-topbar-button.default:active {
+        background-color: #1664a7;
+    }
+
+    .kn-topbar-button svg {
+        width: 16px;
+        height: 16px;
+    }
+
+/*    .kn-topbar-button.open svg {
+        fill: #1664a7;
+    }
+*/
+
+.kn-topbar-avatarmenu {
+    flex: 0 0 auto;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+    cursor: pointer;
+}
+
+    .kn-topbar-avatarmenu:hover {
+        background-color: #106ebe;
+    }
+
+    .kn-topbar-avatarmenu:active {
+        background-color: #1664a7;
+    }
+
+.kn-avatarmenu-tenant-container {
+    text-align: right;
+    max-width: 180px; /* was 160 */
+}
+
+@media only screen and (max-width: 400px) {
+    .kn-avatarmenu-tenant-container {
+        display: none;
+    }
+}
+
+.kn-avatarmenu-signin {
+    font-size: 13px;
+} 
+
+.kn-avatarmenu-username {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 14px;
+    /*line-height: normal;*/
+}
+
+.kn-avatarmenu-tenant {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-weight: 600;
+    font-size: 10px;
+    /*line-height: normal;*/
+    text-transform: uppercase;
+}
+
+.kn-avatarmenu-tenant-image-container {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.kn-avatarmenu-tenant-image {
+    height: 28px;
+    width: 28px;
+    border: 0;
+    border-radius: 28px;
+    /* ?? */
+    overflow: hidden;
+    max-height: 100%;
+    max-width: 100%;
+}
+
+.kn-portal-breadcrumb-container {
+    flex: 0 0 auto;
+    height: 19px;
+    display: flex;
+    padding: 8px 20px 0px 20px;
+}
+
+.kn-portal-breadcrumb-link {
+    font-size: 14px;
+    color: #0078d4;
+    cursor: pointer;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding: 0 3px;
+}
+
+    .kn-portal-breadcrumb-link:hover {
+        text-decoration: underline;
+        color: #004578;
+    }
+
+.kn-portal-breadcrumb-divider {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    text-align: center;
+    padding: 1.3px 3px 0 3px;
+}
+
+    .kn-portal-breadcrumb-divider svg {
+        transform: rotate(90deg);
+        height: 10px;
+        width: 10px;
+        fill: #636363;
+    }
+
+.kn-portal-taskrunner-transparentbg {
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    /*display: flex;*/
+    display: none;
+    justify-content: center;
+    align-items: center;
+    /*background-color: rgba(0,0,0,0.5);*/
+}
+
+.kn-portal-taskrunner-window {
+    position: relative;
+    /*width: 40%;*/
+    /*height: 40%;*/
+    width: auto;
+    height: auto;
+    min-width: 33vw;
+    max-width: 100%;
+    max-height: 100%;
+    background-color: white;
+    padding: 10px 60px;
+    box-sizing: border-box;
+    /* new bits */
+    box-shadow: 0 5px 15px 2px rgba(0,0,0,.3);
+    border: 1px solid;
+    border-color: rgba(204,204,204,.8);
+    animation: fadeIn ease 0.6s;
+}
+
+.kn-portal-taskrunner-caption {
+    font-size: 14px;
+    font-weight: 600;
+    color: #0078d4;
+    cursor: pointer;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding: 0px 0px;
+    text-align: center;
+}
+
+.dotdotdot:after {
+    /*font-weight: 300;*/
+    content: '...';
+    display: inline-block;
+    width: 12px;
+    text-align: left;
+    animation: dotdotdot 1.5s linear infinite;
+}
+
+.dotdotdot.width24:after {
+    width: 24px;
+}
+
+@keyframes dotdotdot {
+    0% {
+        content: '...';
+    }
+
+    25% {
+        content: '';
+    }
+
+    50% {
+        content: '.';
+    }
+
+    75% {
+        content: '..';
+    }
+}
+
+.kn-userpanel-container {
+    width: 320px;
+    min-height: 180px;
+}
+
+.kn-userpanel-topbar {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.kn-userpanel-topbar-button {
+    flex: 0 0 auto;
+    font-size: 13px;
+    padding: 16px 14px;
+    color: #333;
+    cursor: pointer;
+}
+
+    .kn-userpanel-topbar-button:hover {
+        background-color: rgba(0,0,0,.08);
+        text-decoration: underline;
+    }
+
+    .kn-userpanel-topbar-button:active {
+        background-color: rgba(0,0,0,.12);
+    }
+
+
+/* Toast*/
+
+.kn-portal-toast-container {
+    position: fixed; /* was absolute */
+    top: 45px; /* was 0 */
+    right: 5px;
+    bottom: 0;
+    width: 355px;
+    /*background-color: green;*/
+    /*box-sizing: border-box;*/
+    display: flex;
+    gap: 5px;
+    flex-direction: column;
+    pointer-events: none;
+}
+
+.kn-portal-toast-item {
+    flex: 0 0 auto;
+    height: auto;
+    padding: 10px;
+    box-shadow: 0 25.6px 57.6px 0 rgb(0 0 0 / 22%), 0 4.8px 14.4px 0 rgb(0 0 0 / 18%);
+    color: #323130;
+    border-color: rgba(204,204,204,.8);
+    background-color: #fff;
+    pointer-events: auto;
+    min-height: 80px;
+    position: relative;
+    animation: fadeIn ease 0.25s;
+}
+
+    .kn-portal-toast-item svg {
+        height: 14px;
+        width: 14px;
+    }
+
+.kn-portal-toast-close-svg {
+    position: absolute;
+    width: 12px !important;
+    height: 12px !important;
+    top: 0;
+    right: 0;
+    background: none;
+    border: none;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.x14 {
+    animation: ProgressFlagAnimation 1.45s infinite ease-in-out;
+    transform-origin: 50%;
+}
+
+    .x14:nth-child(1) {
+        animation-delay: 0s;
+    }
+
+
+
+/* progressbar inside notification button */
+.fxs-notificationspane-progressbar {
+    position: absolute;
+    overflow: hidden;
+    height: 3px;
+    top: 1px;
+    left: 1px;
+    right: 1px;
+    transition: opacity 1.5s ease-in-out 1s;
+}
+
+    .fxs-notificationspane-progressbar > div {
+        position: absolute;
+        width: 60%;
+        height: 100%;
+        animation: kn-notify-button-indeterminate-progress 1.5s linear infinite;
+        background-color: #00bcf2;
+    }
+
+/* unread count */
+
+.fxs-notificationspane-button-unreadcount {
+    color: #135995;
+    background-color: #fff;
+}
+
+.fxs-notificationspane-button-unreadcount-circle {
+    height: 16px;
+    width: 16px;
+}
+
+.fxs-notificationspane-button-unreadcount {
+    font-size: 10px;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    border-radius: 16px;
+    text-align: center;
+}
+
+.fxs-notificationspane-button-unreadcount {
+    color: #1c1c1c;
+    background-color: #fff;
+}
+
+@keyframes ProgressFlagAnimation {
+    0% {
+        opacity: 1
+    }
+
+    30% {
+        opacity: .6
+    }
+
+    60% {
+        opacity: .3
+    }
+}
+
+@keyframes kn-notify-button-indeterminate-progress {
+    0% {
+        left: -100%;
+    }
+
+
+    100% {
+        left: 150%;
+    }
+}

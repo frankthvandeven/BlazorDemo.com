@@ -1,0 +1,63 @@
+﻿@namespace Kenova.Client.Components
+@inject NavigationManager NavigationManager
+@inherits KenovaComponentBase
+
+@{
+    ActiveBreadCrumbs.Clear();
+
+    LayerDefinition[] stackArray = LayerManager.LayerStack.ToArray();
+
+    for (int x = stackArray.Length - 1; x >= 0; x--)
+    {
+        LayerDefinition ld = stackArray[x];
+
+        if (ld.Breadcrumb != null && (ld.Kind == LayerKind.Modal || ld.Kind == LayerKind.ModalWindow))
+        {
+            ActiveBreadCrumbs.Add(ld);
+        }
+    }
+
+}
+
+<div class="kn-portal-breadcrumb-container">
+
+    @if (Portal.RoutedPage_RoutePath != null && Portal.RoutedPage_RoutePath != "/" )
+    {
+        <div class="kn-portal-breadcrumb-link" @onclick="async () => await HomeBreadcrumbClickedAsync()">@KenovaClientConfig.Localizer["portal_home_caption"]</div>
+
+        <div class="kn-portal-breadcrumb-divider">
+            <svg viewBox="0 0 14.7 8.1">
+                <path d="M14 8.1L7.4 1.4.7 8.1 0 7.4 7.4 0l7.3 7.4-.7.7z"></path>
+            </svg>
+        </div>
+    }
+
+    @if (ActiveBreadCrumbs.Count > 0)
+    {
+        <div class="kn-portal-breadcrumb-link" @onclick="@BaseBreadcrumbClickedAsync">@Portal.RoutedPage_Breadcrumb</div>
+
+        <div class="kn-portal-breadcrumb-divider">
+            <svg viewBox="0 0 14.7 8.1">
+                <path d="M14 8.1L7.4 1.4.7 8.1 0 7.4 7.4 0l7.3 7.4-.7.7z"></path>
+            </svg>
+        </div>
+    }
+
+    @for (int i = 0; i < ActiveBreadCrumbs.Count - 1; i++)
+    {
+        LayerDefinition ld = ActiveBreadCrumbs[i];
+
+        <div class="kn-portal-breadcrumb-link" @onclick="e => BreadcrumbClickedAsync(ld)">@ld.Breadcrumb</div>
+
+        <div class="kn-portal-breadcrumb-divider">
+            <svg viewBox="0 0 14.7 8.1">
+                <path d="M14 8.1L7.4 1.4.7 8.1 0 7.4 7.4 0l7.3 7.4-.7.7z"></path>
+            </svg>
+        </div>
+    }
+
+</div>
+
+
+
+

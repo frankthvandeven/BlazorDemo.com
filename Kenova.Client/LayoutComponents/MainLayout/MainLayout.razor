@@ -1,0 +1,74 @@
+﻿@namespace Kenova.Client.Components
+@using Microsoft.JSInterop
+@inherits KenovaComponentBase
+@inject IJSRuntime JSRuntime
+
+@{
+    if (KenovaClientConfig.Diagnostics) Console.WriteLine("📺 Rendering <MainLayout>");
+
+    string containerStyle = null;
+
+    if (this.Width != -1)
+        containerStyle = $"width:{this.Width.ToPixels()};";
+}
+
+
+<div class="kn-mainlayout-container" style="@containerStyle">
+
+    @if (DisplayHeader)
+    {
+        <div class="kn-mainlayout-headersection">
+
+            @if (false)
+            {
+                <div class="kn-mainlayout-headersection-icon">
+                </div>
+            }
+
+            <div class="kn-mainlayout-headersection-titles">
+                @if (this.Title != null)
+                {
+                    <div class="kn-mainlayout-headersection-maintitle">
+                        @this.Title
+
+                        @if (this.ActiveMenuItem != null)
+                        {
+                            var ExtraTitle = " | " + this.ActiveMenuItem.Caption;
+                            <span>@ExtraTitle</span>
+                        }
+
+                    </div>
+                }
+                @if (this.SubTitle != null)
+                {
+                    <div class="kn-mainlayout-headersection-subtitle">
+                        @this.SubTitle
+                    </div>
+                }
+            </div>
+        </div>
+    }
+
+    <div class="kn-mainlayout-contentsection">
+        @if (this.MenuItems != null)
+        {
+            <div class="kn-mainlayout-contentsection-mainmenu">
+                <MainMenu MenuItems="@MenuItems"
+                          SelectedMenuItemExpression="() => this.ActiveMenuItem"
+                          SelectedMenuItemChanged="MainMenu_SelectedMenuItemChanged" />
+            </div>
+        }
+        <div class="kn-mainlayout-contentsection-dialog">
+            <div class="kn-pagedivider-container">
+                <CascadingValue Value="this" IsFixed="true">
+                    @ChildContent
+                </CascadingValue>
+            </div>
+        </div>
+
+
+    </div>
+
+</div>
+
+
