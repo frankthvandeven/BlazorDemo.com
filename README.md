@@ -5,4 +5,4 @@ It demonstrates rapid software development with the Kenova framework.
 
 The application is running on https://www.blazordemo.com
 
-It is not possible to download and run the demo application at this moment. Kenova has not been released yet.
+The application has been upgraded to .NET 8, and the Kenova sources are included.
