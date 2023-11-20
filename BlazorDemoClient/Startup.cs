@@ -1,5 +1,4 @@
 ﻿using BlazorDemo.Client.Pages;
-using BlazorDemo.Shared;
 using Kenova.Client;
 using Kenova.Client.Components;
 using Microsoft.Extensions.DependencyInjection;
@@ -15,7 +14,7 @@ namespace BlazorDemo.Client
         public override async Task SetupPortalAsync()
         {
             KenovaClientConfig.Labels.HomeButton = "Kenova 17";
-            KenovaClientConfig.Labels.TopbarCenterTitle = "Presentation of cross-platform Kenova (net7.0)";
+            KenovaClientConfig.Labels.TopbarCenterTitle = "Presentation of cross-platform Kenova (net8.0)";
             KenovaClientConfig.Labels.AppName = "Kenova Demo";
 
             var settings = KenovaClientConfig.Settings;

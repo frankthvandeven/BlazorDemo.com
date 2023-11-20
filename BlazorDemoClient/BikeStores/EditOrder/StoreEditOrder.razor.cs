@@ -60,6 +60,8 @@ namespace BlazorDemo.Client.Components
                 [i => i.Model] = SearchModel
             };
 
+           
+
             var result = await ld.OpenThenWaitForCloseAsync();
 
             if (result.Cancelled || result.Aborted)

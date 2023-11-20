@@ -1,29 +1,29 @@
 ﻿using BlazorDemo.Server;
-using BlazorDemo.Server.Hubs;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.HttpOverrides;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
-using System.Data.SqlClient;
 using System.Text;
 using VenturaSQL;
 using VenturaSQL.AspNetCore.Server.RequestHandling;
+using BlazorDemo.Server.Components;
+using BlazorDemo.Client.Components;
+using Kenova.Client.Components;
+using Microsoft.Data.SqlClient;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-builder.Services.AddSignalR();
+builder.Services.AddRazorComponents().AddInteractiveWebAssemblyComponents();
 
 builder.Services.AddControllers(options =>
 {
     options.InputFormatters.Insert(0, new FrameStreamInputFormatter());
-
 });
 
 builder.Services.AddRazorPages(); /* = support for .cshtml pages */
@@ -53,12 +53,6 @@ builder.Services.AddSwaggerGen(c =>
     c.SwaggerDoc("v1", new OpenApiInfo { Title = "BlazorDemo.Server", Version = "v1" });
 });
 
-// Entity Framework Core 6
-builder.Services.AddDbContext<BikeStoresContext>(options =>
-  options.UseSqlServer(builder.Configuration.GetConnectionString("BikeStores")));
-
-builder.Services.AddDatabaseDeveloperPageExceptionFilter();
-
 var app = builder.Build();
 
 //string db_folder = env.ContentRootPath;
@@ -86,9 +80,6 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "WebApplication9 v1"));
 
-    app.UseDeveloperExceptionPage(); // EF Core
-    app.UseMigrationsEndPoint(); // EF Core
-
 }
 else
 {
@@ -98,21 +89,23 @@ else
 }
 
 //app.UseHttpsRedirection();
-app.UseBlazorFrameworkFiles();
+
 app.UseStaticFiles();
 
 app.UseRouting();
 
 app.UseAuthorization(); // Obligated, must be placed between UseRouting() and UseEndpoints()
 
+app.UseAntiforgery(); // new for .Net8
+
 app.MapRazorPages(); /* = support for .cshtml pages */
 app.MapControllers();
 
-app.MapHub<ChatHub>("/chathub");
+//app.MapFallbackToFile("index.html");
 
-app.MapFallbackToFile("index.html");
+app.MapRazorComponents<App>()
+    .AddInteractiveWebAssemblyRenderMode()
+    .AddAdditionalAssemblies(typeof(SearchCustomers).Assembly, typeof(Portal).Assembly);
 
 app.Run();
-
-
 

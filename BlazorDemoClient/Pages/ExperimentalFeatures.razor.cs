@@ -17,11 +17,11 @@ public partial class ExperimentalFeatures : KenovaDialogBase
         MenuItems.Icon.HtmlColor = "forestgreen";
         MenuItems.AutoFocus = true;
 
-        MenuItems.Add("WorkflowTest", "/workflowtest", null, IconKind.FontAwesome, "fal fa-bezier-curve");
-        MenuItems.Icon.HtmlColor = "#15aabf";
+        //MenuItems.Add("WorkflowTest", "/workflowtest", null, IconKind.FontAwesome, "fal fa-bezier-curve");
+        //MenuItems.Icon.HtmlColor = "#15aabf";
 
-        MenuItems.Add("Push Messages", "/pushtest", null, IconKind.FontAwesome, "fal fa-comments");
-        MenuItems.Icon.HtmlColor = "darkblue";
+        //MenuItems.Add("Push Messages", "/pushtest", null, IconKind.FontAwesome, "fal fa-comments");
+        //MenuItems.Icon.HtmlColor = "darkblue";
 
         //PortalMenuItems.Add("WindowedTest", typeof(BlazorDemo.Client.Components.SearchCustomers), null, IconKind.FontAwesome, "fal fa-window");
         //PortalMenuItems.Icon.HtmlColor = "DarkGray";

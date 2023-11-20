@@ -6,21 +6,30 @@
 		<UserSecretsId>71c353b4-2903-41c5-a668-cdc5aac49cc6</UserSecretsId>
 		<RootNamespace>BlazorDemo.Server</RootNamespace>
 		<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
-		<RunAOTCompilation>true</RunAOTCompilation>
 	</PropertyGroup>
 
 	<ItemGroup>
 		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="8.0.0" />
-		<PackageReference Include="Microsoft.Data.SqlClient" Version="5.1.2" />
+		<PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="8.0.0" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.0">
+		  <PrivateAssets>all</PrivateAssets>
+		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.0" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.0">
+		  <PrivateAssets>all</PrivateAssets>
+		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
 		<PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="8.0.0" />
+		<PackageReference Include="System.Data.SqlClient" Version="4.8.5" />
 		<PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
+		<PackageReference Include="VenturaSQL.AspNetCore.Server" Version="4.3.201" />
 	</ItemGroup>
 
 	<ItemGroup>
 		<ProjectReference Include="..\..\..\Kenova\Projects\Kenova.Client\Kenova.Client.csproj" />
 		<ProjectReference Include="..\..\..\Kenova\Projects\Kenova.Server\Kenova.Server.csproj" />
-		<ProjectReference Include="..\..\..\VenturaSQL\Projects\VenturaSQL.AspNetCore.Server\VenturaSQL.AspNetCore.Server.csproj" />
-		<ProjectReference Include="..\BlazorDemoClient\BlazorDemo.Client.csproj" />
+		<ProjectReference Include="..\BlazorDemoShared\BlazorDemo.Shared.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>

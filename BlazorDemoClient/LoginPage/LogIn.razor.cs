@@ -1,4 +1,4 @@
-﻿using BlazorDemo.Shared;
+﻿using BlazorDemo.Client;
 using Kenova.Client.Components;
 using Microsoft.AspNetCore.Components;
 

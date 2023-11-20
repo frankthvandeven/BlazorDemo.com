@@ -8,52 +8,33 @@
     <FillContent>
 
         <header>
-            Welcome to Kenova
+            Welcome to Kenova for Blazor
         </header>
 
-        @*       <FlexList ItemType="Pet" AutoFocus Items="@pets" RowClicked="XRowClicked">
-            <ItemTemplate Context="pet">
-            @{
-            int index = pets.IndexOf(pet);
-
-            }
-            <div>
-            <p>@pet.PetId</p>
-            @if (index == 1)
-            {
-            <p>Extra line of data. Extra line of data. Extra line of data. Extra line of data. Extra line of data. </p>
-            }
-            <p>@pet.Name</p>
-            </div>
-            </ItemTemplate>
-            </FlexList>*@
-
-        Netherlands, 9 November 2022
+        Netherlands, 20 November 2023
 
         <p>
-            This is the presentation site for the Kenova project. Kenova is a complete system for the
-            rapid development of Line of Business software. The software runs cross-platform on any browser, 
-            and also as a Windows Desktop application with full access to the Windows API.
-        </p>
-        <p>
-            Kenova uses Blazor WebAssembly to run C# code in any web browser. Blazor Desktop (.NET MAUI) is used to run
-            Windows Desktop applications.
-        </p>
-        <p>
-            Blazor WebAssembly is Microsoft's equivalent of Angular/React/Vue, all SPA platforms. 
-            Blazor Desktop is Microsoft's equivalent of Electron, where a Desktop program uses a browser rendering engine for
-            screen output.
+            This is the presentation site for the Blazor edition of Kenova. Kenova is a framework for
+            the rapid development of Line of Business software running runs cross-platform on any browser.
+            Kenova uses Blazor WebAssembly to run C# code in any web browser.
         </p>
 
-        <ul>
-            <li>
-                See <a href="https://site.sysdev.nl" target="_blank">sysdev.nl</a> for more information and my contact details.
-            </li>
-            <li>
-                Kenova is optimized for runtime performance and developer productivity.
-                The API is Kenova's best feature.
-            </li>
-        </ul>
+        <p>
+            I started writing the framework in January 2020, a few months before the first official release of Blazor.
+            At that time I was not up to speed in JavaScript frameworks. Initially I naively thought that Blazor enabled
+            me to develop web applications without the need to learn JavaScript. But once I started writing more
+            advanced components, I had to learn to write more and more JavaScript.
+        </p>
+        <p>
+            I think that Blazor combined with a component library is great to rapidly develop administrative software.
+            Using ready made components, one might be able to avoid JavaScript altogether. But for advanced components
+            where a lot of JavaScript code and JavaScript interop is needed, you may be better off
+            with a full JavaScript framework. I am currently converting Kenova to the Svelte framework.
+        </p>
+
+        <p>
+            See <a href="https://site.sysdev.nl" target="_blank">sysdev.nl</a> for my contact details.
+        </p>
 
         <p>
             Frank Th. van de Ven
@@ -66,12 +47,7 @@
         <InfoBlock Kind="InfoKind.Information">
             <header>Upcoming features</header>
             <ul>
-                <li>Responsive layout for mobile devices and tablets;</li>
-                <li>Notifications dialog;</li>
-                <li>Treeview component;</li>
-                <li>NuGet packages for the Kenova client and server bits;</li>
-                <li>Visual Studio project templates for Kenova projects;</li>
-                <li>Product documentation;</li>
+                <li>Kenova for Svelte.</li>
             </ul>
         </InfoBlock>
 
@@ -85,7 +61,7 @@
 
 
     </FillContent>
-    
+
 </MainLayout>
 
 

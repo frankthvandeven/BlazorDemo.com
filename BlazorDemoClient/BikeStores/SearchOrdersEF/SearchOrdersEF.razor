@@ -1,0 +1,32 @@
+﻿@page "/ordersEF"
+@inherits KenovaDialogBase
+@namespace BlazorDemo.Client.Components
+
+<MainLayout Title="@this.Title" SubTitle="Data retrieved via Entity Framework and WebAPI">
+
+    <TopContent>
+        <Toolbar Buttons="@toolbar" />
+
+        <Rail>
+            <InputStringNullable AutoFocus FocusID="searchtext" Caption="Name" FieldExpression="() => Model.SearchText" Width="200" />
+            <InputInt32Nullable Caption="Order number" FieldExpression="() => Model.SearchOrderID" Width="100" />
+        </Rail>
+
+        <ButtonBar>
+            <Button Default ButtonClicked="SearchClicked">Search</Button>
+            <Button ButtonClicked="ClearClicked">Clear</Button>
+        </ButtonBar>
+
+
+    </TopContent>
+
+    <FillContent>
+
+        <HyperGrid FocusID="datagrid" DebugName="SearchOrders"
+                   ItemType="SearchOrdersRecordEF"
+                   Data="@this.Data"
+                   RowDoubleClicked="EditClicked" />
+
+    </FillContent>
+
+</MainLayout>
