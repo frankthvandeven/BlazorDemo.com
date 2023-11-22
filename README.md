@@ -11,6 +11,6 @@ It includes some pretty sophisticated components like the TabComponent,
 where a dropdown menu is displayed when there isn't enough space to display
 all the tab items on the tab bar.
 
-The application is running on https://www.blazordemo.com
+The application is running on https://blazordemo.com
 
 See https://sysdev.nl for my contact details.
