@@ -9,8 +9,8 @@ namespace Kenova.Client.Components
 
         static NotificationManager()
         {
-            _list.Add(new NotificationItem { Message = "Welcome to Kenova. Toast messages are under construction." });
-            _list.Add(new NotificationItem { Message = "The message will disappear after 4 seconds." });
+            _list.Add(new NotificationItem { Message = "Welcome to Blazor Demo. Toast messages are under construction." });
+            //_list.Add(new NotificationItem { Message = "The message will disappear after 4 seconds." });
 
         }
 
